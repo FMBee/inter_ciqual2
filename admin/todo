@@ -1,0 +1,16 @@
+
+- usr_out_date = NULL  /  passage d'un NULL vers la base
+
+- traduction des messages /inscription /recovery
+
+- suppression cyclique des users non confirmés
+
+
+****************
+
+- logs
+- menu.cfg : sans ordre
+- améliorer seek
+- virer htaccess() ?
+- regles .htaccess : index=$ROOT action=$ONE page=$TWO param=$TREE
+- flags dans tables
