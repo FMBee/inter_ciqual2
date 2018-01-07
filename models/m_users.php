@@ -1,5 +1,7 @@
 <?php
+
 class Users {
+	
 	public static function getAll($pdo, $withRoot = false) 
 	// Tous les users avec ou sans root
 	{

@@ -2,7 +2,7 @@
 
 // Se connecter a la base
 try {
-	$pdo = new PDO ( 'mysql:host=localhost;dbname=inter_ciqual', 'root', 'LavBiec4' );
+	$pdo = new PDO ( 'mysql:host=localhost;dbname=inter_ciqual2', 'root', '' );
 	
 	$pdo->query ( "SET NAMES UTF8" );
 } catch ( Exception $e ) {

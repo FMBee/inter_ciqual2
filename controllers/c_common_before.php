@@ -12,49 +12,32 @@
 
 function sendMail($adresse, $objet, $message) {
 
-	require_once (__WEB_ROOT__ . 'phpMailer/PHPMailer.php');
-	require_once (__WEB_ROOT__ . 'phpMailer/SMTP.php');
+	require_once(__WEB_ROOT__ . 'phpMailer/PHPMailer.php');
+	require_once(__WEB_ROOT__ . 'phpMailer/SMTP.php');
 	
-	// PHPMailer Object
 	$mail = new PHPMailer ();
 	
-	// Enable SMTP debugging.
-	// $mail->SMTPDebug = 3;
-	// Set PHPMailer to use SMTP.
-	$mail->isSMTP ();
-	// Set SMTP host name
-	$mail->Host = "smtp.sfr.fr";
-	// Set this to true if SMTP host requires authentication to send email
+	$mail->isSMTP();
 	$mail->SMTPAuth = true;
-	// Provide username and password
-	$mail->Username = "f.mevollon@sfr.fr";
-	$mail->Password = "cadoul46";
-	// If SMTP requires TLS encryption then set it
 	$mail->SMTPSecure = "ssl";
-	// Set TCP port to connect to
 	$mail->Port = 465;
+
+	$mail->Host 	= __MAILER_HOST__;
+	$mail->Username = __MAILER_USER__;
+	$mail->Password = __MAILER_PWD__;
+	$mail->From 	= __MAILER_FROM__;
+	$mail->FromName = __MAILER_FROM__;
 	
-	// From email address and name
-	$mail->From = "f.mevollon@sfr.fr";
-	$mail->FromName = "TEST";
-	// Address to which recipient will reply
-	$mail->addReplyTo ( "f.mevollon@gmail.com", utf8_decode ( "Frédéric" ) );
-	// CC and BCC
-	// $mail->addCC("cc@example.com");
-	// $mail->addBCC("bcc@example.com");
-	// Send HTML or Plain Text email
-	$mail->isHTML ( true );
+	$mail->addReplyTo( __MAILER_REPLY__, utf8_decode ( __MAILER_REPLY__ ) );
+	$mail->addAddress( $adresse );
 	
-	// To address and name
-	$mail->addAddress ( $adresse );
-	
+	$mail->isHTML( true );
 	$mail->Subject = $objet;
 	$mail->Body = $message;
-	// $mail->AltBody = "This is the plain text version of the email content";
 	
 	if($mail->smtpConnect()){
 		
-		if (! $mail->send ()) {
+		if (! $mail->send()) {
 			
 			return array(false, $mail->ErrorInfo);
 		} else {
