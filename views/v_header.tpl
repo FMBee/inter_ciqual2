@@ -12,14 +12,6 @@
 
 <title>~{$smarty.const.__APP_TITLE__}~</title>
 
-<!-- Custom CSS -->
-<link href="~{$smarty.const.__WEB_LIB_THEME__}~css/new.css"
-	rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link
-	href="~{$smarty.const.__WEB_LIB_THEME__}~fonts/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
 
 <!-- Jquery, DataTables with Bootstrap style & extensions CSS -->
 <link
@@ -61,6 +53,15 @@
 	href="~{$smarty.const.__WEB_LIB_CAROUSEL__}~owl-carousel/owl.theme.css"
 	rel="stylesheet">
 
+<!-- Custom CSS -->
+<link href="~{$smarty.const.__WEB_LIB_THEME__}~css/new.css"
+	rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link
+	href="~{$smarty.const.__WEB_LIB_THEME__}~fonts/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+
 <!-- Autocomplete -->
 <style type="text/css">
 .autocomplete-suggestions {
@@ -96,15 +97,11 @@
 
 <style type="text/css">
 
-.user-avatar, .user-avatar2 {
+.user-avatar2 {
   border: 1px solid #333333;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%; 
-}
-.user-avatar {
-  width: 34px;
-  height: 34px;
 }
 .user-avatar2 {
   width: 25px;
