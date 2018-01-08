@@ -12,29 +12,19 @@
 
 <title>~{$smarty.const.__APP_TITLE__}~</title>
 
-<!-- Bootstrap Core CSS -->
-<link
-	href="~{$smarty.const.__WEB_LIB_BOOTSTRAP__}~dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link
-	href="~{$smarty.const.__WEB_LIB_BOWER__}~metisMenu/dist/metisMenu.min.css"
-	rel="stylesheet">
-
-<!-- DataTables with Bootstrap style & extensions CSS -->
-<link
-	href="~{$smarty.const.__WEB_LIB_BOWER__}~datatables/datatables.min.css"
-	rel="stylesheet">
-
 <!-- Custom CSS -->
-<link href="~{$smarty.const.__WEB_LIB_THEME__}~dist/css/sb-admin-2.css"
+<link href="~{$smarty.const.__WEB_LIB_THEME__}~css/new.css"
 	rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
-	href="~{$smarty.const.__WEB_LIB_BOWER__}~font-awesome/css/font-awesome.min.css"
+	href="~{$smarty.const.__WEB_LIB_THEME__}~fonts/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+
+<!-- Jquery, DataTables with Bootstrap style & extensions CSS -->
+<link
+	href="~{$smarty.const.__WEB_LIB_DATABOOT__}~datatables.min.css"
+	rel="stylesheet">
 
 <link
 	href="~{$smarty.const.__WEB_LIB_FORMVALID__}~dist/css/formValidation.min.css">
@@ -46,12 +36,12 @@
 
 <!-- DateTimePicker CSS -->
 <link
-	href="./web/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
+	href="__WEB_ROOT__bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
 	rel="stylesheet" media="screen">
 
 <!-- TouchSpin -->
 <link
-	href="./web/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css"
+	href="__WEB_ROOT__bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css"
 	rel="stylesheet" type="text/css">
 
 <!-- Switch -->

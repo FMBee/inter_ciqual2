@@ -28,9 +28,8 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	myDefine('__VIEWS_PAGES__' 			, __VIEWS_ROOT__ . 'pages' . $_SEP );
 
 	myDefine('__WEB_ROOT__' 			, $_ROOT . 'web' . $_SEP );
-	myDefine('__WEB_LIB_THEME__' 		, __WEB_ROOT__ . 'sbadmin' . $_SEP );
-	myDefine('__WEB_LIB_BOWER__' 		, __WEB_LIB_THEME__ . 'bower_components' . $_SEP );
-	myDefine('__WEB_LIB_BOOTSTRAP__' 	, __WEB_LIB_BOWER__ . 'bootstrap' . $_SEP );
+	myDefine('__WEB_LIB_THEME__' 		, __WEB_ROOT__ . 'blue-moon' . $_SEP );
+	myDefine('__WEB_LIB_DATABOOT__'		, __WEB_ROOT__ . 'datatables' . $_SEP );
 	myDefine('__WEB_LIB_FORMVALID__' 	, __WEB_ROOT__ . 'formvalidation-v0.6.3' . $_SEP );
 	myDefine('__WEB_LIB_SELECT__' 		, __WEB_ROOT__ . 'select' . $_SEP );
 	myDefine('__WEB_LIB_SMARTY__' 		, __WEB_ROOT__ . 'smarty' . $_SEP );

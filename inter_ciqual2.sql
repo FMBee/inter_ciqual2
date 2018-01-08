@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2+deb8u2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Sam 06 Janvier 2018 à 20:06
--- Version du serveur :  5.5.58-0+deb8u1
--- Version de PHP :  5.6.30-0+deb8u1
+-- Client :  127.0.0.1
+-- Généré le :  Lun 08 Janvier 2018 à 07:37
+-- Version du serveur :  10.1.13-MariaDB
+-- Version de PHP :  5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,18 +14,17 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `inter_ciqual`
+-- Base de données :  `inter_ciqual2`
 --
 
 DELIMITER $$
 --
 -- Procédures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `app_logs_add`(IN `_lty_id` INT(255), IN `_description` VARCHAR(255), IN `_usr_id` INT(255), IN `_cli_id` INT(255))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `app_logs_add` (IN `_lty_id` INT(255), IN `_description` VARCHAR(255), IN `_usr_id` INT(255), IN `_cli_id` INT(255))  MODIFIES SQL DATA
 BEGIN
    INSERT INTO app_logs(log_lty_id,
                      log_description,
@@ -37,14 +36,12 @@ BEGIN
                 _cli_id);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `app_parameters_maj`(IN `_prt_id` INT(255), IN `_prt_value` VARCHAR(255))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `app_parameters_maj` (IN `_prt_id` INT(255), IN `_prt_value` VARCHAR(255))  MODIFIES SQL DATA
 UPDATE `app_parameters`
       SET `prt_value` = _prt_value
     WHERE `prt_id`    = _prt_id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clients2_mjad`(IN `_cli_id` INT(10), IN `_cli_nom` VARCHAR(255), IN `_cli_prenom` VARCHAR(255), IN `_cli_rue` VARCHAR(255), IN `_cli_codepostal` VARCHAR(20), IN `_cli_ville` VARCHAR(255), IN `_cli_tmp1` VARCHAR(1), IN `_cli_tmp2` VARCHAR(1), IN `_cli_tmp3` VARCHAR(1), OUT `_insertedid` INT(255))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `clients2_mjad` (IN `_cli_id` INT(10), IN `_cli_nom` VARCHAR(255), IN `_cli_prenom` VARCHAR(255), IN `_cli_rue` VARCHAR(255), IN `_cli_codepostal` VARCHAR(20), IN `_cli_ville` VARCHAR(255), IN `_cli_tmp1` VARCHAR(1), IN `_cli_tmp2` VARCHAR(1), IN `_cli_tmp3` VARCHAR(1), OUT `_insertedid` INT(255))  MODIFIES SQL DATA
     COMMENT 'Gestion des clients2'
 BEGIN
 SELECT 0 INTO _insertedid;
@@ -57,8 +54,7 @@ SELECT _cli_id INTO _insertedid;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_mjad`(IN `_par_id` INT(10), IN `_par_societe` VARCHAR(255), IN `_par_rue` VARCHAR(255), IN `_par_complement` VARCHAR(255), IN `_par_codepostal` VARCHAR(20), IN `_par_ville` VARCHAR(255), IN `_par_pays` VARCHAR(255), IN `_par_email` VARCHAR(255), IN `_par_responsable` VARCHAR(255), IN `_par_telephone` VARCHAR(255), IN `_par_mobile` VARCHAR(255), IN `_par_siret` VARCHAR(255), IN `_par_codenaf` VARCHAR(255), IN `_par_iban` VARCHAR(255), IN `_par_param1` VARCHAR(255), IN `_par_param2` VARCHAR(255), IN `_par_param3` VARCHAR(255), IN `_par_param4` VARCHAR(255), IN `_par_param5` VARCHAR(255), IN `_par_param6` VARCHAR(255), IN `_par_param7` VARCHAR(255), IN `_par_param8` VARCHAR(255), IN `_par_param9` VARCHAR(255), IN `_par_tmp1` VARCHAR(1), IN `_par_tmp2` VARCHAR(1), IN `_par_tmp3` VARCHAR(1), OUT `_insertedid` INT(255))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_mjad` (IN `_par_id` INT(10), IN `_par_societe` VARCHAR(255), IN `_par_rue` VARCHAR(255), IN `_par_complement` VARCHAR(255), IN `_par_codepostal` VARCHAR(20), IN `_par_ville` VARCHAR(255), IN `_par_pays` VARCHAR(255), IN `_par_email` VARCHAR(255), IN `_par_responsable` VARCHAR(255), IN `_par_telephone` VARCHAR(255), IN `_par_mobile` VARCHAR(255), IN `_par_siret` VARCHAR(255), IN `_par_codenaf` VARCHAR(255), IN `_par_iban` VARCHAR(255), IN `_par_param1` VARCHAR(255), IN `_par_param2` VARCHAR(255), IN `_par_param3` VARCHAR(255), IN `_par_param4` VARCHAR(255), IN `_par_param5` VARCHAR(255), IN `_par_param6` VARCHAR(255), IN `_par_param7` VARCHAR(255), IN `_par_param8` VARCHAR(255), IN `_par_param9` VARCHAR(255), IN `_par_tmp1` VARCHAR(1), IN `_par_tmp2` VARCHAR(1), IN `_par_tmp3` VARCHAR(1), OUT `_insertedid` INT(255))  MODIFIES SQL DATA
     COMMENT 'Gestion des parametres'
 BEGIN
 SELECT 0 INTO _insertedid;
@@ -71,8 +67,7 @@ SELECT _par_id INTO _insertedid;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_parameters_mjad`(IN `_ppa_id` INT(255), IN `_ppa_par_id` INT(255), IN `_ppa_name` VARCHAR(255), IN `_ppa_type` VARCHAR(255), IN `_ppa_length` FLOAT, IN `_ppa_default` VARCHAR(255), IN `_ppa_input_mode` VARCHAR(255), IN `_ppa_values_list` VARCHAR(500), IN `_ppa_default_when` INT(255), IN `_ppa_validation` VARCHAR(255), IN `_ppa_readonly` INT(10), IN `_ppa_placeholder` VARCHAR(255), IN `_ppa_required` INT(10), IN `_ppa_order` INT(255), OUT `_insertedid` INT(255))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_parameters_mjad` (IN `_ppa_id` INT(255), IN `_ppa_par_id` INT(255), IN `_ppa_name` VARCHAR(255), IN `_ppa_type` VARCHAR(255), IN `_ppa_length` FLOAT, IN `_ppa_default` VARCHAR(255), IN `_ppa_input_mode` VARCHAR(255), IN `_ppa_values_list` VARCHAR(500), IN `_ppa_default_when` INT(255), IN `_ppa_validation` VARCHAR(255), IN `_ppa_readonly` INT(10), IN `_ppa_placeholder` VARCHAR(255), IN `_ppa_required` INT(10), IN `_ppa_order` INT(255), OUT `_insertedid` INT(255))  MODIFIES SQL DATA
     COMMENT 'Gestion des paramètres'
 BEGIN
    SELECT 0
@@ -133,8 +128,7 @@ BEGIN
    END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_parameters_values_mjad`(IN `_par_id` INT(255), IN `_ppa_id` INT(255), IN `_value` VARCHAR(255))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_parameters_values_mjad` (IN `_par_id` INT(255), IN `_ppa_id` INT(255), IN `_value` VARCHAR(255))  MODIFIES SQL DATA
 BEGIN
 	DECLARE _ppv_id INT(255);
 	
@@ -156,8 +150,7 @@ BEGIN
 	END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `users_mjad`(IN `_usr_id` INT(255), IN `_usr_first_name` VARCHAR(255), IN `_usr_last_name` VARCHAR(255), IN `_usr_login` VARCHAR(255), IN `_usr_password` VARCHAR(255), IN `_usr_activekey` VARCHAR(255), IN `_usr_mail` VARCHAR(255), IN `_usr_pro_id` INT(255), IN `_usr_lang` VARCHAR(2), IN `_usr_image_path` VARCHAR(255), IN `_usr_out_date` TIMESTAMP, OUT `_insertedid` INT(11))
-    MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `users_mjad` (IN `_usr_id` INT(255), IN `_usr_first_name` VARCHAR(255), IN `_usr_last_name` VARCHAR(255), IN `_usr_login` VARCHAR(255), IN `_usr_password` VARCHAR(255), IN `_usr_activekey` VARCHAR(255), IN `_usr_mail` VARCHAR(255), IN `_usr_pro_id` INT(255), IN `_usr_lang` VARCHAR(2), IN `_usr_image_path` VARCHAR(255), IN `_usr_out_date` TIMESTAMP, OUT `_insertedid` INT(11))  MODIFIES SQL DATA
     COMMENT 'Gestion des utilisateurs'
 BEGIN
    SELECT 0 into _insertedid;
@@ -218,7 +211,7 @@ DELIMITER ;
 -- Structure de la table `app_languages`
 --
 
-CREATE TABLE IF NOT EXISTS `app_languages` (
+CREATE TABLE `app_languages` (
   `lng_id` int(255) NOT NULL,
   `lng_code` varchar(2) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   `lng_form_code` varchar(15) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Code langue formulaire',
@@ -241,14 +234,14 @@ INSERT INTO `app_languages` (`lng_id`, `lng_code`, `lng_form_code`, `lng_lib`, `
 -- Structure de la table `app_logs`
 --
 
-CREATE TABLE IF NOT EXISTS `app_logs` (
-`log_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
+CREATE TABLE `app_logs` (
+  `log_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
   `log_lty_id` int(255) NOT NULL COMMENT 'ID du type de log',
   `log_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date',
   `log_description` varchar(255) DEFAULT NULL COMMENT 'Description',
   `log_cli_id` int(255) DEFAULT NULL COMMENT 'ID du client',
   `log_usr_id` int(255) DEFAULT NULL COMMENT 'ID de l''utilisateur'
-) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `app_logs`
@@ -475,14 +468,15 @@ INSERT INTO `app_logs` (`log_id`, `log_lty_id`, `log_date`, `log_description`, `
 (218, 3, '2017-12-20 10:16:27', '', 0, 1),
 (219, 3, '2017-12-21 08:31:51', '', 0, 1),
 (220, 4, '2017-12-21 08:32:34', 'ajout ingrédient 38108, recette 1', 0, 1),
-(221, 3, '2017-12-21 08:37:39', '', 0, 1);
+(221, 3, '2017-12-21 08:37:39', '', 0, 1),
+(222, 3, '2018-01-07 14:46:19', '', 0, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Doublure de structure pour la vue `app_logs_details`
 --
-CREATE TABLE IF NOT EXISTS `app_logs_details` (
+CREATE TABLE `app_logs_details` (
 `log_id` int(255)
 ,`log_lty_id` int(255)
 ,`log_date` timestamp
@@ -504,12 +498,13 @@ CREATE TABLE IF NOT EXISTS `app_logs_details` (
 ,`usr_out_date` timestamp
 ,`usr_flag` char(1)
 );
+
 -- --------------------------------------------------------
 
 --
 -- Doublure de structure pour la vue `app_logs_last_login`
 --
-CREATE TABLE IF NOT EXISTS `app_logs_last_login` (
+CREATE TABLE `app_logs_last_login` (
 `log_id` int(255)
 ,`log_lty_id` int(255)
 ,`log_date` timestamp
@@ -532,13 +527,14 @@ CREATE TABLE IF NOT EXISTS `app_logs_last_login` (
 ,`usr_flag` char(1)
 ,`log_max_date_login` timestamp
 );
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `app_logs_types`
 --
 
-CREATE TABLE IF NOT EXISTS `app_logs_types` (
+CREATE TABLE `app_logs_types` (
   `lty_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
   `lty_name` varchar(50) NOT NULL COMMENT 'Nom du type de log'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -559,13 +555,13 @@ INSERT INTO `app_logs_types` (`lty_id`, `lty_name`) VALUES
 -- Structure de la table `app_parameters`
 --
 
-CREATE TABLE IF NOT EXISTS `app_parameters` (
-`prt_id` int(255) NOT NULL COMMENT 'Id du paramètre',
+CREATE TABLE `app_parameters` (
+  `prt_id` int(255) NOT NULL COMMENT 'Id du paramètre',
   `prt_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Code+Nom du paramètre',
   `prt_value` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Valeur du paramètre',
   `prt_apt_id` int(255) DEFAULT NULL COMMENT 'ID du type de paramètre',
   `prt_flag` char(1) CHARACTER SET utf8mb4 DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `app_parameters`
@@ -585,7 +581,7 @@ INSERT INTO `app_parameters` (`prt_id`, `prt_name`, `prt_value`, `prt_apt_id`, `
 --
 -- Doublure de structure pour la vue `app_parameters_details`
 --
-CREATE TABLE IF NOT EXISTS `app_parameters_details` (
+CREATE TABLE `app_parameters_details` (
 `prt_id` int(255)
 ,`prt_name` varchar(255)
 ,`prt_value` varchar(255)
@@ -595,17 +591,18 @@ CREATE TABLE IF NOT EXISTS `app_parameters_details` (
 ,`apt_name` varchar(255)
 ,`apt_cast_type` varchar(255)
 );
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `app_parameters_types`
 --
 
-CREATE TABLE IF NOT EXISTS `app_parameters_types` (
-`apt_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
+CREATE TABLE `app_parameters_types` (
+  `apt_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
   `apt_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Nom du type de paramètre',
   `apt_cast_type` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Formule de casting'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `app_parameters_types`
@@ -623,7 +620,7 @@ INSERT INTO `app_parameters_types` (`apt_id`, `apt_name`, `apt_cast_type`) VALUE
 -- Structure de la table `app_translate`
 --
 
-CREATE TABLE IF NOT EXISTS `app_translate` (
+CREATE TABLE `app_translate` (
   `atr_id` int(255) NOT NULL,
   `atr_table` varchar(50) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Nom de la table',
   `atr_data_field` varchar(150) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Champs à traduire'
@@ -642,26 +639,27 @@ INSERT INTO `app_translate` (`atr_id`, `atr_table`, `atr_data_field`) VALUES
 --
 -- Doublure de structure pour la vue `app_translate_details`
 --
-CREATE TABLE IF NOT EXISTS `app_translate_details` (
+CREATE TABLE `app_translate_details` (
 `atr_table` varchar(50)
 ,`atr_data_field` varchar(150)
 ,`atl_data_id` varchar(50)
 ,`atl_lang` varchar(2)
 ,`atl_data_lib` varchar(1000)
 );
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `app_translate_lines`
 --
 
-CREATE TABLE IF NOT EXISTS `app_translate_lines` (
-`atl_id` int(255) NOT NULL,
+CREATE TABLE `app_translate_lines` (
+  `atl_id` int(255) NOT NULL,
   `atl_atr_id` int(255) NOT NULL COMMENT 'Id translate',
   `atl_data_id` varchar(50) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Id de la donnée',
   `atl_lang` varchar(2) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Langue de traduction',
   `atl_data_lib` varchar(1000) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Traduction'
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `app_translate_lines`
@@ -717,8 +715,8 @@ INSERT INTO `app_translate_lines` (`atl_id`, `atl_atr_id`, `atl_data_id`, `atl_l
 -- Structure de la table `parametres`
 --
 
-CREATE TABLE IF NOT EXISTS `parametres` (
-`par_id` int(10) NOT NULL,
+CREATE TABLE `parametres` (
+  `par_id` int(10) NOT NULL,
   `par_societe` varchar(255) CHARACTER SET latin1 NOT NULL COMMENT 'Nom',
   `par_rue` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Prénom',
   `par_complement` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Rue',
@@ -746,7 +744,7 @@ CREATE TABLE IF NOT EXISTS `parametres` (
   `par_tmp3` varchar(1) CHARACTER SET latin1 DEFAULT NULL COMMENT 'champ disponible',
   `par_flag` char(1) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Flag',
   `par_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date maj'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `parametres`
@@ -760,7 +758,7 @@ INSERT INTO `parametres` (`par_id`, `par_societe`, `par_rue`, `par_complement`, 
 --
 -- Doublure de structure pour la vue `parametres_details`
 --
-CREATE TABLE IF NOT EXISTS `parametres_details` (
+CREATE TABLE `parametres_details` (
 `par_id` int(10)
 ,`par_societe` varchar(255)
 ,`par_rue` varchar(255)
@@ -790,14 +788,15 @@ CREATE TABLE IF NOT EXISTS `parametres_details` (
 ,`par_flag` char(1)
 ,`par_update` timestamp
 );
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `parametres_parameters`
 --
 
-CREATE TABLE IF NOT EXISTS `parametres_parameters` (
-`ppa_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
+CREATE TABLE `parametres_parameters` (
+  `ppa_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
   `ppa_par_id` int(255) NOT NULL COMMENT 'Id du tracking process',
   `ppa_name` varchar(255) NOT NULL COMMENT 'Nom du parametre',
   `ppa_type` varchar(255) NOT NULL COMMENT 'Type de parametre',
@@ -812,7 +811,7 @@ CREATE TABLE IF NOT EXISTS `parametres_parameters` (
   `ppa_required` int(10) NOT NULL DEFAULT '0' COMMENT 'Requis',
   `ppa_order` int(255) NOT NULL COMMENT 'Ordre de tri',
   `ppa_flag` varchar(1) DEFAULT NULL COMMENT 'Flag pour suppression'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `parametres_parameters`
@@ -831,7 +830,7 @@ INSERT INTO `parametres_parameters` (`ppa_id`, `ppa_par_id`, `ppa_name`, `ppa_ty
 --
 -- Doublure de structure pour la vue `parametres_parameters_details`
 --
-CREATE TABLE IF NOT EXISTS `parametres_parameters_details` (
+CREATE TABLE `parametres_parameters_details` (
 `par_id` int(10)
 ,`par_societe` varchar(255)
 ,`par_rue` varchar(255)
@@ -880,18 +879,19 @@ CREATE TABLE IF NOT EXISTS `parametres_parameters_details` (
 ,`ppv_ppa_id` int(255)
 ,`ppv_value` varchar(255)
 );
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `parametres_parameters_values`
 --
 
-CREATE TABLE IF NOT EXISTS `parametres_parameters_values` (
-`ppv_id` int(255) NOT NULL COMMENT 'ID de l enregistrement',
+CREATE TABLE `parametres_parameters_values` (
+  `ppv_id` int(255) NOT NULL COMMENT 'ID de l enregistrement',
   `ppv_par_id` int(255) NOT NULL COMMENT 'ID du parametres',
   `ppv_ppa_id` int(255) NOT NULL COMMENT 'ID du parameters',
   `ppv_value` varchar(255) NOT NULL COMMENT 'Valeur du parameters'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `parametres_parameters_values`
@@ -911,8 +911,8 @@ INSERT INTO `parametres_parameters_values` (`ppv_id`, `ppv_par_id`, `ppv_ppa_id`
 -- Structure de la table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`usr_id` int(255) NOT NULL COMMENT 'ID',
+CREATE TABLE `users` (
+  `usr_id` int(255) NOT NULL COMMENT 'ID',
   `usr_first_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Prénom',
   `usr_last_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Nom',
   `usr_login` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Login',
@@ -926,7 +926,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `usr_in_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date d''entrée',
   `usr_out_date` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'date de sortie',
   `usr_flag` char(1) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'Flag pour suppression'
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `users`
@@ -949,7 +949,7 @@ INSERT INTO `users` (`usr_id`, `usr_first_name`, `usr_last_name`, `usr_login`, `
 --
 -- Doublure de structure pour la vue `users_details`
 --
-CREATE TABLE IF NOT EXISTS `users_details` (
+CREATE TABLE `users_details` (
 `usr_id` int(255)
 ,`usr_first_name` varchar(255)
 ,`usr_last_name` varchar(255)
@@ -969,13 +969,14 @@ CREATE TABLE IF NOT EXISTS `users_details` (
 ,`pro_access` int(255)
 ,`pro_flag` char(1)
 );
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `users_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `users_profiles` (
+CREATE TABLE `users_profiles` (
   `pro_id` int(255) NOT NULL COMMENT 'ID du profil',
   `pro_name` varchar(255) NOT NULL COMMENT 'Nom du profil',
   `pro_access` int(255) NOT NULL COMMENT 'Valeur accès',
@@ -999,7 +1000,7 @@ INSERT INTO `users_profiles` (`pro_id`, `pro_name`, `pro_access`, `pro_flag`) VA
 --
 DROP TABLE IF EXISTS `app_logs_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_details` AS select `app_logs`.`log_id` AS `log_id`,`app_logs`.`log_lty_id` AS `log_lty_id`,`app_logs`.`log_date` AS `log_date`,`app_logs`.`log_description` AS `log_description`,`app_logs`.`log_cli_id` AS `log_cli_id`,`app_logs`.`log_usr_id` AS `log_usr_id`,`app_logs_types`.`lty_id` AS `lty_id`,`app_logs_types`.`lty_name` AS `lty_name`,`users`.`usr_id` AS `usr_id`,`users`.`usr_first_name` AS `usr_first_name`,`users`.`usr_last_name` AS `usr_last_name`,`users`.`usr_login` AS `usr_login`,`users`.`usr_password` AS `usr_password`,`users`.`usr_mail` AS `usr_mail`,`users`.`usr_pro_id` AS `usr_pro_id`,`users`.`usr_lang` AS `usr_lang`,`users`.`usr_image_path` AS `usr_image_path`,`users`.`usr_in_date` AS `usr_in_date`,`users`.`usr_out_date` AS `usr_out_date`,`users`.`usr_flag` AS `usr_flag` from ((`app_logs` join `app_logs_types` on((`app_logs`.`log_lty_id` = `app_logs_types`.`lty_id`))) left join `users` on((`app_logs`.`log_usr_id` = `users`.`usr_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_details`  AS  select `app_logs`.`log_id` AS `log_id`,`app_logs`.`log_lty_id` AS `log_lty_id`,`app_logs`.`log_date` AS `log_date`,`app_logs`.`log_description` AS `log_description`,`app_logs`.`log_cli_id` AS `log_cli_id`,`app_logs`.`log_usr_id` AS `log_usr_id`,`app_logs_types`.`lty_id` AS `lty_id`,`app_logs_types`.`lty_name` AS `lty_name`,`users`.`usr_id` AS `usr_id`,`users`.`usr_first_name` AS `usr_first_name`,`users`.`usr_last_name` AS `usr_last_name`,`users`.`usr_login` AS `usr_login`,`users`.`usr_password` AS `usr_password`,`users`.`usr_mail` AS `usr_mail`,`users`.`usr_pro_id` AS `usr_pro_id`,`users`.`usr_lang` AS `usr_lang`,`users`.`usr_image_path` AS `usr_image_path`,`users`.`usr_in_date` AS `usr_in_date`,`users`.`usr_out_date` AS `usr_out_date`,`users`.`usr_flag` AS `usr_flag` from ((`app_logs` join `app_logs_types` on((`app_logs`.`log_lty_id` = `app_logs_types`.`lty_id`))) left join `users` on((`app_logs`.`log_usr_id` = `users`.`usr_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -1008,7 +1009,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `app_logs_last_login`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_last_login` AS select `app_logs_details`.`log_id` AS `log_id`,`app_logs_details`.`log_lty_id` AS `log_lty_id`,`app_logs_details`.`log_date` AS `log_date`,`app_logs_details`.`log_description` AS `log_description`,`app_logs_details`.`log_cli_id` AS `log_cli_id`,`app_logs_details`.`log_usr_id` AS `log_usr_id`,`app_logs_details`.`lty_id` AS `lty_id`,`app_logs_details`.`lty_name` AS `lty_name`,`app_logs_details`.`usr_id` AS `usr_id`,`app_logs_details`.`usr_first_name` AS `usr_first_name`,`app_logs_details`.`usr_last_name` AS `usr_last_name`,`app_logs_details`.`usr_login` AS `usr_login`,`app_logs_details`.`usr_password` AS `usr_password`,`app_logs_details`.`usr_mail` AS `usr_mail`,`app_logs_details`.`usr_pro_id` AS `usr_pro_id`,`app_logs_details`.`usr_lang` AS `usr_lang`,`app_logs_details`.`usr_image_path` AS `usr_image_path`,`app_logs_details`.`usr_in_date` AS `usr_in_date`,`app_logs_details`.`usr_out_date` AS `usr_out_date`,`app_logs_details`.`usr_flag` AS `usr_flag`,max(`app_logs_details`.`log_date`) AS `log_max_date_login` from `app_logs_details` where (`app_logs_details`.`log_lty_id` = 3) group by `app_logs_details`.`log_cli_id`,`app_logs_details`.`log_usr_id`,`app_logs_details`.`usr_first_name`,`app_logs_details`.`usr_last_name`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_last_login`  AS  select `app_logs_details`.`log_id` AS `log_id`,`app_logs_details`.`log_lty_id` AS `log_lty_id`,`app_logs_details`.`log_date` AS `log_date`,`app_logs_details`.`log_description` AS `log_description`,`app_logs_details`.`log_cli_id` AS `log_cli_id`,`app_logs_details`.`log_usr_id` AS `log_usr_id`,`app_logs_details`.`lty_id` AS `lty_id`,`app_logs_details`.`lty_name` AS `lty_name`,`app_logs_details`.`usr_id` AS `usr_id`,`app_logs_details`.`usr_first_name` AS `usr_first_name`,`app_logs_details`.`usr_last_name` AS `usr_last_name`,`app_logs_details`.`usr_login` AS `usr_login`,`app_logs_details`.`usr_password` AS `usr_password`,`app_logs_details`.`usr_mail` AS `usr_mail`,`app_logs_details`.`usr_pro_id` AS `usr_pro_id`,`app_logs_details`.`usr_lang` AS `usr_lang`,`app_logs_details`.`usr_image_path` AS `usr_image_path`,`app_logs_details`.`usr_in_date` AS `usr_in_date`,`app_logs_details`.`usr_out_date` AS `usr_out_date`,`app_logs_details`.`usr_flag` AS `usr_flag`,max(`app_logs_details`.`log_date`) AS `log_max_date_login` from `app_logs_details` where (`app_logs_details`.`log_lty_id` = 3) group by `app_logs_details`.`log_cli_id`,`app_logs_details`.`log_usr_id`,`app_logs_details`.`usr_first_name`,`app_logs_details`.`usr_last_name` ;
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1018,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `app_parameters_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_parameters_details` AS select `app_parameters`.`prt_id` AS `prt_id`,`app_parameters`.`prt_name` AS `prt_name`,`app_parameters`.`prt_value` AS `prt_value`,`app_parameters`.`prt_apt_id` AS `prt_apt_id`,`app_parameters`.`prt_flag` AS `prt_flag`,`app_parameters_types`.`apt_id` AS `apt_id`,`app_parameters_types`.`apt_name` AS `apt_name`,`app_parameters_types`.`apt_cast_type` AS `apt_cast_type` from (`app_parameters` join `app_parameters_types` on((`app_parameters_types`.`apt_id` = `app_parameters`.`prt_apt_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_parameters_details`  AS  select `app_parameters`.`prt_id` AS `prt_id`,`app_parameters`.`prt_name` AS `prt_name`,`app_parameters`.`prt_value` AS `prt_value`,`app_parameters`.`prt_apt_id` AS `prt_apt_id`,`app_parameters`.`prt_flag` AS `prt_flag`,`app_parameters_types`.`apt_id` AS `apt_id`,`app_parameters_types`.`apt_name` AS `apt_name`,`app_parameters_types`.`apt_cast_type` AS `apt_cast_type` from (`app_parameters` join `app_parameters_types` on((`app_parameters_types`.`apt_id` = `app_parameters`.`prt_apt_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -1026,7 +1027,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `app_translate_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_translate_details` AS select `app_translate`.`atr_table` AS `atr_table`,`app_translate`.`atr_data_field` AS `atr_data_field`,`app_translate_lines`.`atl_data_id` AS `atl_data_id`,`app_translate_lines`.`atl_lang` AS `atl_lang`,`app_translate_lines`.`atl_data_lib` AS `atl_data_lib` from (`app_translate` join `app_translate_lines` on((`app_translate`.`atr_id` = `app_translate_lines`.`atl_atr_id`))) order by `app_translate`.`atr_table`,`app_translate`.`atr_data_field`,`app_translate_lines`.`atl_data_id`,`app_translate_lines`.`atl_lang`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_translate_details`  AS  select `app_translate`.`atr_table` AS `atr_table`,`app_translate`.`atr_data_field` AS `atr_data_field`,`app_translate_lines`.`atl_data_id` AS `atl_data_id`,`app_translate_lines`.`atl_lang` AS `atl_lang`,`app_translate_lines`.`atl_data_lib` AS `atl_data_lib` from (`app_translate` join `app_translate_lines` on((`app_translate`.`atr_id` = `app_translate_lines`.`atl_atr_id`))) order by `app_translate`.`atr_table`,`app_translate`.`atr_data_field`,`app_translate_lines`.`atl_data_id`,`app_translate_lines`.`atl_lang` ;
 
 -- --------------------------------------------------------
 
@@ -1035,7 +1036,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `parametres_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `parametres_details` AS select `parametres`.`par_id` AS `par_id`,`parametres`.`par_societe` AS `par_societe`,`parametres`.`par_rue` AS `par_rue`,`parametres`.`par_complement` AS `par_complement`,`parametres`.`par_codepostal` AS `par_codepostal`,`parametres`.`par_ville` AS `par_ville`,`parametres`.`par_pays` AS `par_pays`,`parametres`.`par_email` AS `par_email`,`parametres`.`par_responsable` AS `par_responsable`,`parametres`.`par_telephone` AS `par_telephone`,`parametres`.`par_mobile` AS `par_mobile`,`parametres`.`par_siret` AS `par_siret`,`parametres`.`par_codenaf` AS `par_codenaf`,`parametres`.`par_iban` AS `par_iban`,`parametres`.`par_param1` AS `par_param1`,`parametres`.`par_param2` AS `par_param2`,`parametres`.`par_param3` AS `par_param3`,`parametres`.`par_param4` AS `par_param4`,`parametres`.`par_param5` AS `par_param5`,`parametres`.`par_param6` AS `par_param6`,`parametres`.`par_param7` AS `par_param7`,`parametres`.`par_param8` AS `par_param8`,`parametres`.`par_param9` AS `par_param9`,`parametres`.`par_tmp1` AS `par_tmp1`,`parametres`.`par_tmp2` AS `par_tmp2`,`parametres`.`par_tmp3` AS `par_tmp3`,`parametres`.`par_flag` AS `par_flag`,`parametres`.`par_update` AS `par_update` from `parametres`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `parametres_details`  AS  select `parametres`.`par_id` AS `par_id`,`parametres`.`par_societe` AS `par_societe`,`parametres`.`par_rue` AS `par_rue`,`parametres`.`par_complement` AS `par_complement`,`parametres`.`par_codepostal` AS `par_codepostal`,`parametres`.`par_ville` AS `par_ville`,`parametres`.`par_pays` AS `par_pays`,`parametres`.`par_email` AS `par_email`,`parametres`.`par_responsable` AS `par_responsable`,`parametres`.`par_telephone` AS `par_telephone`,`parametres`.`par_mobile` AS `par_mobile`,`parametres`.`par_siret` AS `par_siret`,`parametres`.`par_codenaf` AS `par_codenaf`,`parametres`.`par_iban` AS `par_iban`,`parametres`.`par_param1` AS `par_param1`,`parametres`.`par_param2` AS `par_param2`,`parametres`.`par_param3` AS `par_param3`,`parametres`.`par_param4` AS `par_param4`,`parametres`.`par_param5` AS `par_param5`,`parametres`.`par_param6` AS `par_param6`,`parametres`.`par_param7` AS `par_param7`,`parametres`.`par_param8` AS `par_param8`,`parametres`.`par_param9` AS `par_param9`,`parametres`.`par_tmp1` AS `par_tmp1`,`parametres`.`par_tmp2` AS `par_tmp2`,`parametres`.`par_tmp3` AS `par_tmp3`,`parametres`.`par_flag` AS `par_flag`,`parametres`.`par_update` AS `par_update` from `parametres` ;
 
 -- --------------------------------------------------------
 
@@ -1044,7 +1045,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `parametres_parameters_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `parametres_parameters_details` AS select `parametres`.`par_id` AS `par_id`,`parametres`.`par_societe` AS `par_societe`,`parametres`.`par_rue` AS `par_rue`,`parametres`.`par_complement` AS `par_complement`,`parametres`.`par_codepostal` AS `par_codepostal`,`parametres`.`par_ville` AS `par_ville`,`parametres`.`par_pays` AS `par_pays`,`parametres`.`par_email` AS `par_email`,`parametres`.`par_responsable` AS `par_responsable`,`parametres`.`par_telephone` AS `par_telephone`,`parametres`.`par_mobile` AS `par_mobile`,`parametres`.`par_siret` AS `par_siret`,`parametres`.`par_codenaf` AS `par_codenaf`,`parametres`.`par_iban` AS `par_iban`,`parametres`.`par_param1` AS `par_param1`,`parametres`.`par_param2` AS `par_param2`,`parametres`.`par_param3` AS `par_param3`,`parametres`.`par_param4` AS `par_param4`,`parametres`.`par_param5` AS `par_param5`,`parametres`.`par_param6` AS `par_param6`,`parametres`.`par_param7` AS `par_param7`,`parametres`.`par_param8` AS `par_param8`,`parametres`.`par_param9` AS `par_param9`,`parametres`.`par_tmp1` AS `par_tmp1`,`parametres`.`par_tmp2` AS `par_tmp2`,`parametres`.`par_tmp3` AS `par_tmp3`,`parametres`.`par_flag` AS `par_flag`,`parametres`.`par_update` AS `par_update`,`parametres_parameters`.`ppa_id` AS `ppa_id`,`parametres_parameters`.`ppa_par_id` AS `ppa_par_id`,`parametres_parameters`.`ppa_name` AS `ppa_name`,`parametres_parameters`.`ppa_type` AS `ppa_type`,`parametres_parameters`.`ppa_length` AS `ppa_length`,`parametres_parameters`.`ppa_validation` AS `ppa_validation`,`parametres_parameters`.`ppa_default` AS `ppa_default`,`parametres_parameters`.`ppa_default_when` AS `ppa_default_when`,`parametres_parameters`.`ppa_readonly` AS `ppa_readonly`,`parametres_parameters`.`ppa_placeholder` AS `ppa_placeholder`,`parametres_parameters`.`ppa_input_mode` AS `ppa_input_mode`,`parametres_parameters`.`ppa_values_list` AS `ppa_values_list`,`parametres_parameters`.`ppa_required` AS `ppa_required`,`parametres_parameters`.`ppa_order` AS `ppa_order`,`parametres_parameters`.`ppa_flag` AS `ppa_flag`,`parametres_parameters_values`.`ppv_id` AS `ppv_id`,`parametres_parameters_values`.`ppv_par_id` AS `ppv_par_id`,`parametres_parameters_values`.`ppv_ppa_id` AS `ppv_ppa_id`,`parametres_parameters_values`.`ppv_value` AS `ppv_value` from ((`parametres` join `parametres_parameters` on((`parametres`.`par_id` = `parametres_parameters`.`ppa_par_id`))) left join `parametres_parameters_values` on(((`parametres`.`par_id` = `parametres_parameters_values`.`ppv_par_id`) and (`parametres_parameters`.`ppa_id` = `parametres_parameters_values`.`ppv_ppa_id`)))) where isnull(`parametres_parameters`.`ppa_flag`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `parametres_parameters_details`  AS  select `parametres`.`par_id` AS `par_id`,`parametres`.`par_societe` AS `par_societe`,`parametres`.`par_rue` AS `par_rue`,`parametres`.`par_complement` AS `par_complement`,`parametres`.`par_codepostal` AS `par_codepostal`,`parametres`.`par_ville` AS `par_ville`,`parametres`.`par_pays` AS `par_pays`,`parametres`.`par_email` AS `par_email`,`parametres`.`par_responsable` AS `par_responsable`,`parametres`.`par_telephone` AS `par_telephone`,`parametres`.`par_mobile` AS `par_mobile`,`parametres`.`par_siret` AS `par_siret`,`parametres`.`par_codenaf` AS `par_codenaf`,`parametres`.`par_iban` AS `par_iban`,`parametres`.`par_param1` AS `par_param1`,`parametres`.`par_param2` AS `par_param2`,`parametres`.`par_param3` AS `par_param3`,`parametres`.`par_param4` AS `par_param4`,`parametres`.`par_param5` AS `par_param5`,`parametres`.`par_param6` AS `par_param6`,`parametres`.`par_param7` AS `par_param7`,`parametres`.`par_param8` AS `par_param8`,`parametres`.`par_param9` AS `par_param9`,`parametres`.`par_tmp1` AS `par_tmp1`,`parametres`.`par_tmp2` AS `par_tmp2`,`parametres`.`par_tmp3` AS `par_tmp3`,`parametres`.`par_flag` AS `par_flag`,`parametres`.`par_update` AS `par_update`,`parametres_parameters`.`ppa_id` AS `ppa_id`,`parametres_parameters`.`ppa_par_id` AS `ppa_par_id`,`parametres_parameters`.`ppa_name` AS `ppa_name`,`parametres_parameters`.`ppa_type` AS `ppa_type`,`parametres_parameters`.`ppa_length` AS `ppa_length`,`parametres_parameters`.`ppa_validation` AS `ppa_validation`,`parametres_parameters`.`ppa_default` AS `ppa_default`,`parametres_parameters`.`ppa_default_when` AS `ppa_default_when`,`parametres_parameters`.`ppa_readonly` AS `ppa_readonly`,`parametres_parameters`.`ppa_placeholder` AS `ppa_placeholder`,`parametres_parameters`.`ppa_input_mode` AS `ppa_input_mode`,`parametres_parameters`.`ppa_values_list` AS `ppa_values_list`,`parametres_parameters`.`ppa_required` AS `ppa_required`,`parametres_parameters`.`ppa_order` AS `ppa_order`,`parametres_parameters`.`ppa_flag` AS `ppa_flag`,`parametres_parameters_values`.`ppv_id` AS `ppv_id`,`parametres_parameters_values`.`ppv_par_id` AS `ppv_par_id`,`parametres_parameters_values`.`ppv_ppa_id` AS `ppv_ppa_id`,`parametres_parameters_values`.`ppv_value` AS `ppv_value` from ((`parametres` join `parametres_parameters` on((`parametres`.`par_id` = `parametres_parameters`.`ppa_par_id`))) left join `parametres_parameters_values` on(((`parametres`.`par_id` = `parametres_parameters_values`.`ppv_par_id`) and (`parametres_parameters`.`ppa_id` = `parametres_parameters_values`.`ppv_ppa_id`)))) where isnull(`parametres_parameters`.`ppa_flag`) ;
 
 -- --------------------------------------------------------
 
@@ -1053,7 +1054,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `users_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `users_details` AS select `users`.`usr_id` AS `usr_id`,`users`.`usr_first_name` AS `usr_first_name`,`users`.`usr_last_name` AS `usr_last_name`,`users`.`usr_login` AS `usr_login`,`users`.`usr_password` AS `usr_password`,`users`.`usr_confirmed` AS `usr_confirmed`,`users`.`usr_activekey` AS `usr_activekey`,`users`.`usr_mail` AS `usr_mail`,`users`.`usr_pro_id` AS `usr_pro_id`,`users`.`usr_lang` AS `usr_lang`,`users`.`usr_image_path` AS `usr_image_path`,`users`.`usr_in_date` AS `usr_in_date`,`users`.`usr_out_date` AS `usr_out_date`,`users`.`usr_flag` AS `usr_flag`,`users_profiles`.`pro_id` AS `pro_id`,`users_profiles`.`pro_name` AS `pro_name`,`users_profiles`.`pro_access` AS `pro_access`,`users_profiles`.`pro_flag` AS `pro_flag` from (`users` join `users_profiles` on((`users`.`usr_pro_id` = `users_profiles`.`pro_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `users_details`  AS  select `users`.`usr_id` AS `usr_id`,`users`.`usr_first_name` AS `usr_first_name`,`users`.`usr_last_name` AS `usr_last_name`,`users`.`usr_login` AS `usr_login`,`users`.`usr_password` AS `usr_password`,`users`.`usr_confirmed` AS `usr_confirmed`,`users`.`usr_activekey` AS `usr_activekey`,`users`.`usr_mail` AS `usr_mail`,`users`.`usr_pro_id` AS `usr_pro_id`,`users`.`usr_lang` AS `usr_lang`,`users`.`usr_image_path` AS `usr_image_path`,`users`.`usr_in_date` AS `usr_in_date`,`users`.`usr_out_date` AS `usr_out_date`,`users`.`usr_flag` AS `usr_flag`,`users_profiles`.`pro_id` AS `pro_id`,`users_profiles`.`pro_name` AS `pro_name`,`users_profiles`.`pro_access` AS `pro_access`,`users_profiles`.`pro_flag` AS `pro_flag` from (`users` join `users_profiles` on((`users`.`usr_pro_id` = `users_profiles`.`pro_id`))) ;
 
 --
 -- Index pour les tables exportées
@@ -1063,67 +1064,77 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Index pour la table `app_logs`
 --
 ALTER TABLE `app_logs`
- ADD PRIMARY KEY (`log_id`), ADD KEY `log_date` (`log_date`), ADD KEY `log_lty_id` (`log_lty_id`), ADD KEY `log_date_2` (`log_date`), ADD KEY `log_cli_id` (`log_cli_id`), ADD KEY `log_usr_id` (`log_usr_id`);
+  ADD PRIMARY KEY (`log_id`),
+  ADD KEY `log_date` (`log_date`),
+  ADD KEY `log_lty_id` (`log_lty_id`),
+  ADD KEY `log_date_2` (`log_date`),
+  ADD KEY `log_cli_id` (`log_cli_id`),
+  ADD KEY `log_usr_id` (`log_usr_id`);
 
 --
 -- Index pour la table `app_logs_types`
 --
 ALTER TABLE `app_logs_types`
- ADD PRIMARY KEY (`lty_id`), ADD UNIQUE KEY `lty_name` (`lty_name`);
+  ADD PRIMARY KEY (`lty_id`),
+  ADD UNIQUE KEY `lty_name` (`lty_name`);
 
 --
 -- Index pour la table `app_parameters`
 --
 ALTER TABLE `app_parameters`
- ADD PRIMARY KEY (`prt_id`);
+  ADD PRIMARY KEY (`prt_id`);
 
 --
 -- Index pour la table `app_parameters_types`
 --
 ALTER TABLE `app_parameters_types`
- ADD PRIMARY KEY (`apt_id`), ADD KEY `apt_name` (`apt_name`(191));
+  ADD PRIMARY KEY (`apt_id`),
+  ADD KEY `apt_name` (`apt_name`(191));
 
 --
 -- Index pour la table `app_translate`
 --
 ALTER TABLE `app_translate`
- ADD PRIMARY KEY (`atr_id`);
+  ADD PRIMARY KEY (`atr_id`);
 
 --
 -- Index pour la table `app_translate_lines`
 --
 ALTER TABLE `app_translate_lines`
- ADD PRIMARY KEY (`atl_id`), ADD KEY `tll_id` (`atl_atr_id`);
+  ADD PRIMARY KEY (`atl_id`),
+  ADD KEY `tll_id` (`atl_atr_id`);
 
 --
 -- Index pour la table `parametres`
 --
 ALTER TABLE `parametres`
- ADD PRIMARY KEY (`par_id`);
+  ADD PRIMARY KEY (`par_id`);
 
 --
 -- Index pour la table `parametres_parameters`
 --
 ALTER TABLE `parametres_parameters`
- ADD PRIMARY KEY (`ppa_id`), ADD KEY `ppa_par_id` (`ppa_par_id`);
+  ADD PRIMARY KEY (`ppa_id`),
+  ADD KEY `ppa_par_id` (`ppa_par_id`);
 
 --
 -- Index pour la table `parametres_parameters_values`
 --
 ALTER TABLE `parametres_parameters_values`
- ADD PRIMARY KEY (`ppv_id`), ADD KEY `ppv_par_id` (`ppv_par_id`,`ppv_ppa_id`);
+  ADD PRIMARY KEY (`ppv_id`),
+  ADD KEY `ppv_par_id` (`ppv_par_id`,`ppv_ppa_id`);
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`usr_id`);
+  ADD PRIMARY KEY (`usr_id`);
 
 --
 -- Index pour la table `users_profiles`
 --
 ALTER TABLE `users_profiles`
- ADD PRIMARY KEY (`pro_id`);
+  ADD PRIMARY KEY (`pro_id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -1133,42 +1144,42 @@ ALTER TABLE `users_profiles`
 -- AUTO_INCREMENT pour la table `app_logs`
 --
 ALTER TABLE `app_logs`
-MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement',AUTO_INCREMENT=222;
+  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=223;
 --
 -- AUTO_INCREMENT pour la table `app_parameters`
 --
 ALTER TABLE `app_parameters`
-MODIFY `prt_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Id du paramètre',AUTO_INCREMENT=8;
+  MODIFY `prt_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'Id du paramètre', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `app_parameters_types`
 --
 ALTER TABLE `app_parameters_types`
-MODIFY `apt_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement',AUTO_INCREMENT=5;
+  MODIFY `apt_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `app_translate_lines`
 --
 ALTER TABLE `app_translate_lines`
-MODIFY `atl_id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+  MODIFY `atl_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT pour la table `parametres`
 --
 ALTER TABLE `parametres`
-MODIFY `par_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `par_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `parametres_parameters`
 --
 ALTER TABLE `parametres_parameters`
-MODIFY `ppa_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement',AUTO_INCREMENT=7;
+  MODIFY `ppa_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `parametres_parameters_values`
 --
 ALTER TABLE `parametres_parameters_values`
-MODIFY `ppv_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l enregistrement',AUTO_INCREMENT=7;
+  MODIFY `ppv_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l enregistrement', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-MODIFY `usr_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=44;
+  MODIFY `usr_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=44;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

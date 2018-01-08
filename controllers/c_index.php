@@ -1,4 +1,4 @@
 <?php
 
-	header('Location: ' .codeUrl('-users_recipes&parammode=show') );
+// 	header('Location: ' .codeUrl('-users_recipes&parammode=show') );
 

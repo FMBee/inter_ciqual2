@@ -1,22 +1,22 @@
 
-<!-- jQuery JS : placer en header -->
-<script
-	src="~{$smarty.const.__WEB_LIB_BOWER__}~jquery/dist/jquery.min.js"></script>
+        <footer>
+	          <p>© Hellosoftware 2017-20</p>
+	    </footer>
 
-<!-- Bootstrap Core JavaScript -->
-<script
-	src="~{$smarty.const.__WEB_LIB_BOWER__}~bootstrap/dist/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script
-	src="~{$smarty.const.__WEB_LIB_BOWER__}~metisMenu/dist/metisMenu.min.js"></script>
-
-<!-- DataTables with Bootstrap style & extensions JavaScript -->
-<script
-	src="~{$smarty.const.__WEB_LIB_BOWER__}~datatables/datatables.min.js"></script>
+      </div>
+    </div>
+    <!-- Main Container end -->
 
 <!-- Custom Theme JavaScript -->
+<script src="~{$smarty.const.__WEB_LIB_THEME__}~js/jquery-ui-v1.10.3.js"></script>
+<script src="~{$smarty.const.__WEB_LIB_THEME__}~js/menu.js"></script>
+<script src="~{$smarty.const.__WEB_LIB_THEME__}~js/custom-index2.js"></script>
 <script src="~{$smarty.const.__WEB_LIB_THEME__}~dist/js/sb-admin-2.js"></script>
+
+<!-- jQuery, Datatables, Bootstrap JS -->
+<script
+	src="~{$smarty.const.__WEB_LIB_DATABOOT__}~datatables.min.js"></script>
+
 <!-- FormValidation plugin and the class supports validating Bootstrap form -->
 <script
 	src="~{$smarty.const.__WEB_LIB_FORMVALID__}~dist/js/formValidation.min.js"></script>
@@ -34,14 +34,14 @@
 	src="~{$smarty.const.__WEB_LIB_SELECT__}~dist/js/bootstrap-select.js"></script>
 
 <script
-	src="./web/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
+	src="~{$smarty.const.__WEB_ROOT__}~bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
 	charset="UTF-8"></script>
 <script
-	src="./web/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js"
+	src="~{$smarty.const.__WEB_ROOT__}~bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js"
 	charset="UTF-8"></script>
 
 <script
-	src="./web/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js"></script>
+	src="~{$smarty.const.__WEB_ROOT__}~bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js"></script>
 
 <script
 	src="~{$smarty.const.__WEB_LIB_SWITCH__}~dist/js/bootstrap-switch.js"></script>
@@ -51,10 +51,8 @@
 <!-- Owl Carousel -->
 <script
 	src="~{$smarty.const.__WEB_LIB_CAROUSEL__}~owl-carousel/owl.carousel.js"></script>
-~{* --> collapse.js en conflit avec metisMenu !!
 <script
 	src="~{$smarty.const.__WEB_LIB_CAROUSEL__}~assets/js/bootstrap-collapse.js"></script>
-*}~
 <script
 	src="~{$smarty.const.__WEB_LIB_CAROUSEL__}~assets/js/bootstrap-transition.js"></script>
 <script
