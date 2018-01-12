@@ -1,11 +1,11 @@
 ~{config_load file = 'g_buttons.cfg' section = $smarty.session.__user_lang__}~ 
 ~{config_load file = 'g_ingredients.cfg' section = $smarty.session.__user_lang__}~
 
-<div id="page-wrapper">
+<div class="dashboard-wrapper">
 
 	<br />
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-8">
 
 			<div class="panel panel-primary">
 
@@ -23,8 +23,7 @@
 
 					<form role="form" method="post" id="fciqual-seek">
 
-						<div class="form-inline">
-							<div class="col-sm-10">
+~{*							<div>
 
 								<div class="form-group">
 									<span>~{#ing_label#}~&nbsp;&nbsp;</span>
@@ -36,22 +35,18 @@
 									<span>&nbsp;&nbsp;~{#cat_label#}~</span>
 								</div>
 							</div>
-							<div class="col-sm-2">
-								<button class="pull-right btn" id="seek-list" type="button">
-									~{#btnList#}~</button>
+*}~
+							<div class="col-md-8">
+								    <input name="seek-introvalue" id="seek-introvalue"
+									class="form-control" placeholder="Tapez votre recherche"
+									value="" autofocus>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<br />
-							<br />
-							<br /> <input name="seek-introvalue" id="seek-introvalue"
-								class="form-control" placeholder="Tapez votre recherche"
-								value="" autofocus>
-						</div>
-
-						<button id="seek-submit" type="button" class="btn">
-							~{#btnSheet#}~</button>
+							<div class="col-md-4 ">
+								<button class="btn pull-right" id="seek-list" type="button" hidden>
+									~{#btnList#}~</button>
+								<button id="seek-submit" type="button" class="btn pull-right" hidden>
+									~{#btnSheet#}~</button>
+							</div>
 
 					</form>
 				</div>

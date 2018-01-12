@@ -2,7 +2,7 @@
 ~{config_load file = 'g_buttons.cfg' section = $smarty.session.__user_lang__}~ 
 ~{config_load file = 'g_users.cfg' section = $smarty.session.__user_lang__}~
 
-<div id="page-wrapper">
+<div class="dashboard-wrapper">
 
 	<br />
 	<br />

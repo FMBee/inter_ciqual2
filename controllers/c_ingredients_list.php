@@ -1,6 +1,6 @@
 <?php
 
-	$url = __CIQUAL_API__ .'?table=ingredients&where=' .$_param['seek'];
+	$url = __CIQUAL_API__ .'?table=alim&where=' .$_param['seek'];
 	
 	$data = json_decode( file_get_contents($url), true );
 

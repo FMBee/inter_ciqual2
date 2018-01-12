@@ -54,10 +54,10 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	myDefine('__FORM_LANG_DEFAULT__' 	, 'fr_FR' ); // langue par defaut FormValidation
 	myDefine('__DATE_NULL__' 			, '0000-00-00 00:00:00' ); // test date nulle	
 
-	myDefine('__CIQUAL_API__' 			, 'http://nautilusweb.fr/ciqual_api/ciqual_api.php' ); // serveur Ciqual	
-// 	myDefine('__CIQUAL_API__' 			, 'http://localhost/ciqual_api/ciqual_api.php' ); // serveur Ciqual	
-	myDefine('__CIQUAL_ACC1__' 			, '?table=ingredients&where=xxx&mode=_AAC' ); 	// Ajax_AC search ingredients	
-	myDefine('__CIQUAL_ACC2__' 			, '?table=categories&where=xxx&mode=_AAC' ); 	// Ajax_AC search categories	
+// 	myDefine('__CIQUAL_API__' 			, 'http://nautilusweb.fr/ciqual_api/ciqual_api.php' ); // serveur Ciqual	
+	myDefine('__CIQUAL_API__' 			, 'http://localhost/workdev/ciqual2_api/ciqual_api.php' ); // serveur Ciqual	
+	myDefine('__CIQUAL_ACC1__' 			, '?table=alim&where=xxx&mode=_AAC' ); 	// Ajax_AC search ingredients	
+// 	myDefine('__CIQUAL_ACC2__' 			, '?table=categories&where=xxx&mode=_AAC' ); 	// Ajax_AC search categories	
 
 	myDefine('__MAILER_HOST__' 			, 'smtp.sfr.fr');
 	myDefine('__MAILER_USER__' 			, 'f.mevollon@sfr.fr');

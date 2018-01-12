@@ -1,13 +1,13 @@
 ~{config_load file = 'g_buttons.cfg' section = $smarty.session.__user_lang__}~
 ~{config_load file = 'g_ingredients.cfg' section = $smarty.session.__user_lang__}~
 
-  	<div id="page-wrapper">
+  	<div class="dashboard-wrapper">
 
 	   <br/>
        <div class="row">
            <div class="col-lg-12">
            
-               <div class="panel panel-yellow">
+               <div class="panel panel-primary">
                
                    <div class="panel-heading">
 
@@ -47,19 +47,17 @@
 							<thead>
 								<tr>
 <th>~{#ing_code#}~</th>
-<!-- <th>~{#ing_cat_code#}~</th> -->
 <th>~{#ing_name#}~</th>
-<th>~{#cat_name#}~</th>
 <th>~{#cat_code#}~</th>
+<th>~{#cat_name#}~</th>
 								</tr>
 							<tbody>
 								~{foreach from=$Ingredients item=ligne}~
-									<tr id="~{$ligne.ing_code}~">
-<td>~{$ligne.ing_code|strip}~</td>
-<!-- <td>~{$ligne.ing_cat_code|strip}~</td> -->
-<td>~{$ligne.ing_name|strip}~</td>
-<td>~{$ligne.cat_name|strip}~</td>
-<td>~{$ligne.cat_code|strip}~</td>
+									<tr id="~{$ligne.alim_code}~">
+<td>~{$ligne.alim_code|strip}~</td>
+<td>~{$ligne.alim_nom_fr|strip}~</td>
+<td>~{$ligne.alim_grp_code|strip}~</td>
+<td>~{substr($ligne.alim_name|strip, strpos($ligne.alim_name|strip, '|')+2)}~</td>
 									</tr>
 								~{/foreach}~
 							</tbody>

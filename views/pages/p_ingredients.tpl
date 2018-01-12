@@ -2,13 +2,13 @@
 ~{config_load file = 'g_buttons.cfg' section = $smarty.session.__user_lang__}~
 ~{config_load file = 'g_ingredients.cfg' section = $smarty.session.__user_lang__}~
 					
- 	<div id="page-wrapper">
+ 	<div class="dashboard-wrapper">
                   
 		<br/>
 		<div class="row">
 			<div class="col-lg-12">
 					
-				<div class="panel panel-green">
+				<div class="panel panel-primary">
 				
 				    <div class="panel-heading">
 				    
@@ -19,7 +19,7 @@
 						~{if $_param.key eq '0'}~
 							~{#libnouveau#}~
 						~{else}~
-							~{#subtitle#}~&nbsp;~{$Ingredients.0.ing_name}~
+							~{#subtitle#}~&nbsp;~{$Ingredients.0.alim_nom_fr}~
 						~{/if}~
 						</span>
 

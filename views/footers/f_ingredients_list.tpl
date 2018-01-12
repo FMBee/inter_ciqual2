@@ -67,7 +67,7 @@
 	            	}
 	            	else{
 								
-  	      	        	_url = '-ingredients&parammode=ing&paramkey='+$(this).attr('id');
+  	      	        	_url = '-ingredients&parammode=ing&paramkey='+$(this).attr('id').trim();
   	      	        	
 		                ~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
 

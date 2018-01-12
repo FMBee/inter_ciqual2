@@ -11,7 +11,7 @@
 	        <ul id="mini-nav" class="clearfix">
 	          <li class="list-box">
 	          	<a href="#">
-	              <span class="text-white">~{$smarty.session.__user_name__}~</span>
+	              <span class="text-white"><h5>~{$smarty.session.__user_name__}~</h5></span>
 	          	</a>
 	          </li>        
 	          <li class="list-box user-profile">
@@ -53,19 +53,22 @@
 
 	          <ul>
 	            <li class='active'>
-	              <a href='#'>
-	                <i class="fa fa-dashboard"></i>
-	                Dashboard
+	              <a href="~{codeUrl('-index')}~">
+	                <i class="fa fa-home"></i>
+	                ~{#etiq_05#}~
+	              </a>
+	            </li>
+	            <li class=''>
+	              <a href="~{codeUrl('-ingredients_seek')}~">
+	              	<i class="fa fa-table"></i>
+	              	~{#etiq_06#}~
 	              </a>
 	            </li>
 	            <li class=''>
 	              <a href='#'>
-	              	<i class="fa fa-bar-chart-o"></i>
-	              	Graphs</a>
-	            </li>
-	            <li class=''>
-	              <a href='#'><i class="fa fa-flask">
-	              </i>Elements</a>
+	              <i class="fa fa-file-text"></i>
+	              ~{#etiq_07#}~
+	              </a>
 	            </li>
 	          </ul>
 	        </div>

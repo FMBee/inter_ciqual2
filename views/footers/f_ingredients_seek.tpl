@@ -12,7 +12,7 @@ $smarty.session.__user_lang__}~
 			    var _mode_ing = true;
 			    
             	$('#seek-submit').hide();
-//             	$('#seek-list').hide();
+            	$('#seek-list').hide();
 
 		        $('#seek-introvalue').autocomplete({
 		        	

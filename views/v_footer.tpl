@@ -1,11 +1,14 @@
 
+	~{if $onSession === true}~
         <footer>
 	          <p>© Hellosoftware 2017-20</p>
 	    </footer>
+	~{/if}~
 
       </div>
+      <!-- Container end -->
     </div>
-    <!-- Main Container end -->
+    <!-- Dashboard Container end -->
 
 <!-- Custom Theme JavaScript -->
 <script src="~{$smarty.const.__WEB_LIB_THEME__}~js/jquery-ui-v1.10.3.js"></script>

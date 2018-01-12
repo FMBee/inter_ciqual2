@@ -2,7 +2,7 @@
 
 	if ($_param['mode'] == 'cat') {		//recherche d'une catégorie
 		
-		$url = __CIQUAL_API__ .'?table=ingredients&where=_CAT&key=' .$_param['key'];
+		$url = __CIQUAL_API__ .'?table=alim&where=_CAT&key=' .$_param['key'];
 
 		$data = json_decode( file_get_contents($url), true );
 debug($data);
@@ -11,7 +11,7 @@ debug($data);
 		$_GET['page'] = 'ingredients_list'; 	//redirection
 	}
 	else{
-		$url = __CIQUAL_API__ .'?table=ingredients&where=_KEY&order=ihe_id&values=yes&key=' .$_param['key'];
+		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$_param['key'];
 
 		$data = json_decode( file_get_contents($url), true );
 debug($data);
