@@ -9,90 +9,129 @@
 // 	$oSmarty->assign('paramindex', 		( isset($param['paramindex']) ? $param['paramindex'] : '0' ) );		// repositionnement sur client
 // 	$oSmarty->assign('addClients', 		Clients::getAllIn	($pdo));
 
-	$curr_id = (! isset($_param['key'])) ? '1' : $_param['key'];
+// 	$curr_id = (! isset($_param['key'])) ? '1' : $_param['key'];
 	
-	$data0 = array(
-			array(
-					'rci_id'		=> '1',
-					'rci_name'		=> 'Ma recette n°1'	
-			),	
-			array(
-					'rci_id'		=> '2',
-					'rci_name'		=> 'Ma recette n°2'	
-			)
-	);
-	$data1 = array(
-			
-			array(
-					'ing_id'          => 10,
-					'ing_name'        => 'First one',
-					'ing_qte'         => 12,
-					'ing_col1'        => 2.5,
-					'ing_col2'        => 3,
-					'ing_col3'        => 2,
-					'ing_col4'        => 5,
-					'ing_col5'        => 6.5,
-					'ing_col6'        => 1,
-					'ing_col7'        => 8,
-					'ing_col8'        => 9,
-					'ing_col9'        => 10
-			),
-			array(
-					'ing_id'          => 12,
-					'ing_name'        => 'Second one',
-					'ing_qte'         => 27,
-					'ing_col1'        => 2.5,
-					'ing_col2'        => 31,
-					'ing_col3'        => 22,
-					'ing_col4'        => 5.4,
-					'ing_col5'        => 6.5,
-					'ing_col6'        => 12,
-					'ing_col7'        => 88,
-					'ing_col8'        => 1,
-					'ing_col9'        => 10
-			)
-	);
-	if ($_param['mode'] == 'add') {
+// 	if ($_param['mode'] == 'add') {
 		
-		$data1[] = $data1[1];
-		$data1[count($data1)-1]['ing_name'] = $_param['addkey'];
-	}
-	
-	$data2 = array(
-			
-			array(
-					'ing_id'          => 10,
-					'ing_name'        => 'Third one',
-					'ing_qte'         => 12,
-					'ing_col1'        => 2.5,
-					'ing_col2'        => 3,
-					'ing_col3'        => 2,
-					'ing_col4'        => 5,
-					'ing_col5'        => 6.5,
-					'ing_col6'        => 1,
-					'ing_col7'        => 8,
-					'ing_col8'        => 9,
-					'ing_col9'        => 10
-			),
-			array(
-					'ing_id'          => 12,
-					'ing_name'        => 'Fourth one',
-					'ing_qte'         => 2,
-					'ing_col1'        => 2.5,
-					'ing_col2'        => 31,
-					'ing_col3'        => 2,
-					'ing_col4'        => 5.4,
-					'ing_col5'        => 6.5,
-					'ing_col6'        => 12,
-					'ing_col7'        => 8,
-					'ing_col8'        => 1,
-					'ing_col9'        => 10
-			)
+// 		$data1[] = $data1[1];
+// 		$data1[count($data1)-1]['ing_name'] = $_param['addkey'];
+// 	}
+
+	$recipy = array(
+			array('rec_code' => '1001', 'rec_qte' => '15'),
+			array('rec_code' => '1002', 'rec_qte' => '8.5'),
 	);
 	
-	$data = ${'data'.$curr_id};
+	$data = array();
 	
-	$oSmarty->assign('curr_id', $curr_id);
+	foreach ($recipy as $ingredient) {
+		
+		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$ingredient['rec_code'];
+		$table = array('rec_qte' => $ingredient['rec_qte']);
+		$table[] = json_decode( file_get_contents($url), true );
+		$data[] = $table;
+	}
+debug($data);	
 	$oSmarty->assign('Ingredients', $data);
-	$oSmarty->assign('Recipes', $data0);
+// 	$oSmarty->assign('curr_id', $curr_id);
+// 	$oSmarty->assign('Recipes', $data0);
+	
+/* $data
+    [0] => Array
+        (
+            [rec_qte] => 15
+            [0] => Array
+                (
+                    [0] => Array
+                        (
+                            [alim_code] =>  1001 
+                            [alim_nom_fr] =>  Eau de vie 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Eau de vie  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10000 
+                            [const_nom_fr] =>  Cendres (g/100g) 
+                            [teneur] =>  0,0091 
+                        )
+
+                    [1] => Array
+                        (
+                            [alim_code] =>  1001 
+                            [alim_nom_fr] =>  Eau de vie 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Eau de vie  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10004 
+                            [const_nom_fr] =>  Sel chlorure de sodium (g/100g) 
+                            [teneur] =>  0,0025 
+                        )
+
+                    [2] => Array
+                        (
+                            [alim_code] =>  1001 
+                            [alim_nom_fr] =>  Eau de vie 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Eau de vie  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10110 
+                            [const_nom_fr] =>  Sodium (mg/100g) 
+                            [teneur] =>  1 
+                        )
+
+                    [3] => Array
+                        (
+                            [alim_code] =>  1001 
+                            [alim_nom_fr] =>  Eau de vie 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Eau de vie  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10120 
+                            [const_nom_fr] =>  Magnésium (mg/100g) 
+                            [teneur] =>  0 
+                        )
+                 .......       
+    [1] => Array
+        (
+            [rec_qte] => 8.5
+            [0] => Array
+                (
+                    [0] => Array
+                        (
+                            [alim_code] =>  1002 
+                            [alim_nom_fr] =>  Gin 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Gin  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10000 
+                            [const_nom_fr] =>  Cendres (g/100g) 
+                            [teneur] =>  0,0052 
+                        )
+
+                    [1] => Array
+                        (
+                            [alim_code] =>  1002 
+                            [alim_nom_fr] =>  Gin 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Gin  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10004 
+                            [const_nom_fr] =>  Sel chlorure de sodium (g/100g) 
+                            [teneur] =>  0,005 
+                        )
+
+                    [2] => Array
+                        (
+                            [alim_code] =>  1002 
+                            [alim_nom_fr] =>  Gin 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_name] =>  Gin  |  cocktails  |  boisson alcoolisées 
+                            [const_code] =>  10110 
+                            [const_nom_fr] =>  Sodium (mg/100g) 
+                            [teneur] =>  2 
+                        )
+
+                    [3] => Array
+                        (
+                            [alim_code] =>  1002 
+                            [alim_nom_fr] =>  Gin 
+                            [alim_grp_code] => 06-0603-060304
+                            [alim_n
+          ......
+ * 
+ * 
+ */
 	

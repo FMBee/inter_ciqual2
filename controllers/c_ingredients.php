@@ -3,35 +3,18 @@
 	if ($_param['mode'] == 'cat') {		//recherche d'une catégorie
 		
 		$url = __CIQUAL_API__ .'?table=alim&where=_CAT&key=' .$_param['key'];
-
 		$data = json_decode( file_get_contents($url), true );
-debug($data);
 		$oSmarty->assign('Ingredients', $data);
-		
 		$_GET['page'] = 'ingredients_list'; 	//redirection
 	}
 	else{
 		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$_param['key'];
-
 		$data = json_decode( file_get_contents($url), true );
 debug($data);
 		$oSmarty->assign('Ingredients', $data);
-
-// 		$results = array();
-// 		$results[] = $data[0]['ing_code'];
-// 		$results[] = $data[0]['ing_name'];
-// 		$results[] = $data[0]['catcode'];
-// 		$results[] = $data[0]['cat_name'];
-// 		$results['values'] = array();
-		
-// 		foreach ($data as $array) {
-			
-// 			$results['values'][] = array( 	'ihe_id' => $array['ihe_id'],
-// 											'ihe_name' => $array['ihe_name'],
-// 											'ihe_id' => $array['ihe_id'],
-// 			)
-// 		}
 	}
+	
+	
 	
 // 	[ing_code] => 36100
 // 	[ing_cat_code] => 10

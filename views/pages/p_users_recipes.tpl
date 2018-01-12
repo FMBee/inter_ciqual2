@@ -5,13 +5,15 @@
   
   ~{include file = 'p_users_recipes_modals.inc.tpl'}~
   
-  <div id="page-wrapper">
+  <div class="dashboard-wrapper">
   
        <div class="row">
+       
            <div class="col-lg-12">
+           
               <div class="page-header">
                 <span style="font-size:150%;">~{#title#}~</span>
-	    		  <div class="form-group">
+~{*	    		  <div class="form-group">
 	    		    <br/>
 				    <select name="select_recipes" id="select_recipes" class="selectpicker form-control" required>
 				    	~{foreach $Recipes as $item}~
@@ -22,7 +24,7 @@
 					 	~{/foreach}~
 				    </select>        
 				  </div>  
-              </div>
+*}~              </div>
            </div>
        </div>
        
@@ -43,66 +45,51 @@
 										<th>~{#ing_num#}~</th>		
 										<th>~{#ing_name#}~</th>		
 										<th>~{#ing_qte#}~</th>		
-										<th>~{#ing_col1#}~</th>		
-										<th>~{#ing_col2#}~</th>		
-										<th>~{#ing_col3#}~</th>		
-										<th>~{#ing_col4#}~</th>		
-										<th>~{#ing_col5#}~</th>		
-										<th>~{#ing_col6#}~</th>		
-										<th>~{#ing_col7#}~</th>		
-										<th>~{#ing_col8#}~</th>		
-										<th>~{#ing_col9#}~</th>		
-										<th>~{#ing_col10#}~</th>		
+									
+										~{foreach $smarty.session._elements as $element}~
+										
+											<th>~{$element.label|cat:' ('|cat:$element.unit|cat:')'}~</th>
+										~{/foreach}~		
 									</tr>
 								</thead>
 								
 								<tbody>
-									
-									~{assign var=totqte value=0}~
-									~{assign var=totcol1 value=0}~
-									~{assign var=totcol2 value=0}~
-									~{assign var=totcol3 value=0}~
-									~{assign var=totcol4 value=0}~
-									~{assign var=totcol5 value=0}~
-									~{assign var=totcol6 value=0}~
-									~{assign var=totcol7 value=0}~
-									~{assign var=totcol8 value=0}~
-									~{assign var=totcol9 value=0}~
 									~{assign var=numero value=1}~
+									~{assign var=totqte value=0}~
+									~{assign var=totcol value=[]}~
 									
-									~{foreach from=$Ingredients item=ligne}~
+									~{foreach from=$smarty.session._elements key=code item=element}~
 									
-										<tr id="~{$ligne.ing_id}~">
+										~{$totcol[$code]=0}~
+									~{/foreach}~		
+									
+									~{foreach $Ingredients as $ingredient}~
+									
+										<tr id="~{$ligne.alim_code}~">
+
 											<td align="center">~{$numero|strip}~</td>
-											<td align="left">~{$ligne.ing_name|strip}~</td>
-											<td align="right">~{$ligne.ing_qte|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col1|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col2|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col3|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col4|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col5|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col6|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col7|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col8|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{$ligne.ing_col9|strip|string_format:'%.2f'}~</td>
-											<td align="right">~{($ligne.ing_col9 * 2.5)|strip|string_format:'%.2f'}~</td>
+											<td align="left">~{$ingredient.0.0.alim_nom_fr|strip}~</td>
+											<td align="right">~{$ingredient.rec_qte|strip|string_format:'%.2f'}~</td>
+
+											~{foreach $ingredient.0 as $nutriment name=foo}~
+											
+												~{if $smarty.foreach.foo.iteration < 9}~
+													
+													<td align="right">~{$nutriment.teneur|strip|string_format:'%.2f'}~</td>
+												~{/if}~	
+											~{/foreach}~		
 										</tr>
 										
 										~{$numero = $numero+1}~
-										~{$totqte = $totqte + $ligne.ing_qte}~
-										~{$totcol1 = $totcol1 + $ligne.ing_col1}~
-										~{$totcol2 = $totcol2 + $ligne.ing_col2}~
-										~{$totcol3 = $totcol3 + $ligne.ing_col3}~
-										~{$totcol4 = $totcol4 + $ligne.ing_col4}~
-										~{$totcol5 = $totcol5 + $ligne.ing_col5}~
-										~{$totcol6 = $totcol6 + $ligne.ing_col6}~
-										~{$totcol7 = $totcol7 + $ligne.ing_col7}~
-										~{$totcol8 = $totcol8 + $ligne.ing_col8}~
-										~{$totcol9 = $totcol9 + $ligne.ing_col9}~
+										
+										~{foreach from=$smarty.session._elements key=code item=element}~
+										
+											~{$totcol[$code] = $totcol[$code] + $nutriment.teneur}~
+										~{/foreach}~
 										
 									~{/foreach}~
 									
-									<tr id="-1" class="info">
+~{*									<tr id="-1" class="info">
 										<td align="right"> </td>
 										<td align="right">~{#total_compo#}~</td>
 										<td align="right">~{$totqte|strip|string_format:'%.2f'}~</td>
@@ -134,7 +121,7 @@
 										<td align="right">~{($totcol9 * $coeff)|strip|string_format:'%.2f'}~</td>
 										<td align="right">~{($totcol9 * 2.5)|strip|string_format:'%.2f'}~</td>
 									</tr>
-									
+*}~									
 								</tbody>
 							</table>
 							
@@ -161,3 +148,5 @@
 		
   </div>
   <!-- page-wrapper End -->
+
+  

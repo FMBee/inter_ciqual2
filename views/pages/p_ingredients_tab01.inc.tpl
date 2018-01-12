@@ -38,9 +38,9 @@
 
 							<thead>
 								<tr>
-<th>~{#ihe_id#}~</th>
-<th>~{#ihe_name#}~</th>
-<th>~{#iva_value#}~</th>
+<th>~{#const_id#}~</th>
+<th>~{#const_name#}~</th>
+<th>~{#const_value#}~</th>
 								</tr>
 							<tbody>
 							

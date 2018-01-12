@@ -1,0 +1,44 @@
+
+PROJET CALCULATEUR NUTRITIONNEL LE 28/12/2017
+
+Etiquetage, mettre dans cet ordre :
+
+Valeurs nutritionnelles moyennes pour 100g :
+Energie kJ / kcal
+Matières grasses
+dont acides gras saturés
+Glucides
+dont sucres
+Protéines
+Sel
+
+Règles d’arrondi :
+Energie 
+	= Nombre entier
+Matières grasses
+dont acides gras saturés
+Glucides 
+dont sucres
+Protéines
+	= arrondi à une décimale
+Sel 
+	= arrondi à deux décimales
+
+Seuils :
+- Pour les valeurs entre 0 et 0.49 mettre en résultat « <0.5 g », pour :
+	Matières grasses
+	Glucides
+	sucres
+	Protéines
+- Pour les valeurs entre 0 et 0.09 mettre en résultat « <0.1 g », pour :
+	acides gras saturés
+- Pour les valeurs entre 0 et 0.009 mettre en résultat « <0.01 g », pour :
+	Sel
+
+Remarques :
+Cela peut arriver, ce n’est pas les mêmes méthodes d’analyse, il ne faut pas que les sucres soient
+supérieurs aux glucides. Si c’est le cas, il faut mettre la valeur des sucres aux glucides.
+Est il possible d’inscrire les résultats sous cette forme en plus d’un tableau ? afin que si le point de
+vente doit lui-même mettre les valeurs qu’il respecte bien la mise en forme :
+Valeurs nutritionnelles moyennes pour 100 g : Energie …. KJ / …. Kcal ; Matières grasses : … g, dont
+acides gras saturés : …g ; Glucides : ….g, dont sucres : ….g ; Protéines : ….g ; Sel : …. g

@@ -67,31 +67,113 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	
 	
 /*
- * INSERT INTO `app_parameters` (`prt_id`, `prt_name`, `prt_value`, `prt_apt_id`, `prt_flag`) VALUES
- * (NULL, '__FTP_SERVER__', 'vps344570.ovh.net', '1', NULL),
- * (NULL, '__FTP_PATH_EXPORTS__', 'centrale/', '1', NULL),
- * (NULL, '__FTP_REMOTE_ID__', '5', '3', NULL,
+ * Règles de calcul
+ * cf. notes.txt
  */
+	$_SESSION['_elements'] = array(
+		'327' => array(
+			'label' => 'Energie', 
+			'unit' => 'KJ', 
+			'rnd' => 'NE', 
+			'bot' => 'NL',
+			'sep' => ',',
+		),	
+		'328' => array(
+			'label' => 'Energie', 
+			'unit' => 'Kcal', 
+			'rnd' => 'NE', 
+			'bot' => 'NL',
+			'sep' => ';',
+		),	
+		'40000' => array(
+			'label' => 'Matières grasses', 
+			'unit' => 'g', 
+			'rnd' => 'NE', 
+			'bot' => 'S1',	
+			'sep' => ',',	
+		),	
+		'40302' => array(
+			'label' => 'dont acides gras saturés', 
+			'unit' => 'g', 
+			'rnd' => 'A1', 
+			'bot' => 'S2',
+			'sep' => ';',
+		),	
+		'31000' => array(
+			'label' => 'Glucides', 
+			'unit' => 'g', 
+			'rnd' => 'A1', 
+			'bot' => 'S1',	
+			'sep' => ',',	
+		),	
+		'32000' => array(
+			'label' => 'dont sucres', 
+			'unit' => 'g', 
+			'rnd' => 'A1', 
+			'bot' => 'S1',	
+			'sep' => ';',	
+		),	
+		'25003' => array(
+			'label' => 'Protéines', 
+			'unit' => 'g', 
+			'rnd' => 'A1', 
+			'bot' => 'S1',	
+			'sep' => ';',	
+		),	
+		'10004' => array(
+			'label' => 'Sel', 
+			'unit' => 'g', 
+			'rnd' => 'A2', 
+			'bot' => 'S3',	
+			'sep' => '',	
+		),
+	);
+	$_SESSION['_arrondis'] = array(
+		'NL' => null,
+		'NE' => '%.0f',
+		'A1' => '%.1f',
+		'A2' => '%.2f',
+	);
+	$_SESSION['_seuils'] = array(
+		'NL' =>	null,
+		'S1' => array(
+			'min' => '0', 
+			'max' => '0.49', 
+			'label' => '<0.5g'
+		),
+		'S2' => array(
+			'min' => '0', 
+			'max' => '0.09', 
+			'label' => '<0.1g'
+		),
+		'S3' => array(
+			'min' => '0', 
+			'max' => '0.009',
+			'label' => '<0.01g'
+		),
+	);
+		
+	
 	
 // Detect Device/Operating System
-$agent = $_SERVER ['HTTP_USER_AGENT'];
-
-if (preg_match ( '/Linux/i', $agent ))
-	myDefine('__OS__', 'Linux' );
-elseif (preg_match ( '/Mac/i', $agent ))
-	myDefine('__OS__', 'Mac' );
-elseif (preg_match ( '/iPhone/i', $agent ))
-	myDefine('__OS__', 'iPhone' );
-elseif (preg_match ( '/iPad/i', $agent ))
-	myDefine('__OS__', 'iPad' );
-elseif (preg_match ( '/Droid/i', $agent ))
-	myDefine('__OS__', 'Droid' );
-elseif (preg_match ( '/Unix/i', $agent ))
-	myDefine('__OS__', 'Unix' );
-elseif (preg_match ( '/Windows/i', $agent ))
-	myDefine('__OS__', 'Windows' );
-else
-	myDefine('__OS__', 'Unknown' );
+	$agent = $_SERVER ['HTTP_USER_AGENT'];
+	
+	if (preg_match ( '/Linux/i', $agent ))
+		myDefine('__OS__', 'Linux' );
+	elseif (preg_match ( '/Mac/i', $agent ))
+		myDefine('__OS__', 'Mac' );
+	elseif (preg_match ( '/iPhone/i', $agent ))
+		myDefine('__OS__', 'iPhone' );
+	elseif (preg_match ( '/iPad/i', $agent ))
+		myDefine('__OS__', 'iPad' );
+	elseif (preg_match ( '/Droid/i', $agent ))
+		myDefine('__OS__', 'Droid' );
+	elseif (preg_match ( '/Unix/i', $agent ))
+		myDefine('__OS__', 'Unix' );
+	elseif (preg_match ( '/Windows/i', $agent ))
+		myDefine('__OS__', 'Windows' );
+	else
+		myDefine('__OS__', 'Unknown' );
 
 
 function myDefine($var, $value) {
