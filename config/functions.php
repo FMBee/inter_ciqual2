@@ -1,5 +1,10 @@
 <?php
 	
+	function myFloatval($var) {
+		
+		return floatval(str_replace(',', '.', $var));
+	}
+	
 	function setRecorded ($table, $list='') {
 		
 		unset( $_SESSION['__app_values__']["__$table"] );

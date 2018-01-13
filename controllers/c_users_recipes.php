@@ -4,6 +4,7 @@
 			array('rec_code' => '1001', 'rec_qte' => '15'),
 			array('rec_code' => '1002', 'rec_qte' => '8.5'),
 	);
+	$_SESSION['_recipy'] = array('rec_code' => '1001', 'rec_title' => "Terrine de pâté");
 	
 	$data = array();
 	$include = array_keys($_SESSION['_elements']);
