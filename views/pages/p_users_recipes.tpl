@@ -42,13 +42,13 @@
                            <table id="data-ingredients" width="100%" class="table table-striped table-bordered table-hover" >
 								<thead>
 									<tr>
-										<th>~{#ing_num#}~</th>		
-										<th>~{#ing_name#}~</th>		
-										<th>~{#ing_qte#}~</th>		
+										<th align="center">~{#ing_num#}~</th>		
+										<th align="center">~{#ing_name#}~</th>		
+										<th align="center">~{#ing_qte#}~</th>		
 									
 										~{foreach $smarty.session._elements as $element}~
 										
-											<th>~{$element.label|cat:' ('|cat:$element.unit|cat:')'}~</th>
+											<th align="center">~{$element.label|cat:' ('|cat:$element.unit|cat:')'}~</th>
 										~{/foreach}~		
 									</tr>
 								</thead>
@@ -65,18 +65,17 @@
 									
 									~{foreach $Ingredients as $ingredient}~
 									
-										<tr id="~{$ligne.alim_code}~">
+										<tr id="~{$ingredient.0.0.alim_code}~">
 
 											<td align="center">~{$numero|strip}~</td>
 											<td align="left">~{$ingredient.0.0.alim_nom_fr|strip}~</td>
 											<td align="right">~{$ingredient.rec_qte|strip|string_format:'%.2f'}~</td>
 
-											~{foreach $ingredient.0 as $nutriment name=foo}~
+											~{foreach $ingredient.0 as $nutriment}~
 											
-												~{if $smarty.foreach.foo.iteration < 9}~
-													
-													<td align="right">~{$nutriment.teneur|strip|string_format:'%.2f'}~</td>
-												~{/if}~	
+												<td align="right">
+												~{(floatval($nutriment.teneur)*floatval($ingredient.rec_qte))|strip|string_format:$smarty.session._arrondis[$smarty.session._elements[trim($nutriment.const_code)]['rnd']]}~
+												</td>
 											~{/foreach}~		
 										</tr>
 										

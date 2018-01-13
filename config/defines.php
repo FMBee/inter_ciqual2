@@ -88,7 +88,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 		'40000' => array(
 			'label' => 'Matières grasses', 
 			'unit' => 'g', 
-			'rnd' => 'NE', 
+			'rnd' => 'A1', 
 			'bot' => 'S1',	
 			'sep' => ',',	
 		),	

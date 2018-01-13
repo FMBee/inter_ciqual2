@@ -1,40 +1,47 @@
 <?php
 
-// 		$url = __CIQUAL_API__ .'?table=ingredients&where=_KEY&order=ihe_id&values=yes&key=' .$_param['key'];
-
-// 		$data = json_decode( file_get_contents($url), true );
-// debug($data);
-	
-// 	$oSmarty->assign('allClients', 		SejoursClients::getAll				($pdo, $param['paramkey']));
-// 	$oSmarty->assign('paramindex', 		( isset($param['paramindex']) ? $param['paramindex'] : '0' ) );		// repositionnement sur client
-// 	$oSmarty->assign('addClients', 		Clients::getAllIn	($pdo));
-
-// 	$curr_id = (! isset($_param['key'])) ? '1' : $_param['key'];
-	
-// 	if ($_param['mode'] == 'add') {
-		
-// 		$data1[] = $data1[1];
-// 		$data1[count($data1)-1]['ing_name'] = $_param['addkey'];
-// 	}
-
 	$recipy = array(
 			array('rec_code' => '1001', 'rec_qte' => '15'),
 			array('rec_code' => '1002', 'rec_qte' => '8.5'),
 	);
 	
 	$data = array();
+	$include = array_keys($_SESSION['_elements']);
 	
 	foreach ($recipy as $ingredient) {
 		
 		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$ingredient['rec_code'];
+		
+		$nutriments = json_decode( file_get_contents($url), true );
+		$result = array();
+		
+		foreach ($nutriments as $nutriment) {
+			
+			if ( in_array(trim($nutriment['const_code']), $include, false) ) {
+				
+				$result[] = $nutriment;
+			}
+		}
+		$resultOrd = array();
+		
+		foreach ($include as $code) {
+			
+			foreach ($result as $nutriment) {
+				
+				if ( $nutriment['const_code'] == $code ) {
+					
+					$resultOrd[] = $nutriment;
+				}
+			}
+		}
+		
 		$table = array('rec_qte' => $ingredient['rec_qte']);
-		$table[] = json_decode( file_get_contents($url), true );
+		$table[] = $resultOrd;
 		$data[] = $table;
 	}
 debug($data);	
+
 	$oSmarty->assign('Ingredients', $data);
-// 	$oSmarty->assign('curr_id', $curr_id);
-// 	$oSmarty->assign('Recipes', $data0);
 	
 /* $data
     [0] => Array
