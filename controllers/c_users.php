@@ -13,9 +13,12 @@
 	}
 	
 	if ($_SERVER ['__app_params__'] ['__APP_USER_LOGO__']) {
+		
 		$files = scandir ( __VIEWS_IMG__ . 'profiles' );
 		$tablogos = [ ];
+		
 		foreach ( $files as $filename ) {
+			
 			if (substr ( $filename, 0, 1 ) != '.')
 				$tablogos [] = $filename;
 		}
@@ -23,6 +26,7 @@
 	}
 	
 	if ($_SERVER ['__app_params__'] ['__APP_INTERNATIONAL__']) {
+		
 		$oSmarty->assign ( 'languages', App_Languages::getAllLanguages ( $pdo ) );
 	}
 	

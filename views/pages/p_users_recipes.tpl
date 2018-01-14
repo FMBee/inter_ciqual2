@@ -11,7 +11,6 @@
        
            <div class="col-lg-12">
            
-	            <div class="col-lg-8">
 	             <div class="form-inline">
 	                <span style="font-size:150%;">~{#title#}~</span>
 				    <input name="seek-recipy" id="seek-recipy"
@@ -19,7 +18,6 @@
 					value="" >
 	             </div>
 	             <br />
-				</div>
            </div>
        </div>
        
@@ -60,13 +58,13 @@
 									
 									~{foreach $Ingredients as $ingredient}~
 									
-										<tr id="~{$ingredient.0.0.alim_code}~">
+										<tr id="~{$ingredient.rel_id}~">
 
 											<td align="center">~{$numero|strip}~</td>
 											<td align="left">~{$ingredient.0.0.alim_nom_fr|strip}~</td>
-											<td align="right">~{$ingredient.rec_qte|strip|string_format:'%.2f'}~</td>
+											<td align="right">~{$ingredient.rel_qte|strip|string_format:'%.2f'}~</td>
 
-											~{assign var=recqte value=floatval($ingredient.rec_qte)}~
+											~{assign var=recqte value=floatval($ingredient.rel_qte)}~
 											~{$totqte = $totqte + $recqte}~
 												
 											~{foreach $ingredient.0 as $nutriment}~
@@ -116,16 +114,11 @@
 							</table>
 							
 					    </div>
-
-						<div class="col-sm-6">
-		                    
-		                    </br>
-							<button id="addingredient" type="button" class="btn">
-							~{#btnNew#}~
-							</button>
-							
-						</div>
-
+	                    
+	                    </br>
+						<button id="addingredient" type="button" class="btn">
+						~{#btnNew#}~
+						</button>
 					</div>
 				</div>
 				<button id="delrecipe" type="button" class="btn pull-right">
@@ -133,9 +126,7 @@
 				</button>
 					            
 			</div>
-		
 		</div>
-		
   </div>
   <!-- page-wrapper End -->
 

@@ -55,9 +55,9 @@
 	                    table1.$('tr.danger').removeClass('danger');
 	                    $(this).addClass('danger');
 		            	
-		            	$('#modal-majingredient-paramingredient')	.val( _ing_id );	
-	  	            	$('#modal-majingredient-name')				.val( _ing_name );
-	  	            	$('#modal-majingredient-qte')				.val( _ing_qte );
+		            	$('#majingredient-id')	.val( _ing_id );	
+	  	            	$('#majingredient-name').val( _ing_name );
+	  	            	$('#majingredient-qte')	.val( _ing_qte );
 		            	
 	      	        	$('#modal-majingredient').modal({backdrop: "static", keyboard: false});
 	            	}
@@ -66,39 +66,38 @@
 
 	            $('#addingredient').on('click', function () {
 	            	
-		            $('#modal-addingredient-introvalue').val('');
+		            $('#addingredient-introvalue').val('');
       	        	$('#modal-addingredient').modal({backdrop: "static", keyboard: false});
 		        });
 //             	$('#addingredient').trigger('click');	//OK: à placer après le eventListener !
 
 			    var _url = "~{$smarty.const.__CIQUAL_API__}~~{$smarty.const.__CIQUAL_ACC1__}~"; 
+            	$('#addingredient-addrecord')		.hide();
 		        
-	            $('#modal-addingredient-introvalue').autocomplete({
+	            $('#addingredient-introvalue').autocomplete({
+	            	
 		    	    serviceUrl: _url,
 		    	    minChars: 2,
 		    	    showNoSuggestionNotice: true,
 		    	    noSuggestionNotice : 'Aucun résultat',
 	    			onInvalidateSelection: function (){
 	    				
-	    			        $('#modal-addingredient-introvalue').val('');
-			            	$('#modal-addingredient-addrecord').hide();
+	    			        $('#addingredient-introvalue').val('');
+			            	$('#addingredient-addrecord').hide();
 	    			    },
 		    	    onSelect: function (suggestion) {
 		
-			            	$('#modal-addingredient-paramingredient').val( suggestion.data );	
-			            	$('#modal-addingredient-addrecord').show();
+			            	$('#addingredient-code').val( suggestion.data );	
+			            	$('#addingredient-addrecord').show();
 		    	    	}
 		    	});
-
-            	$('#modal-addingredient-addrecord')		.hide();
-
-				$('#modal-addingredient-cancel').on('click', function () {
+				$('#addingredient-cancel').on('click', function () {
 	            	
-	            	$('#modal-addingredient-addrecord')		.hide();
+	            	$('#addingredient-addrecord')		.hide();
 		        });
-				$('#modal-addingredient-addrecord').on('click', function () {
+				$('#addingredient-addrecord').on('click', function () {
 					
-					if ($('#modal-addingredient-qte').val() != 0) {
+					if ($('#addingredient-qte').val() != 0) {
 						
 		            	$('#modal-faddingredient').submit();
 					}
@@ -107,11 +106,25 @@
 					}
 	            	
 		        });
+				
+				$('#majingredient-majrecord').on('click', function () {
+
+			      	_saisie = Number($('#majingredient-qte').val());
+	            	
+	            	if ( isNaN(_saisie) === false & _saisie > 0 ) {
+	            		
+		            	$('#modal-fmajingredient').submit();
+					}
+					else{
+						bootbox.alert({size: 'small', message: 'Veuillez saisir une quantité valide'});
+					}
+	            	
+		        });
 
 ~{*
 				// chargement des valeurs POST
-	            $('#modal-addingredient-paramsejour')			.val("~{$paramkey}~");
-	            $('#modal-addingredient-paramsejourname')		.val("~{$paramname}~");
+	            $('#addingredient-paramsejour')			.val("~{$paramkey}~");
+	            $('#addingredient-paramsejourname')		.val("~{$paramname}~");
                 $('#modal-supingredient-paramsejour')			.val("~{$paramkey}~");
                 $('#modal-supingredient-paramsejourname')		.val("~{$paramname}~");
             	
@@ -144,17 +157,17 @@
 			    	
 // 			    	_reg = new RegExp("cli_prenom=false|cli_prenom=true", "g");
 // 			    	_url = _url.replace(_reg, 'cli_prenom='+$(this).is(":checked"));
-// 			    	$('#modal-addingredient-introvalue').autocomplete().setOptions({ serviceUrl: _url });
-//    			        $('#modal-addingredient-introvalue').val('');
-//    			        $('#modal-addingredient-introvalue').focus();
+// 			    	$('#addingredient-introvalue').autocomplete().setOptions({ serviceUrl: _url });
+//    			        $('#addingredient-introvalue').val('');
+//    			        $('#addingredient-introvalue').focus();
 // 			    });
-// 	            $('#data-modal-addingredient').children('tbody').on( 'click', 'tr', function () {
+// 	            $('#data-addingredient').children('tbody').on( 'click', 'tr', function () {
 
 //                     table3.$('tr.danger').removeClass('danger');
 //                     $(this).addClass('danger');
                     
-// 	            	$('#modal-addingredient-addrecord').show();
-// 	            	$('#modal-addingredient-paramingredient').val( $(this).attr('id') );	
+// 	            	$('#addingredient-addrecord').show();
+// 	            	$('#addingredient-paramingredient').val( $(this).attr('id') );	
 // 	            });
 	            
 	            

@@ -27,7 +27,7 @@
 	
 		foreach ($fields as $field) {
 	
-			$data[$field] = isset($_POST[$field]) ? $_POST[$field] : $data[$field] = getRecorded($table, $field);
+			$data[$field] = isset($_POST[$field]) ? $_POST[$field] : getRecorded($table, $field);
 		}
 		return $data;
 	}

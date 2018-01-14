@@ -1,17 +1,13 @@
 <?php
 
-	$recipy = array(
-			array('rec_code' => '1001', 'rec_qte' => '15'),
-			array('rec_code' => '1002', 'rec_qte' => '8.5'),
-	);
-	$_SESSION['_recipy'] = array('rec_code' => '1001', 'rec_title' => "Terrine de pâté");
-	
+	$recipy = Recipies::getOne($pdo, $_SESSION['_recipy']['rec_id']);
+debug($recipy);	
 	$data = array();
 	$include = array_keys($_SESSION['_elements']);
 	
 	foreach ($recipy as $ingredient) {
 		
-		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$ingredient['rec_code'];
+		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$ingredient['rel_code'];
 		
 		$nutriments = json_decode( file_get_contents($url), true );
 		$result = array();
@@ -36,7 +32,8 @@
 			}
 		}
 		
-		$table = array('rec_qte' => $ingredient['rec_qte']);
+		$table = array(	'rel_id' => $ingredient['rel_id'],
+						'rel_qte' => $ingredient['rel_qte']);
 		$table[] = $resultOrd;
 		$data[] = $table;
 	}
@@ -47,7 +44,7 @@ debug($data);
 /* $data
     [0] => Array
         (
-            [rec_qte] => 15
+            [rel_qte] => 15
             [0] => Array
                 (
                     [0] => Array
@@ -96,7 +93,7 @@ debug($data);
                  .......       
     [1] => Array
         (
-            [rec_qte] => 8.5
+            [rel_qte] => 8.5
             [0] => Array
                 (
                     [0] => Array

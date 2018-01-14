@@ -70,6 +70,8 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
  * Règles de calcul
  * cf. notes.txt
  */
+	$_SESSION['_recipy'] = array('rec_id' => '1', 'rec_title' => "Terrine de pâté");
+	
 	$_SESSION['_elements'] = array(
 		'327' => array(
 			'label' => 'Energie', 

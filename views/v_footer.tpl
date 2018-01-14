@@ -14,7 +14,6 @@
 <script src="~{$smarty.const.__WEB_LIB_THEME__}~js/jquery-ui-v1.10.3.js"></script>
 <script src="~{$smarty.const.__WEB_LIB_THEME__}~js/menu.js"></script>
 <script src="~{$smarty.const.__WEB_LIB_THEME__}~js/custom-index2.js"></script>
-<script src="~{$smarty.const.__WEB_LIB_THEME__}~dist/js/sb-admin-2.js"></script>
 
 <!-- jQuery, Datatables, Bootstrap JS -->
 <script

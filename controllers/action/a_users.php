@@ -2,7 +2,7 @@
 
 if (isset ( $_POST['paramkey'] )) {
 
-	array_filter ( $_POST, 'trim_value' );
+	array_walk( $_POST, 'trim_value' );
 	
 	if ($_POST ['usr_password'] != __PWD_INIT__) {	// un mot de passe a été saisi
 	

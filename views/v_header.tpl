@@ -28,12 +28,12 @@
 
 <!-- DateTimePicker CSS -->
 <link
-	href="__WEB_ROOT__bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
+	href="~{$smarty.const.__WEB_ROOT__}~bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
 	rel="stylesheet" media="screen">
 
 <!-- TouchSpin -->
 <link
-	href="__WEB_ROOT__bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css"
+	href="~{$smarty.const.__WEB_ROOT__}~bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css"
 	rel="stylesheet" type="text/css">
 
 <!-- Switch -->

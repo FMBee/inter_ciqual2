@@ -1,30 +1,55 @@
 <?php
 
-	if ($_param['mode'] == 'add') {
+	$message = '';
 	
-		array_filter ( $_POST, 'trim_value' );
+	if ($_param['mode'] == 'add_ing') {
+	
+		array_walk( $_POST, 'trim_value' );
 		
-		$fields = array(
-				'paramkey',
-				'usr_first_name',
-				'usr_last_name',
-				'usr_login',
-				'usr_password',
-				'usr_activekey',
-				'usr_mail',
-				'usr_pro_id',
-				'usr_lang',
-				'usr_image_path',
-				'usr_out_date'
+		$data = array(
+				'0',
+				$_SESSION['_recipy']['rec_id'],
+				$_POST['addingredient-code'],
+				$_POST['addingredient-qte'],
 		);
-// 		$data = testRecorded('users', $fields);
+// 		$data = testRecorded('ingredient', $fields);
 		
-// 		Users::majOrAdd ( $pdo, array_values( $data ) );
+		$retour = Recipies::majOrAddLine( $pdo, $data );
+ 			
+		if ((int)$retour == 0) {
 		
-		App_Logs::Add ( $pdo, 4, 'ajout ingrédient ' .$_POST['modal-addingredient-paramingredient'] .', recette ' .$_GET['paramkey'], $_SESSION ['__user_id__']);
-		
-		//$oSmarty->assign('ctrlMessage', 'Ingrédient ajouté '.$_POST['modal-addingredient-paramingredient']);
-		$_param['addkey'] = $_POST['modal-addingredient-paramingredient'];
+			$message = 'Ingrédient déjà ajouté - modifiez la quantité';
+		}
+		else{
+			App_Logs::Add( 	$pdo, 
+						4, 
+						'ajout ingrédient ' .$_POST['addingredient-code'] .', recette ' .$_SESSION['_recipy']['rec_id'], 
+						$_SESSION ['__user_id__']
+			);
+		}
 	}
+	
+	if ($_param['mode'] == 'maj_ing') {
+	
+		array_walk( $_POST, 'trim_value' );
+		
+		$data = array(
+				$_POST['majingredient-id'],
+				$_SESSION['_recipy']['rec_id'],
+				'-',
+				$_POST['majingredient-qte'],
+		);
+// 		$data = testRecorded('ingredient', $fields);
+		
+		$retour = Recipies::majOrAddLine( $pdo, $data );
+ 			
+		App_Logs::Add( 	$pdo, 
+					4, 
+					'modif ingrédient ' .$_POST['majingredient-id'] .', recette ' .$_SESSION['_recipy']['rec_id'], 
+					$_SESSION ['__user_id__']
+		);
+	}
+	
+	$oSmarty->assign('ctrlMessage', $message);
 
 ?>

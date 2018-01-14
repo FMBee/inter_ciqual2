@@ -1,109 +1,121 @@
 
 
 <!-- Modal : ajout d'un ingredient -->
-
+			                     
 <div class="modal fade" id="modal-addingredient" tabindex="-1" role="dialog"
-	aria-labelledby="modal-addingredient-label" aria-hidden="true">
+	aria-labelledby="modal-addingredient-label" >
 	
-	<div class="modal-dialog widget modal-vertical-centered">
+	<div class="modal-dialog"  role="document">
 		<div class="modal-content">
 		
-			<div class="modal-header widget-header">
+			<div class="modal-header">
 					<h4 class="modal-title title" id="modal-addingredient-label">
 						~{#mdladdtitre#}~
 					</h4>
 			</div>
 			
-			<div class="modal-body widget-body">
-				<div class="container">
-					<div class="row">
-					 <div class="col-lg-6">
+			<div class="modal-body ">
 
-						<form role="form" 	action="~{codeUrl('users_recipes-users_recipes&parammode=add&paramkey='|cat:$curr_id)}~" 
-											method="post" id="modal-faddingredient">
+						<form role="form" 	
+							action="~{codeUrl('users_recipes-users_recipes&parammode=add_ing')}~" 
+							method="post" id="modal-faddingredient">
 						  
-							<input name="modal-addingredient-paramingredient" id="modal-addingredient-paramingredient" hidden="true" value="">
-<!-- 							<input name="modal-addingredient-paramsejour" id="modal-addingredient-paramsejour" hidden="true" value=""> -->
+							<input name="addingredient-code" id="addingredient-code" hidden="true" value="">
 
-							<div class="form-group">
-							    <label>~{#mdladdnom#}~</label>
-							    <input name="modal-addingredient-introvalue" id="modal-addingredient-introvalue" class="form-control" 
-							    		placeholder="Tapez votre recherche" value="" autofocus>
-							</div>  
-							<div class="form-group">
-							    <label>~{#mdladdquantite#}~</label>
-							    <input name="modal-addingredient-qte" id="modal-addingredient-qte" class="form-control" value="100.00" required >
-							</div>  
-								
-							<button id="modal-addingredient-addrecord" type="button" class="btn">
-							~{#btnAdd#}~
-							</button>
-							<button id="modal-addingredient-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
-							~{#btnCancel#}~
-							</button>
+							<div class="row">
+							 <div class="col-md-12">
+								<div class="form-group">
+								    <label>~{#mdladdnom#}~</label>
+								    <input name="addingredient-introvalue" id="addingredient-introvalue" class="form-control" 
+								    		placeholder="Tapez votre recherche" value="" autofocus>
+								</div>  
+							 </div>
+							</div>
+							<div class="row">
+							 <div class="col-md-4">
+								<div class="form-group">
+								    <label>~{#mdladdquantite#}~</label>
+								    <input name="addingredient-qte" id="addingredient-qte" class="form-control" align="right" placeholder="0.00" value="" required >
+								</div>  
+							 </div>
+							</div>
+							
+							<div class="modal-footer">
+								<button id="addingredient-addrecord" type="button" class="btn pull-left">
+								~{#btnAdd#}~
+								</button>
+								<button id="addingredient-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
+								~{#btnCancel#}~
+								</button>
+							</div>	
 									
 					  </form>		
 					  			
-					</div>
 				 </div>
-				</div>
-				
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- Modal : maj d'un ingredient -->
-
+<!-- Modal : modif d'un ingredient -->
+			                     
 <div class="modal fade" id="modal-majingredient" tabindex="-1" role="dialog"
-	aria-labelledby="modal-majingredient-label" aria-hidden="true">
+	aria-labelledby="modal-majingredient-label" >
 	
-	<div class="modal-dialog widget modal-vertical-centered">
+	<div class="modal-dialog"  role="document">
 		<div class="modal-content">
 		
-			<div class="modal-header widget-header">
+			<div class="modal-header">
 					<h4 class="modal-title title" id="modal-majingredient-label">
 						~{#mdlmajtitre#}~
 					</h4>
 			</div>
 			
-			<div class="modal-body widget-body">
-				<div class="container">
-					<div class="row">
-					 <div class="col-lg-6">
+			<div class="modal-body ">
 
-						<form role="form" 	action="~{codeUrl('users_recipes-users_recipes&parammode=maj&paramkey='|cat:$curr_id)}~" 
-											method="post" id="modal-fmajingredient">
+						<form role="form" 	
+							action="~{codeUrl('users_recipes-users_recipes&parammode=maj_ing')}~" 
+							method="post" id="modal-fmajingredient">
 						  
-							<input name="modal-majingredient-paramingredient" id="modal-majingredient-paramingredient" hidden="true" value="">
-<!-- 							<input name="modal-majingredient-paramsejour" id="modal-majingredient-paramsejour" hidden="true" value=""> -->
+							<input name="majingredient-id" id="majingredient-id" hidden="true" value="">
 
-							<div class="form-group">
-							    <label>~{#mdladdnom#}~</label>
-							    <input name="modal-majingredient-name" id="modal-majingredient-name" class="form-control" value="" disabled>
-							</div>  
-							<div class="form-group">
-							    <label>~{#mdladdquantite#}~</label>
-							    <input name="modal-majingredient-qte" id="modal-majingredient-qte" class="form-control" value="" required >
-							</div>  
-								
-							<button id="modal-majingredient-majrecord" type="button" class="btn">
-							~{#btnSubmit#}~
-							</button>
-							<button type="button" class="btn btn-default pull-right" data-dismiss="modal">
-							~{#btnCancel#}~
-							</button>
+							<div class="row">
+							 <div class="col-md-12">
+								<div class="form-group">
+								    <label>~{#mdlmajnom#}~</label>
+								    <input name="majingredient-name" id="majingredient-name" class="form-control" value="" disabled>
+								</div>  
+							 </div>
+							</div>
+							<div class="row">
+							 <div class="col-md-4">
+								<div class="form-group">
+								    <label>~{#mdlmajquantite#}~</label>
+								    <input name="majingredient-qte" id="majingredient-qte" class="form-control" align="right" value="" required autofocus>
+								</div>  
+							 </div>
+							</div>
+							
+							<div class="modal-footer">
+								<button id="majingredient-majrecord" type="button" class="btn pull-left">
+								~{#btnSubmit#}~
+								</button>
+								<button id="majingredient-supprecord" type="button" class="btn">
+								~{#btnDelete#}~
+								</button>
+								<button id="majingredient-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
+								~{#btnCancel#}~
+								</button>
+							</div>	
 									
 					  </form>		
 					  			
-					</div>
 				 </div>
-				</div>
-				
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <!-- Modal : maj d'une prestation -->
 ~{*
