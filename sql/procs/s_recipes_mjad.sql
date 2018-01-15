@@ -1,4 +1,4 @@
-CREATE PROCEDURE recipies_mjad(IN _rec_id           INT(255),
+CREATE PROCEDURE recipes_mjad(IN _rec_id           INT(255),
                             IN _rec_title		 VARCHAR(255),
                             IN _rec_label    		TEXT,
                             OUT _insertedid		 INT(11) )
@@ -9,7 +9,7 @@ BEGIN
 
    IF _rec_id <= 0
    THEN
-      INSERT INTO recipies( 
+      INSERT INTO recipes( 
                         rec_title,
                         rec_label )
            VALUES ( 
@@ -20,7 +20,7 @@ BEGIN
       
    ELSE
 
-      UPDATE recipies
+      UPDATE recipes
          SET rec_title = _rec_title,
              rec_label = _rec_label
        WHERE rec_id = _rec_id;

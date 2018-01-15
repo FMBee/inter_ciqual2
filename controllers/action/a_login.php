@@ -1,7 +1,7 @@
 
 <?php
 
-if (isset ( $_SESSION ['__user_id__'] )) {
+if ( onSession() ) {
 	
 	session_unset ();
 }
@@ -23,12 +23,10 @@ if ($data = Users::getOneByLogin ( $pdo, trim ( $_POST ["login"] ) )) {
 
 		if (password_verify ( $_POST ["password"], $data ['usr_password'] )) {
 			
-			$_SESSION ['__user_id__'] = $data ['usr_id'];
-			
 			maj_user_ss ( $data );
 			maj_options_ss($data);
 			
-			App_Logs::Add ( $pdo, 3, '', $_SESSION ['__user_id__'], '' );
+			App_Logs::Add ( $pdo, 3, '', $data ['usr_id'], '' );
 			
 		} else {
 			$logErr = traductLib ( 'vldLogin1' );

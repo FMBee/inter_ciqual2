@@ -173,11 +173,6 @@
 		}
 	}
 	
-	function onSession() {
-		
-		return isset ( $_SESSION ['__user_id__'] );
-	}
-	
 	function traductLib($id, $table = 'global', $champ = 'php', $langue = null) {
 		
 		settype ( $id, 'string' );
@@ -209,9 +204,14 @@
 		}
 	}
 	
+	
+	function onSession() {
+		
+		return isset ( $_SESSION ['__user_id__'] );
+	}
 	function maj_user_ss($data) {
 		
-		// $_SESSION['__user_id__'] = $data['usr_id'];	//au login
+		$_SESSION['__user_id__'] 		= $data['usr_id'];
 		$_SESSION ['__user_name__'] 	= $data ['usr_first_name'] . ' ' . $data ['usr_last_name'];
 		$_SESSION ['__user_login__'] 	= $data ['usr_login'];
 		$_SESSION ['__user_password__'] = $data ['usr_password'];
@@ -228,6 +228,18 @@
 		
 		if ($_SERVER ['__app_params__'] ['__APP_INTERNATIONAL__']) {
 			maj_lang_ss ( $data ['usr_lang'] );
+		}
+		
+		// positionnement recette de départ
+		$recipy = Recipes::getFirst( $GLOBALS['pdo'] );
+		
+		if ( count($recipy) == 0 ) {
+
+			$_SESSION['_recipy'] = null;
+		}
+		else{
+			$_SESSION['_recipy']['rec_id'] = trim($recipy[0]['rec_id']);
+			$_SESSION['_recipy']['rec_title'] = trim($recipy[0]['rec_title']);
 		}
 	}
 	

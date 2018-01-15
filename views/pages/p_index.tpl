@@ -5,18 +5,23 @@
         <div class="dashboard-wrapper-lg">
           <!-- Row starts -->
           <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <a href="~{codeUrl('-users_recipes&parammode=show')}~">
-              <div class="mini-widget mini-widget-bronze">
-                <div class="mini-widget-body clearfix">
-                  <div class="center-align-text">
-                     <img src="~{$smarty.const.__VIEWS_IMG__}~picto_suiviJournalier.png" style="width:150px; height:150px;" />
-                  </div>
-				  <div class="center-align-text number">~{#etiq_08#}~</div>
-                </div>
-              </div>
-              </a>	
-            </div>
+          
+            ~{if !is_null($smarty.session._recipy) }~
+            
+	            <div class="col-md-6 col-sm-6">
+	              <a href="~{codeUrl('-users_recipes')}~">
+	              <div class="mini-widget mini-widget-bronze">
+	                <div class="mini-widget-body clearfix">
+	                  <div class="center-align-text">
+	                     <img src="~{$smarty.const.__VIEWS_IMG__}~picto_suiviJournalier.png" style="width:150px; height:150px;" />
+	                  </div>
+					  <div class="center-align-text number">~{#etiq_08#}~</div>
+	                </div>
+	              </div>
+	              </a>	
+	            </div>
+	       ~{/if}~
+            
             <div class="col-md-6 col-sm-6">
               <a href="~{codeUrl('-ingredients_seek')}~">
               <div class="mini-widget mini-widget-bronze">

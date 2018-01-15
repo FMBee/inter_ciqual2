@@ -141,6 +141,14 @@
        				});
 		        });
 
+	            $('#select-recipy').on('change', function() {
+	            	
+            		_url = "users_recipes-users_recipes&parammode=chg_rec&paramkey=" 
+	            				+$('#select-recipy').selectpicker('val').trim();
+            		
+					~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
+		        });
+
 
 		    });   //end of document.ready() 
 

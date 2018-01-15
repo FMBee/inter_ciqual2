@@ -1,6 +1,6 @@
 <?php
 
-	$recipy = Recipies::getOne($pdo, $_SESSION['_recipy']['rec_id']);
+	$recipy = Recipes::getOne($pdo, $_SESSION['_recipy']['rec_id']);
 	
 	$include = array_keys($_SESSION['_elements']);
 	$data = array();
@@ -40,7 +40,7 @@
 //debug($data);	
 
 	$oSmarty->assign('Ingredients', $data);
-	$oSmarty->assign('Recettes', Recipies::getAll($pdo));
+	$oSmarty->assign('Recettes', Recipes::getAll($pdo));
 	
 /* $data
     [0] => Array

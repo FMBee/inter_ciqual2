@@ -1,4 +1,4 @@
-CREATE PROCEDURE recipies_lines_mjad(
+CREATE PROCEDURE recipes_lines_mjad(
 							IN _rel_id           INT(11),
 							IN _rel_rec_id       INT(11),
                             IN _rel_code		 VARCHAR(20),
@@ -11,7 +11,7 @@ BEGIN
 
    IF _rel_id <= 0
    THEN
-      INSERT INTO recipies_lines( 
+      INSERT INTO recipes_lines( 
                         rel_rec_id,
                         rel_code,
                         rel_qte)
@@ -24,7 +24,7 @@ BEGIN
       
    ELSE
 
-      UPDATE recipies_lines
+      UPDATE recipes_lines
          SET rel_rec_id = _rel_rec_id,
              rel_code = _rel_code,
              rel_qte = _rel_qte

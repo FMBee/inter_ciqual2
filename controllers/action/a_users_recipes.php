@@ -13,7 +13,7 @@
 				$_POST['addingredient-qte'],
 		);
 		
-		$retour = Recipies::majOrAddLine( $pdo, $data );
+		$retour = Recipes::majOrAddLine( $pdo, $data );
  			
 		if ((int)$retour == 0) {
 		
@@ -40,7 +40,7 @@
 		);
 // 		$data = testRecorded('ingredient', $fields);
 		
-		$retour = Recipies::majOrAddLine( $pdo, $data );
+		$retour = Recipes::majOrAddLine( $pdo, $data );
 
 		App_Logs::Add( 	$pdo, 
 					4, 
@@ -55,7 +55,7 @@
 				trim($_POST['delingredient-id']),
 		);
 		
-		$retour = Recipies::deleteLine( $pdo, $data );
+		$retour = Recipes::deleteLine( $pdo, $data );
 
 		App_Logs::Add( 	$pdo, 
 					4, 
@@ -66,20 +66,24 @@
 	
 	if ($_param['mode'] == 'del_rec') {
 		
-		$data = array(
-				$_SESSION['_recipy']['rec_id'],
-		);
-		
-		$retour = Recipies::delOne( $pdo, $data );
+		$retour = Recipes::delOne( $pdo, $_SESSION['_recipy']['rec_id'] );
 
 		App_Logs::Add( 	$pdo, 
 					4, 
 					'suppression recette ' .$_SESSION['_recipy']['rec_id'], 
 					$_SESSION ['__user_id__']
 		);
-		$_SESSION['_recipy']['rec_id'] = Recipies::getFirst($pdo);
+		$_SESSION['_recipy']['rec_id'] = Recipes::getFirst($pdo);
 		
 		$message = 'Recette supprimée';
+	}
+	
+	if ($_param['mode'] == 'chg_rec') {
+		
+		$recipy = Recipes::getOne($pdo, $_param['key']);
+//debug($recipy);		
+		$_SESSION['_recipy']['rec_id'] = trim($recipy[0]['rec_id']);
+		$_SESSION['_recipy']['rec_title'] = trim($recipy[0]['rec_title']);
 	}
 	
 	$oSmarty->assign('ctrlMessage', $message);
