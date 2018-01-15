@@ -10,7 +10,6 @@
 		    	//******** définitions
 		    	
 		    	$('.selectpicker').selectpicker({
-		    		width: '50%',
 		    		style: 'btn-info'
 		    	});
 		    	
@@ -25,7 +24,7 @@
 		        $('#data-ingredients').DataTable(	{
 		        	"responsive": true,
 		        	"columnDefs": [
-		        	               { "width": "5%", "targets": [0 ] }
+		        	               { "width": "20%", "targets": [0 ] }
 		        	            ],
 // 		        	select		: {
 // 		        		style : 'single'
@@ -49,8 +48,8 @@
 	            	
 	            	if (_ing_id != '-1' && _ing_id !='-2') {	//lignes totaux
 	            		
-						_ing_name 		= $(this).find('td:eq(1)').text();
-						_ing_qte 		= $(this).find('td:eq(2)').text();
+						_ing_name 		= $(this).find('td:eq(0)').text();
+						_ing_qte 		= $(this).find('td:eq(1)').text();
 						
 	                    table1.$('tr.danger').removeClass('danger');
 	                    $(this).addClass('danger');
@@ -58,6 +57,7 @@
 		            	$('#majingredient-id')	.val( _ing_id );	
 	  	            	$('#majingredient-name').val( _ing_name );
 	  	            	$('#majingredient-qte')	.val( _ing_qte );
+		            	$('#delingredient-id')	.val( _ing_id );	
 		            	
 	      	        	$('#modal-majingredient').modal({backdrop: "static", keyboard: false});
 	            	}
@@ -113,69 +113,34 @@
 	            	
 	            	if ( isNaN(_saisie) === false & _saisie > 0 ) {
 	            		
-		            	$('#modal-fmajingredient').submit();
+		            	$('#majingredient-fmaj').submit();
 					}
 					else{
 						bootbox.alert({size: 'small', message: 'Veuillez saisir une quantité valide'});
 					}
 	            	
 		        });
-
-~{*
-				// chargement des valeurs POST
-	            $('#addingredient-paramsejour')			.val("~{$paramkey}~");
-	            $('#addingredient-paramsejourname')		.val("~{$paramname}~");
-                $('#modal-supingredient-paramsejour')			.val("~{$paramkey}~");
-                $('#modal-supingredient-paramsejourname')		.val("~{$paramname}~");
-            	
-            	
-            	
-            	//********* ingredients
-            	
-            	
-		    	// replacement sur le ingredient courant
-            	$('#data-ingredients').children('tbody').find("tr:eq(~{$paramindex|strip}~)").click();
-
-	            
-      	        
-	            $('#supingredient').on('click', function() {
+				
+	            $('#majingredient-delrecord').on('click', function() {
 	            	
-// 	            	$('#modal-supingredient').modal( {backdrop: "static", keyboard: false} );
-           			
-           			bootbox.confirm('Etes-vous sûr ?',
+           			bootbox.confirm('Confirmez-vous la suppression ?',
                			function(result) {
 	                        if (result) {
-	                           
-				            	$('#modal-fsupingredient').submit();
+				            	$('#majingredient-fdel').submit();
 	                        }
-       					});
+       				});
+		        });
+	            
+	            $('#delrecipy').on('click', function() {
+	            	
+           			bootbox.confirm('Confirmez-vous la suppression de la recette ?',
+               			function(result) {
+	                        if (result) {
+	                        	window.location.href = "~{codeUrl('users_recipes-users_recipes&parammode=del_rec')}~";
+	                        }
+       				});
 		        });
 
-
-			    
-// 			    $('#sk-prenom').on('change', function() {
-			    	
-// 			    	_reg = new RegExp("cli_prenom=false|cli_prenom=true", "g");
-// 			    	_url = _url.replace(_reg, 'cli_prenom='+$(this).is(":checked"));
-// 			    	$('#addingredient-introvalue').autocomplete().setOptions({ serviceUrl: _url });
-//    			        $('#addingredient-introvalue').val('');
-//    			        $('#addingredient-introvalue').focus();
-// 			    });
-// 	            $('#data-addingredient').children('tbody').on( 'click', 'tr', function () {
-
-//                     table3.$('tr.danger').removeClass('danger');
-//                     $(this).addClass('danger');
-                    
-// 	            	$('#addingredient-addrecord').show();
-// 	            	$('#addingredient-paramingredient').val( $(this).attr('id') );	
-// 	            });
-	            
-	            
-// 	            $('#modal-supingredient-yes').on('click', function () {
-	            	
-// 	            	$('#modal-fsupingredient').submit();
-// 		        });
-*}~		        
 
 		    });   //end of document.ready() 
 

@@ -2,20 +2,29 @@
 ~{config_load file = 'g_buttons.cfg' section = $smarty.session.__user_lang__}~
 ~{config_load file = 'g_users_recipes.cfg' section = $smarty.session.__user_lang__}~
 
-  
-  ~{include file = 'p_users_recipes_modals.inc.tpl'}~
-  
   <div class="dashboard-wrapper">
+
+	  ~{include file = 'p_users_recipes_modals.inc.tpl'}~
   
        <div class="row">
        
            <div class="col-lg-12">
-           
+       
 	             <div class="form-inline">
 	                <span style="font-size:150%;">~{#title#}~</span>
-				    <input name="seek-recipy" id="seek-recipy"
-					class="form-control" placeholder="Tapez votre recherche"
-					value="" >
+<!-- 				    <input name="seek-recipy" id="seek-recipy" -->
+<!-- 					class="form-control" placeholder="Tapez votre recherche" -->
+<!-- 					value="" > -->
+  				    <select name="select-recipy" id="select-recipy" class="selectpicker form-control" 
+  				    		data-width="50%" data-style="btn-info" data-live-search="true" required>
+  				    
+				    	~{foreach $Recettes as $item}~
+					  		<option value="~{$item.rec_id}~"
+						  		~{if $smarty.session._recipy['rec_id'] eq $item.rec_id}~ selected~{/if}~>
+						  		~{$item.rec_title}~
+					  		</option>
+					 	~{/foreach}~
+				    </select>        
 	             </div>
 	             <br />
            </div>
@@ -29,13 +38,14 @@
 		               <h4>~{#tabtitle#}~</h4>
                    </div>
                    <div class="panel-body">
+                   
+                   		<input name="nb-ingredients" id="nb-ingredients" value="~{count($Ingredients)}~" hidden="true">
 								
 						<div class="dataTable_wrapper">
                       
                            <table id="data-ingredients" width="100%" class="table table-striped table-bordered table-hover" >
 								<thead>
 									<tr>
-										<th align="center">~{#ing_num#}~</th>		
 										<th align="center">~{#ing_name#}~</th>		
 										<th align="center">~{#ing_qte#}~</th>		
 									
@@ -47,7 +57,6 @@
 								</thead>
 								
 								<tbody>
-									~{assign var=numero value=1}~
 									~{assign var=totqte value=0}~
 									~{assign var=totcol value=[]}~
 									
@@ -60,7 +69,6 @@
 									
 										<tr id="~{$ingredient.rel_id}~">
 
-											<td align="center">~{$numero|strip}~</td>
 											<td align="left">~{$ingredient.0.0.alim_nom_fr|strip}~</td>
 											<td align="right">~{$ingredient.rel_qte|strip|string_format:'%.2f'}~</td>
 
@@ -79,12 +87,10 @@
 
 											~{/foreach}~		
 										</tr>
-										~{$numero = $numero+1}~
 										
 									~{/foreach}~
 									
 									<tr id="-1" class="info">
-										<td align="right"> </td>
 										<td align="right">~{#total_compo#}~</td>
 										<td align="right">~{$totqte|strip|string_format:'%.2f'}~</td>
 										
@@ -98,7 +104,6 @@
 									<tr id="-2" class="success">
 										~{assign var=coeff value=(100 / $totqte)}~
 										
-										<td align="right"> </td>
 										<td align="right">~{#moyenne_compo#}~</td>
 										<td align="right">~{#moyenne_100#|strip|string_format:'%.2f'}~</td>
 
@@ -121,7 +126,7 @@
 						</button>
 					</div>
 				</div>
-				<button id="delrecipe" type="button" class="btn pull-right">
+				<button id="delrecipy" type="button" class="btn pull-right">
 				~{#btnDel#}~
 				</button>
 					            

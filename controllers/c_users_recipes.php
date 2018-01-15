@@ -1,9 +1,9 @@
 <?php
 
 	$recipy = Recipies::getOne($pdo, $_SESSION['_recipy']['rec_id']);
-debug($recipy);	
-	$data = array();
+	
 	$include = array_keys($_SESSION['_elements']);
+	$data = array();
 	
 	foreach ($recipy as $ingredient) {
 		
@@ -37,13 +37,15 @@ debug($recipy);
 		$table[] = $resultOrd;
 		$data[] = $table;
 	}
-debug($data);	
+//debug($data);	
 
 	$oSmarty->assign('Ingredients', $data);
+	$oSmarty->assign('Recettes', Recipies::getAll($pdo));
 	
 /* $data
     [0] => Array
         (
+            [rel_id] => 1
             [rel_qte] => 15
             [0] => Array
                 (
@@ -93,6 +95,7 @@ debug($data);
                  .......       
     [1] => Array
         (
+            [rel_id] => 2
             [rel_qte] => 8.5
             [0] => Array
                 (
