@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 08 Janvier 2018 à 07:37
+-- Généré le :  Mar 16 Janvier 2018 à 07:15
 -- Version du serveur :  10.1.13-MariaDB
 -- Version de PHP :  5.6.23
 
@@ -41,113 +41,59 @@ UPDATE `app_parameters`
       SET `prt_value` = _prt_value
     WHERE `prt_id`    = _prt_id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clients2_mjad` (IN `_cli_id` INT(10), IN `_cli_nom` VARCHAR(255), IN `_cli_prenom` VARCHAR(255), IN `_cli_rue` VARCHAR(255), IN `_cli_codepostal` VARCHAR(20), IN `_cli_ville` VARCHAR(255), IN `_cli_tmp1` VARCHAR(1), IN `_cli_tmp2` VARCHAR(1), IN `_cli_tmp3` VARCHAR(1), OUT `_insertedid` INT(255))  MODIFIES SQL DATA
-    COMMENT 'Gestion des clients2'
+CREATE DEFINER=`root`@`localhost` PROCEDURE `recipes_lines_mjad` (IN `_rel_id` INT(11), IN `_rel_rec_id` INT(11), IN `_rel_code` VARCHAR(20), IN `_rel_qte` FLOAT, OUT `_insertedid` INT(11))  MODIFIES SQL DATA
 BEGIN
-SELECT 0 INTO _insertedid;
-IF _cli_id <= 0 THEN
-INSERT INTO clients2 (cli_nom,cli_prenom,cli_rue,cli_codepostal,cli_ville,cli_tmp1,cli_tmp2,cli_tmp3) VALUES (_cli_nom,_cli_prenom,_cli_rue,_cli_codepostal,_cli_ville,_cli_tmp1,_cli_tmp2,_cli_tmp3);
-SELECT LAST_INSERT_ID() INTO _insertedid;
-ELSE
-UPDATE clients2 SET cli_nom = _cli_nom,cli_prenom = _cli_prenom,cli_rue = _cli_rue,cli_codepostal = _cli_codepostal,cli_ville = _cli_ville,cli_tmp1 = _cli_tmp1,cli_tmp2 = _cli_tmp2,cli_tmp3 = _cli_tmp3 WHERE cli_id = _cli_id;
-SELECT _cli_id INTO _insertedid;
-END IF;
-END$$
+   SELECT 0 into _insertedid;	#code erreur
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_mjad` (IN `_par_id` INT(10), IN `_par_societe` VARCHAR(255), IN `_par_rue` VARCHAR(255), IN `_par_complement` VARCHAR(255), IN `_par_codepostal` VARCHAR(20), IN `_par_ville` VARCHAR(255), IN `_par_pays` VARCHAR(255), IN `_par_email` VARCHAR(255), IN `_par_responsable` VARCHAR(255), IN `_par_telephone` VARCHAR(255), IN `_par_mobile` VARCHAR(255), IN `_par_siret` VARCHAR(255), IN `_par_codenaf` VARCHAR(255), IN `_par_iban` VARCHAR(255), IN `_par_param1` VARCHAR(255), IN `_par_param2` VARCHAR(255), IN `_par_param3` VARCHAR(255), IN `_par_param4` VARCHAR(255), IN `_par_param5` VARCHAR(255), IN `_par_param6` VARCHAR(255), IN `_par_param7` VARCHAR(255), IN `_par_param8` VARCHAR(255), IN `_par_param9` VARCHAR(255), IN `_par_tmp1` VARCHAR(1), IN `_par_tmp2` VARCHAR(1), IN `_par_tmp3` VARCHAR(1), OUT `_insertedid` INT(255))  MODIFIES SQL DATA
-    COMMENT 'Gestion des parametres'
-BEGIN
-SELECT 0 INTO _insertedid;
-IF _par_id <= 0 THEN
-INSERT INTO parametres (par_societe,par_rue,par_complement,par_codepostal,par_ville,par_pays,par_email,par_responsable,par_telephone,par_mobile,par_siret,par_codenaf,par_iban,par_param1,par_param2,par_param3,par_param4,par_param5,par_param6,par_param7,par_param8,par_param9,par_tmp1,par_tmp2,par_tmp3) VALUES (_par_societe,_par_rue,_par_complement,_par_codepostal,_par_ville,_par_pays,_par_email,_par_responsable,_par_telephone,_par_mobile,_par_siret,_par_codenaf,_par_iban,_par_param1,_par_param2,_par_param3,_par_param4,_par_param5,_par_param6,_par_param7,_par_param8,_par_param9,_par_tmp1,_par_tmp2,_par_tmp3);
-SELECT LAST_INSERT_ID() INTO _insertedid;
-ELSE
-UPDATE parametres SET par_societe = _par_societe,par_rue = _par_rue,par_complement = _par_complement,par_codepostal = _par_codepostal,par_ville = _par_ville,par_pays = _par_pays,par_email = _par_email,par_responsable = _par_responsable,par_telephone = _par_telephone,par_mobile = _par_mobile,par_siret = _par_siret,par_codenaf = _par_codenaf,par_iban = _par_iban,par_param1 = _par_param1,par_param2 = _par_param2,par_param3 = _par_param3,par_param4 = _par_param4,par_param5 = _par_param5,par_param6 = _par_param6,par_param7 = _par_param7,par_param8 = _par_param8,par_param9 = _par_param9,par_tmp1 = _par_tmp1,par_tmp2 = _par_tmp2,par_tmp3 = _par_tmp3 WHERE par_id = _par_id;
-SELECT _par_id INTO _insertedid;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_parameters_mjad` (IN `_ppa_id` INT(255), IN `_ppa_par_id` INT(255), IN `_ppa_name` VARCHAR(255), IN `_ppa_type` VARCHAR(255), IN `_ppa_length` FLOAT, IN `_ppa_default` VARCHAR(255), IN `_ppa_input_mode` VARCHAR(255), IN `_ppa_values_list` VARCHAR(500), IN `_ppa_default_when` INT(255), IN `_ppa_validation` VARCHAR(255), IN `_ppa_readonly` INT(10), IN `_ppa_placeholder` VARCHAR(255), IN `_ppa_required` INT(10), IN `_ppa_order` INT(255), OUT `_insertedid` INT(255))  MODIFIES SQL DATA
-    COMMENT 'Gestion des paramètres'
-BEGIN
-   SELECT 0
-     INTO _insertedid;
-
-   IF _ppa_id <= 0
+   IF _rel_id <= 0
    THEN
-      INSERT INTO parametres_parameters(ppa_par_id,
-                                        ppa_name,
-                                        ppa_type,
-                                        ppa_length,
-                                        ppa_validation,
-                                        ppa_default,
-                                        ppa_default_when,
-                                        ppa_readonly,
-                                        ppa_placeholder,
-                                        ppa_input_mode,
-                                        ppa_values_list,
-                                        ppa_required,
-                                        ppa_order
-                                        )
-           VALUES (_ppa_par_id,
-                   _ppa_name,
-                   _ppa_type,
-                   _ppa_length,
-                   _ppa_validation,
-                   _ppa_default,
-                   _ppa_default_when,
-                   _ppa_readonly,
-                   _ppa_placeholder,
-                   _ppa_input_mode,
-                   _ppa_values_list,
-                   _ppa_required,
-                   _ppa_order
-                   );
+      INSERT INTO recipes_lines( 
+                        rel_rec_id,
+                        rel_code,
+                        rel_qte)
+           VALUES ( 
+                   _rel_rec_id,
+                   _rel_code,
+                   _rel_qte );
 
-      SELECT LAST_INSERT_ID()
-        INTO _insertedid;
+      SELECT LAST_INSERT_ID() INTO _insertedid;
+      
    ELSE
-      UPDATE parametres_parameters
-         SET ppa_par_id = _ppa_par_id,
-             ppa_name = _ppa_name,
-             ppa_type = _ppa_type,
-             ppa_length = _ppa_length,
-             ppa_validation = _ppa_validation,
-             ppa_default = _ppa_default,
-             ppa_default_when = _ppa_default_when,
-             ppa_readonly = _ppa_readonly,
-             ppa_placeholder = _ppa_placeholder,
-             ppa_input_mode = _ppa_input_mode,
-             ppa_values_list = _ppa_values_list,
-             ppa_required = _ppa_required,
-             ppa_order = _ppa_order
-       WHERE ppa_id = _ppa_id;
 
-      SELECT _ppa_id
-        INTO _insertedid;
+      UPDATE recipes_lines
+         SET rel_rec_id = _rel_rec_id,
+             rel_code = _rel_code,
+             rel_qte = _rel_qte
+       WHERE rel_id = _rel_id;
+       
+       SELECT _rel_id INTO _insertedid;
    END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `parametres_parameters_values_mjad` (IN `_par_id` INT(255), IN `_ppa_id` INT(255), IN `_value` VARCHAR(255))  MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `recipes_mjad` (IN `_rec_id` INT(255), IN `_rec_title` VARCHAR(255), IN `_rec_label` TEXT, OUT `_insertedid` INT(11))  MODIFIES SQL DATA
 BEGIN
-	DECLARE _ppv_id INT(255);
-	
-	SELECT ppv_id
-	INTO   _ppv_id
-	FROM   parametres_parameters_values
-	WHERE  ppv_par_id = _par_id
-	AND	   ppv_ppa_id = _ppa_id;
-	
-	IF _ppv_id IS NULL
-	THEN
-		INSERT INTO parametres_parameters_values
-			(ppv_par_id, ppv_ppa_id, ppv_value) 
-		VALUES (_par_id, _ppa_id, _value);
-	ELSE
-		UPDATE parametres_parameters_values
-		SET	   ppv_value = _value
-		WHERE  ppv_id = _ppv_id;
-	END IF;
+   SELECT 0 into _insertedid;	#code erreur
+
+   IF _rec_id <= 0
+   THEN
+      INSERT INTO recipes( 
+                        rec_title,
+                        rec_label )
+           VALUES ( 
+                   _rec_title,
+                   _rec_label );
+
+      SELECT LAST_INSERT_ID() INTO _insertedid;
+      
+   ELSE
+
+      UPDATE recipes
+         SET rec_title = _rec_title,
+             rec_label = _rec_label
+       WHERE rec_id = _rec_id;
+       
+       SELECT _rec_id INTO _insertedid;
+   END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `users_mjad` (IN `_usr_id` INT(255), IN `_usr_first_name` VARCHAR(255), IN `_usr_last_name` VARCHAR(255), IN `_usr_login` VARCHAR(255), IN `_usr_password` VARCHAR(255), IN `_usr_activekey` VARCHAR(255), IN `_usr_mail` VARCHAR(255), IN `_usr_pro_id` INT(255), IN `_usr_lang` VARCHAR(2), IN `_usr_image_path` VARCHAR(255), IN `_usr_out_date` TIMESTAMP, OUT `_insertedid` INT(11))  MODIFIES SQL DATA
@@ -469,7 +415,37 @@ INSERT INTO `app_logs` (`log_id`, `log_lty_id`, `log_date`, `log_description`, `
 (219, 3, '2017-12-21 08:31:51', '', 0, 1),
 (220, 4, '2017-12-21 08:32:34', 'ajout ingrédient 38108, recette 1', 0, 1),
 (221, 3, '2017-12-21 08:37:39', '', 0, 1),
-(222, 3, '2018-01-07 14:46:19', '', 0, 1);
+(222, 3, '2018-01-07 14:46:19', '', 0, 1),
+(223, 3, '2018-01-12 09:25:25', '', 0, 4),
+(224, 3, '2018-01-12 09:44:14', '', 0, 4),
+(225, 3, '2018-01-12 19:01:18', '', 0, 1),
+(226, 3, '2018-01-14 11:44:44', '', 0, 1),
+(227, 4, '2018-01-14 12:25:16', 'ajout ingrédient , recette 1', 0, 1),
+(228, 4, '2018-01-14 12:43:43', 'ajout ingrédient 7815, recette 1', 0, 1),
+(229, 4, '2018-01-14 12:44:26', 'ajout ingrédient 1007, recette 1', 0, 1),
+(230, 4, '2018-01-14 17:29:50', 'ajout ingrédient 7815, recette ', 0, 1),
+(231, 4, '2018-01-14 17:34:59', 'ajout ingrédient 7813, recette 1', 0, 1),
+(232, 4, '2018-01-14 17:40:11', 'ajout ingrédient 4014, recette 1', 0, 1),
+(233, 3, '2018-01-14 18:26:39', '', 0, 1),
+(234, 4, '2018-01-14 18:27:38', 'ajout ingrédient 1000, recette 1', 0, 1),
+(235, 4, '2018-01-14 18:28:36', 'ajout ingrédient 1000, recette 1', 0, 1),
+(236, 4, '2018-01-14 18:30:52', 'ajout ingrédient 1000, recette 1', 0, 1),
+(237, 4, '2018-01-14 18:32:38', 'ajout ingrédient 1000, recette 1', 0, 1),
+(238, 4, '2018-01-14 19:15:08', 'modif ingrédient <br /><b>Notice</b>:  Undefined index: rel_id in <b>C:\\xampp\\htdocs\\workdev\\inter_ciqual2\\templates_c\\2d2c131191658144b16ca1b9e2d7f1f97db16db1.file.p_users_recipes.tpl.php</b> on line <b>118</b><br />, recette 1', 0, 1),
+(239, 4, '2018-01-14 19:19:56', 'modif ingrédient 8, recette 1', 0, 1),
+(240, 4, '2018-01-14 19:20:19', 'modif ingrédient 8, recette 1', 0, 1),
+(241, 4, '2018-01-14 19:26:52', 'modif ingrédient 6, recette 1', 0, 1),
+(242, 4, '2018-01-14 19:43:06', 'modif ingrédient 6, recette 1', 0, 1),
+(243, 4, '2018-01-14 19:43:28', 'modif ingrédient 6, recette 1', 0, 1),
+(244, 4, '2018-01-15 08:43:48', 'modif ingrédient 6, recette 1', 0, 1),
+(245, 3, '2018-01-15 11:10:03', '', 0, 1),
+(246, 4, '2018-01-15 11:56:15', 'ajout ingrédient 1000, recette 1', 0, 1),
+(247, 4, '2018-01-15 13:14:23', 'suppression recette 1', 0, 1),
+(248, 3, '2018-01-15 15:53:27', '', 0, 1),
+(249, 3, '2018-01-15 16:07:53', '', 0, 1),
+(250, 3, '2018-01-15 17:15:57', '', 0, 22),
+(251, 3, '2018-01-15 17:28:06', '', 0, 22),
+(252, 3, '2018-01-15 17:37:36', '', 0, 22);
 
 -- --------------------------------------------------------
 
@@ -712,118 +688,10 @@ INSERT INTO `app_translate_lines` (`atl_id`, `atl_atr_id`, `atl_data_id`, `atl_l
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parametres`
---
-
-CREATE TABLE `parametres` (
-  `par_id` int(10) NOT NULL,
-  `par_societe` varchar(255) CHARACTER SET latin1 NOT NULL COMMENT 'Nom',
-  `par_rue` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Prénom',
-  `par_complement` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Rue',
-  `par_codepostal` varchar(20) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Code postal',
-  `par_ville` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Ville',
-  `par_pays` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Pays',
-  `par_email` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Email',
-  `par_responsable` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Responsable',
-  `par_telephone` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Téléphone',
-  `par_mobile` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Mobile',
-  `par_siret` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'N° SIRET',
-  `par_codenaf` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Code NAF',
-  `par_iban` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'N° IBAN',
-  `par_param1` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 1',
-  `par_param2` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 2',
-  `par_param3` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 3',
-  `par_param4` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 4',
-  `par_param5` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 5',
-  `par_param6` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 6',
-  `par_param7` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 7',
-  `par_param8` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 8',
-  `par_param9` varchar(255) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Paramètre 9',
-  `par_tmp1` varchar(1) CHARACTER SET latin1 DEFAULT NULL COMMENT 'champ disponible',
-  `par_tmp2` varchar(1) CHARACTER SET latin1 DEFAULT NULL COMMENT 'champ disponible',
-  `par_tmp3` varchar(1) CHARACTER SET latin1 DEFAULT NULL COMMENT 'champ disponible',
-  `par_flag` char(1) CHARACTER SET latin1 DEFAULT NULL COMMENT 'Flag',
-  `par_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date maj'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `parametres`
---
-
-INSERT INTO `parametres` (`par_id`, `par_societe`, `par_rue`, `par_complement`, `par_codepostal`, `par_ville`, `par_pays`, `par_email`, `par_responsable`, `par_telephone`, `par_mobile`, `par_siret`, `par_codenaf`, `par_iban`, `par_param1`, `par_param2`, `par_param3`, `par_param4`, `par_param5`, `par_param6`, `par_param7`, `par_param8`, `par_param9`, `par_tmp1`, `par_tmp2`, `par_tmp3`, `par_flag`, `par_update`) VALUES
-(1, 'Société Nouvelle', '13 traverse des Cigalons', 'de paris', '13500', 'SAINT ANTONINE', 'FRANCE', 'contact@society.fr', 'Johnny BEGOOD', '05.21.54.86.52', '06.07.52.61.34', '348 654 12354', '94R4', '', 'test1', 'test2', '', '', '', '', '', '', '', '', '', '', NULL, '2017-08-17 11:36:10');
-
--- --------------------------------------------------------
-
---
 -- Doublure de structure pour la vue `parametres_details`
 --
 CREATE TABLE `parametres_details` (
-`par_id` int(10)
-,`par_societe` varchar(255)
-,`par_rue` varchar(255)
-,`par_complement` varchar(255)
-,`par_codepostal` varchar(20)
-,`par_ville` varchar(255)
-,`par_pays` varchar(255)
-,`par_email` varchar(255)
-,`par_responsable` varchar(255)
-,`par_telephone` varchar(255)
-,`par_mobile` varchar(255)
-,`par_siret` varchar(255)
-,`par_codenaf` varchar(255)
-,`par_iban` varchar(255)
-,`par_param1` varchar(255)
-,`par_param2` varchar(255)
-,`par_param3` varchar(255)
-,`par_param4` varchar(255)
-,`par_param5` varchar(255)
-,`par_param6` varchar(255)
-,`par_param7` varchar(255)
-,`par_param8` varchar(255)
-,`par_param9` varchar(255)
-,`par_tmp1` varchar(1)
-,`par_tmp2` varchar(1)
-,`par_tmp3` varchar(1)
-,`par_flag` char(1)
-,`par_update` timestamp
 );
-
--- --------------------------------------------------------
-
---
--- Structure de la table `parametres_parameters`
---
-
-CREATE TABLE `parametres_parameters` (
-  `ppa_id` int(255) NOT NULL COMMENT 'ID de l''enregistrement',
-  `ppa_par_id` int(255) NOT NULL COMMENT 'Id du tracking process',
-  `ppa_name` varchar(255) NOT NULL COMMENT 'Nom du parametre',
-  `ppa_type` varchar(255) NOT NULL COMMENT 'Type de parametre',
-  `ppa_length` float DEFAULT NULL COMMENT 'Longueur du parametre',
-  `ppa_validation` varchar(255) DEFAULT NULL COMMENT 'Formule de validation',
-  `ppa_default` varchar(255) DEFAULT NULL COMMENT 'Valeur par defaut',
-  `ppa_default_when` int(255) DEFAULT '1',
-  `ppa_readonly` int(10) DEFAULT '0' COMMENT 'Read only (0/1/2)',
-  `ppa_placeholder` varchar(255) DEFAULT NULL COMMENT 'Place holder',
-  `ppa_input_mode` varchar(255) DEFAULT NULL COMMENT 'Modalite de saisie',
-  `ppa_values_list` varchar(500) DEFAULT NULL COMMENT 'Liste de valeurs',
-  `ppa_required` int(10) NOT NULL DEFAULT '0' COMMENT 'Requis',
-  `ppa_order` int(255) NOT NULL COMMENT 'Ordre de tri',
-  `ppa_flag` varchar(1) DEFAULT NULL COMMENT 'Flag pour suppression'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `parametres_parameters`
---
-
-INSERT INTO `parametres_parameters` (`ppa_id`, `ppa_par_id`, `ppa_name`, `ppa_type`, `ppa_length`, `ppa_validation`, `ppa_default`, `ppa_default_when`, `ppa_readonly`, `ppa_placeholder`, `ppa_input_mode`, `ppa_values_list`, `ppa_required`, `ppa_order`, `ppa_flag`) VALUES
-(1, 1, 'Refroidissement rapide', 'separator', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 20, NULL),
-(2, 1, 'Date du traitement', 'date', 0, '', '', 1, 0, '', 'calendar', '', 1, 5, NULL),
-(3, 1, 'Température de suivi', 'varchar', 0, '> 5', '', 0, 0, '', 'list', '0|5|8|12', 0, 10, NULL),
-(4, 1, 'Fin de cuisson', 'date_hour', 0, '>= getdate()', 'date(''d/m/Y h:i'')', 1, 0, '', 'calendar', '', 2, 25, NULL),
-(5, 1, 'Commentaire', 'varchar', 255, NULL, NULL, 1, 0, 'Commentaire', 'textarea', NULL, 1, 15, NULL),
-(6, 1, 'Température', 'int', 2, NULL, '5', 1, 0, '', 'touchspin', NULL, 0, 30, NULL);
 
 -- --------------------------------------------------------
 
@@ -831,79 +699,74 @@ INSERT INTO `parametres_parameters` (`ppa_id`, `ppa_par_id`, `ppa_name`, `ppa_ty
 -- Doublure de structure pour la vue `parametres_parameters_details`
 --
 CREATE TABLE `parametres_parameters_details` (
-`par_id` int(10)
-,`par_societe` varchar(255)
-,`par_rue` varchar(255)
-,`par_complement` varchar(255)
-,`par_codepostal` varchar(20)
-,`par_ville` varchar(255)
-,`par_pays` varchar(255)
-,`par_email` varchar(255)
-,`par_responsable` varchar(255)
-,`par_telephone` varchar(255)
-,`par_mobile` varchar(255)
-,`par_siret` varchar(255)
-,`par_codenaf` varchar(255)
-,`par_iban` varchar(255)
-,`par_param1` varchar(255)
-,`par_param2` varchar(255)
-,`par_param3` varchar(255)
-,`par_param4` varchar(255)
-,`par_param5` varchar(255)
-,`par_param6` varchar(255)
-,`par_param7` varchar(255)
-,`par_param8` varchar(255)
-,`par_param9` varchar(255)
-,`par_tmp1` varchar(1)
-,`par_tmp2` varchar(1)
-,`par_tmp3` varchar(1)
-,`par_flag` char(1)
-,`par_update` timestamp
-,`ppa_id` int(255)
-,`ppa_par_id` int(255)
-,`ppa_name` varchar(255)
-,`ppa_type` varchar(255)
-,`ppa_length` float
-,`ppa_validation` varchar(255)
-,`ppa_default` varchar(255)
-,`ppa_default_when` int(255)
-,`ppa_readonly` int(10)
-,`ppa_placeholder` varchar(255)
-,`ppa_input_mode` varchar(255)
-,`ppa_values_list` varchar(500)
-,`ppa_required` int(10)
-,`ppa_order` int(255)
-,`ppa_flag` varchar(1)
-,`ppv_id` int(255)
-,`ppv_par_id` int(255)
-,`ppv_ppa_id` int(255)
-,`ppv_value` varchar(255)
 );
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parametres_parameters_values`
+-- Structure de la table `recipes`
 --
 
-CREATE TABLE `parametres_parameters_values` (
-  `ppv_id` int(255) NOT NULL COMMENT 'ID de l enregistrement',
-  `ppv_par_id` int(255) NOT NULL COMMENT 'ID du parametres',
-  `ppv_ppa_id` int(255) NOT NULL COMMENT 'ID du parameters',
-  `ppv_value` varchar(255) NOT NULL COMMENT 'Valeur du parameters'
+CREATE TABLE `recipes` (
+  `rec_id` int(11) NOT NULL,
+  `rec_usr_id` int(11) NOT NULL,
+  `rec_title` varchar(255) NOT NULL,
+  `rec_label` text NOT NULL,
+  `rec_update` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `rec_flag` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `parametres_parameters_values`
+-- Contenu de la table `recipes`
 --
 
-INSERT INTO `parametres_parameters_values` (`ppv_id`, `ppv_par_id`, `ppv_ppa_id`, `ppv_value`) VALUES
-(1, 1, 1, ''),
-(2, 1, 2, '14/07/2017 12:34'),
-(3, 1, 3, '5'),
-(4, 1, 4, '30/07/2017 18:00'),
-(5, 1, 5, '																																																																																																				ça marche\r\n																								\r\n																								\r\n																								\r\n																								'),
-(6, 1, 6, '6');
+INSERT INTO `recipes` (`rec_id`, `rec_usr_id`, `rec_title`, `rec_label`, `rec_update`, `rec_flag`) VALUES
+(1, 1, 'Bloody Mary', '', '2018-01-15 16:29:55', NULL),
+(2, 1, 'Pâté de truffe', '', '2018-01-15 16:29:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `recipes_details`
+--
+CREATE TABLE `recipes_details` (
+`rec_id` int(11)
+,`rec_usr_id` int(11)
+,`rec_title` varchar(255)
+,`rec_label` text
+,`rec_update` timestamp
+,`rec_flag` char(1)
+,`rel_id` int(11)
+,`rel_rec_id` int(11)
+,`rel_code` varchar(20)
+,`rel_qte` float
+,`rel_update` timestamp
+,`rel_flag` char(1)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recipes_lines`
+--
+
+CREATE TABLE `recipes_lines` (
+  `rel_id` int(11) NOT NULL,
+  `rel_rec_id` int(11) NOT NULL,
+  `rel_code` varchar(20) NOT NULL,
+  `rel_qte` float NOT NULL,
+  `rel_update` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `rel_flag` char(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `recipes_lines`
+--
+
+INSERT INTO `recipes_lines` (`rel_id`, `rel_rec_id`, `rel_code`, `rel_qte`, `rel_update`, `rel_flag`) VALUES
+(1, 1, '1001', 50, '2018-01-15 11:37:03', NULL),
+(15, 2, '1001', 26, '0000-00-00 00:00:00', NULL),
+(16, 1, '1000', 60, '2018-01-15 12:21:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -937,7 +800,7 @@ INSERT INTO `users` (`usr_id`, `usr_first_name`, `usr_last_name`, `usr_login`, `
 (2, 'Omari', 'SHARIF', '', '', 1, '', 'infodom123@gmail.com', 2, 'fr', 'views/img/profiles/usertile37.bmp', '2016-02-26 09:45:28', '0000-00-00 00:00:00', NULL),
 (4, 'RootNautilus', '', 'rootnautilus', '$2y$10$r3jHkrimjtD8S5n.2C2AQujZR9.Pab/BA617f9vUgr6/fi7YRKk92', 1, '', '', 1, 'fr', 'views/img/profiles/usertile37.bmp', '2016-03-02 19:07:29', '0000-00-00 00:00:00', NULL),
 (5, 'Jean', 'BILLONCE', 'utilisateur2', '$2y$10$.FZxxFwzo4Nq03gqORbFHeeSkb4gN2TW3OCzhSEroG7NEhN/cQQrG', 1, '0', '', 2, 'fr', 'views/img/profiles/usertile11.bmp', '2016-04-03 06:10:36', '0000-00-00 00:00:00', NULL),
-(22, 'test', 'f.mevollon@gmail.com', 'f.mevollon@gmail.com', '$2y$10$eWH48d.1aWnOxvgbOuj8u.RqOPcQ4g72.NpT84DX.tkpqFO02HGfy', 1, '4f9e9a408e628c49f4c9143963be5aec', 'f.mevollon@gmail.com', 4, 'fr', 'views/img/profiles/usertile37.bmp', '2017-08-31 12:43:53', '0000-00-00 00:00:00', NULL),
+(22, 'test', 'f.mevollon@gmail.com', 'f.mevollon@gmail.com', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, '4f9e9a408e628c49f4c9143963be5aec', 'f.mevollon@gmail.com', 4, 'fr', 'views/img/profiles/usertile37.bmp', '2017-08-31 12:43:53', '0000-00-00 00:00:00', NULL),
 (31, 'Clint22', 'EASTWOOD', 'commercial1', '$2y$10$cwMjWqcrcacI2UfxZABqau7cikB3YPtNvuHoEvCYQhXzPdH9p3KYC', 1, '0', '', 4, 'fr', 'views/img/profiles/profile_logo.png', '2017-09-03 17:09:33', '0000-00-00 00:00:00', NULL),
 (34, '', 'AnotherTest', 'utilisateur3', '$2y$10$1Be/dc8MFfEzNYbtQUsnpeXi/IY/p8ETeMd.qAw499jSOZqt6tutW', 1, '', '', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-07 15:15:28', '0000-00-00 00:00:00', NULL),
 (39, 'Fred', 'f.mevollon@nautilusweb.fr', 'f.mevollon@nautilusweb.fr', '$2y$10$ZDYSS17/rZ81NiRE8WlRqek.m601fFTrw48r1sfNLXWgx8HPVmbai', 1, 'bc0d83da033a9957f4d1d71eebf92500', 'f.mevollon@nautilusweb.fr', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-08 13:51:44', '0000-00-00 00:00:00', NULL),
@@ -1050,6 +913,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure de la vue `recipes_details`
+--
+DROP TABLE IF EXISTS `recipes_details`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `recipes_details`  AS  select `recipes`.`rec_id` AS `rec_id`,`recipes`.`rec_usr_id` AS `rec_usr_id`,`recipes`.`rec_title` AS `rec_title`,`recipes`.`rec_label` AS `rec_label`,`recipes`.`rec_update` AS `rec_update`,`recipes`.`rec_flag` AS `rec_flag`,`recipes_lines`.`rel_id` AS `rel_id`,`recipes_lines`.`rel_rec_id` AS `rel_rec_id`,`recipes_lines`.`rel_code` AS `rel_code`,`recipes_lines`.`rel_qte` AS `rel_qte`,`recipes_lines`.`rel_update` AS `rel_update`,`recipes_lines`.`rel_flag` AS `rel_flag` from (`recipes` join `recipes_lines` on((`recipes`.`rec_id` = `recipes_lines`.`rel_rec_id`))) where isnull(`recipes`.`rec_flag`) order by `recipes_lines`.`rel_rec_id`,`recipes_lines`.`rel_qte` desc ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la vue `users_details`
 --
 DROP TABLE IF EXISTS `users_details`;
@@ -1105,24 +977,18 @@ ALTER TABLE `app_translate_lines`
   ADD KEY `tll_id` (`atl_atr_id`);
 
 --
--- Index pour la table `parametres`
+-- Index pour la table `recipes`
 --
-ALTER TABLE `parametres`
-  ADD PRIMARY KEY (`par_id`);
+ALTER TABLE `recipes`
+  ADD PRIMARY KEY (`rec_id`),
+  ADD KEY `rec_usr_id` (`rec_usr_id`);
 
 --
--- Index pour la table `parametres_parameters`
+-- Index pour la table `recipes_lines`
 --
-ALTER TABLE `parametres_parameters`
-  ADD PRIMARY KEY (`ppa_id`),
-  ADD KEY `ppa_par_id` (`ppa_par_id`);
-
---
--- Index pour la table `parametres_parameters_values`
---
-ALTER TABLE `parametres_parameters_values`
-  ADD PRIMARY KEY (`ppv_id`),
-  ADD KEY `ppv_par_id` (`ppv_par_id`,`ppv_ppa_id`);
+ALTER TABLE `recipes_lines`
+  ADD PRIMARY KEY (`rel_id`),
+  ADD UNIQUE KEY `rec_id_code` (`rel_rec_id`,`rel_code`) USING BTREE;
 
 --
 -- Index pour la table `users`
@@ -1144,7 +1010,7 @@ ALTER TABLE `users_profiles`
 -- AUTO_INCREMENT pour la table `app_logs`
 --
 ALTER TABLE `app_logs`
-  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=223;
+  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=253;
 --
 -- AUTO_INCREMENT pour la table `app_parameters`
 --
@@ -1161,25 +1027,30 @@ ALTER TABLE `app_parameters_types`
 ALTER TABLE `app_translate_lines`
   MODIFY `atl_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
--- AUTO_INCREMENT pour la table `parametres`
+-- AUTO_INCREMENT pour la table `recipes`
 --
-ALTER TABLE `parametres`
-  MODIFY `par_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `recipes`
+  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT pour la table `parametres_parameters`
+-- AUTO_INCREMENT pour la table `recipes_lines`
 --
-ALTER TABLE `parametres_parameters`
-  MODIFY `ppa_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT pour la table `parametres_parameters_values`
---
-ALTER TABLE `parametres_parameters_values`
-  MODIFY `ppv_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l enregistrement', AUTO_INCREMENT=7;
+ALTER TABLE `recipes_lines`
+  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `usr_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=44;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `recipes_lines`
+--
+ALTER TABLE `recipes_lines`
+  ADD CONSTRAINT `recipes_lines_ibfk_1` FOREIGN KEY (`rel_rec_id`) REFERENCES `recipes` (`rec_id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
