@@ -18,7 +18,7 @@
 
 						<form role="form" 	
 							action="~{codeUrl('users_recipes-users_recipes&parammode=add_ing')}~" 
-							method="post" id="modal-faddingredient">
+							method="post" id="addingredient-fadd">
 						  
 							<input name="addingredient-code" id="addingredient-code" hidden="true" value="">
 
@@ -127,4 +127,51 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal : modif nom de recette -->
+			                     
+<div class="modal fade" id="modal-chgrecipyname" tabindex="-1" role="dialog"
+	aria-labelledby="modal-chgrecipyname-label" aria-hidden="true">>
+	
+	<div class="modal-dialog"  role="document">
+		<div class="modal-content">
+		
+			<div class="modal-header">
+					<h4 class="modal-title title" id="modal-chgrecipyname-label">
+						~{#mdlchgtitre#}~
+					</h4>
+			</div>
+			
+			<div class="modal-body ">
+
+						<form role="form" 	
+							action="~{codeUrl('users_recipes-users_recipes&parammode=chg_nam')}~" 
+							method="post" id="chgrecipyname-fchg">
+						  
+							<div class="row">
+							 <div class="col-md-12">
+								<div class="form-group">
+								    <label>~{#mdlchgnom#}~</label>
+								    <input name="chgrecipyname-nom" id="chgrecipyname-nom" class="form-control" 
+								    		placeholder="Tapez la description" value="" autofocus>
+								</div>  
+							 </div>
+							</div>
+							
+							<div class="modal-footer">
+								<button id="chgrecipyname-chgrecord" type="button" class="btn pull-left">
+								~{#btnSubmit#}~
+								</button>
+								<button id="chgrecipyname-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
+								~{#btnCancel#}~
+								</button>
+							</div>	
+									
+					  </form>		
+					  			
+			</div>
+		</div>
+	</div>
+</div>
+
 

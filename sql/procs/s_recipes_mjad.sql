@@ -1,6 +1,7 @@
 CREATE PROCEDURE recipes_mjad(IN _rec_id           INT(255),
                             IN _rec_title		 VARCHAR(255),
                             IN _rec_label    		TEXT,
+                            IN _usr_id		     INT(11),
                             OUT _insertedid		 INT(11) )
    MODIFIES SQL DATA 
 
@@ -10,9 +11,11 @@ BEGIN
    IF _rec_id <= 0
    THEN
       INSERT INTO recipes( 
+      					rec_usr_id,
                         rec_title,
                         rec_label )
            VALUES ( 
+                   _usr_id,
                    _rec_title,
                    _rec_label );
 

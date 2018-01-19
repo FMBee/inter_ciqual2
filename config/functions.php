@@ -240,6 +240,7 @@
 		else{
 			$_SESSION['_recipy']['rec_id'] = trim($recipy[0]['rec_id']);
 			$_SESSION['_recipy']['rec_title'] = trim($recipy[0]['rec_title']);
+			$_SESSION['_recipy']['rec_label'] = trim($recipy[0]['rec_label']);
 		}
 	}
 	

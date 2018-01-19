@@ -42,6 +42,13 @@
 											    		placeholder="Tapez un mot-clé" value="" >
 											</div>  
 										 </div>
+										 <div class="col-md-6">
+											<div class="form-group">
+											    <label>~{#mdladdqte#}~</label>
+											    <input name="addrecipe-ingqte" id="addrecipe-ingqte" class="form-control" 
+											    		placeholder="0.00" value="" >
+											</div>  
+										 </div>
 										</div>
 										
 										<div class="modal-footer">

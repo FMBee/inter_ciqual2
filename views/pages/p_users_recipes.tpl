@@ -8,7 +8,7 @@
   
        <div class="row">
        
-           <div class="col-lg-12">
+           <div class="col-lg-8">
        
 	             <div class="form-inline">
 	                <span style="font-size:150%;">~{#title#}~</span>
@@ -26,9 +26,14 @@
 					 	~{/foreach}~
 				    </select>        
 	             </div>
-	             <br />
+           </div>
+           <div class="col-lg-4">
+	             <button id="changename" type="button" class="btn pull-right">
+				~{#btnName#}~
+				</button>
            </div>
        </div>
+       <br />
        
        <div class="row">
            <div class="col-lg-12">

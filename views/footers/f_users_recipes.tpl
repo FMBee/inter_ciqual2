@@ -99,7 +99,7 @@
 					
 					if ($('#addingredient-qte').val() != 0) {
 						
-		            	$('#modal-faddingredient').submit();
+		            	$('#addingredient-fadd').submit();
 					}
 					else{
 						bootbox.alert({size: 'small', message: 'Veuillez saisir une quantité'});
@@ -140,6 +140,26 @@
 	                        }
        				});
 		        });
+
+	            $('#chgrecipyname-nom').val("~{$smarty.session._recipy['rec_title']}~");
+	            
+	            $('#changename').on('click', function () {
+	            	
+      	        	$('#modal-chgrecipyname').modal({backdrop: "static", keyboard: false});
+		        });
+	            
+				$('#chgrecipyname-chgrecord').on('click', function () {
+					
+					if ($('#chgrecipyname-nom').val() != '') {
+						
+		            	$('#chgrecipyname-fchg').submit();
+					}
+					else{
+						bootbox.alert({size: 'small', message: 'Veuillez saisir un libellé'});
+					}
+	            	
+		        });
+				
 
 	            $('#select-recipy').on('change', function() {
 	            	

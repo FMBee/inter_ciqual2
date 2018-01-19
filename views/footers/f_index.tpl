@@ -44,8 +44,12 @@
 		        });
 				
 				$('#addrecipe-addrecord').on('click', function () {
-					
-					if ($('#addrecipe-nom').val() != '' && $('#addrecipe-ing').val() != '') {
+
+    				_saisie = Number($('#addrecipe-ingqte').val());
+	            	
+					if ( $('#addrecipe-nom').val() != '' 
+							&& $('#addrecipe-ing').val() != '' 
+	            				&& ( isNaN(_saisie) === false & _saisie > 0 ) ) {				
 						
 	           			bootbox.confirm('Confirmez-vous la création ?',
 	                   			function(result) {

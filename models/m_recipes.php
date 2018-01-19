@@ -2,7 +2,9 @@
 
 class Recipes {
 	
-	// les recettes d'un user, triées par nom
+	/*
+	 * les recettes d'un user, triées par nom
+	 */
 	public static function getAll($pdo) 
 	{
 		$req = $pdo->prepare( 'SELECT * FROM recipes_details WHERE rec_usr_id = ? GROUP BY rec_id ORDER BY rec_title' );
@@ -13,7 +15,9 @@ class Recipes {
 		return ($data);
 	}
 	
-	// une recette par id
+	/*
+	 * une recette par id
+	 */
 	public static function getOne($pdo, $id) {
 		
 		$req = $pdo->prepare ( 'SELECT * FROM recipes_details WHERE rec_id = ?' );
@@ -24,7 +28,9 @@ class Recipes {
 		return ($data);
 	}
 
-	// la dernière recette d'un user
+	/*
+	 * la dernière recette d'un user
+	 */
 	public static function getFirst($pdo) {
 		
 		$req = $pdo->prepare ( 'SELECT * FROM recipes_details WHERE rec_usr_id = ? ORDER BY rec_id DESC LIMIT 1' );
@@ -35,7 +41,9 @@ class Recipes {
 		return ($data);
 	}
 
-	// suppression de recette par id
+	/*
+	 * suppression de recette par id
+	 */
 	public static function delOne($pdo, $id)
 	{
   		$req = $pdo->prepare("UPDATE recipes SET rec_flag = 'D' WHERE rec_id = ?");
@@ -45,7 +53,9 @@ class Recipes {
 		return true;
 	}
 	
-	// maj d'une entete de recette par id
+	/*
+	 * maj d'une entete de recette par id ou creation
+	 */
 	public static function majOrAdd($pdo, $data) 
 	{
 		$req = $pdo->prepare( 'CALL recipes_mjad(' . substr ( str_repeat ( '?,', count ( $data ) ), 0, - 1 ) . ', @retour)' );
@@ -57,7 +67,9 @@ class Recipes {
 		return ($retour ['@retour']);
 	}
 
-	// maj d'une ligne de recette par id
+	/*
+	 * maj d'une ligne de recette par id ou creation
+	 */
 	public static function majOrAddLine($pdo, $data) 
 	{
 		$req = $pdo->prepare( 'CALL recipes_lines_mjad(' . substr ( str_repeat ( '?,', count ( $data ) ), 0, - 1 ) . ', @retour)' );
@@ -69,7 +81,9 @@ class Recipes {
 		return ($retour ['@retour']);
 	}
 	
-	// supp d'une ligne de recette par id
+	/*
+	 * supp d'une ligne de recette par id
+	 */
 	public static function deleteLine($pdo, $data)
 	{
 		$req = $pdo->prepare('DELETE FROM recipes_lines WHERE rel_id = ?');
@@ -77,6 +91,11 @@ class Recipes {
 		$req->execute( $data );
 		
 		return true;
+	}
+	
+	public static function generateLabel($pdo, $id) {
+		
+		return 'Valeurs nutri';
 	}
 }
 
