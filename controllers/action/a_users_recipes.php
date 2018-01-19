@@ -64,6 +64,20 @@
 		);
 	}
 	
+	if ($_param['mode'] == 'add_rec') {
+		
+// 		$retour = Recipes::delOne( $pdo, $_SESSION['_recipy']['rec_id'] );
+
+// 		App_Logs::Add( 	$pdo, 
+// 					4, 
+// 					'suppression recette ' .$_SESSION['_recipy']['rec_id'], 
+// 					$_SESSION ['__user_id__']
+// 		);
+// 		$_SESSION['_recipy']['rec_id'] = Recipes::getFirst($pdo);
+		
+		$message = 'Recette créée avec ' .$_POST['addrecipe-ingcode'];
+	}
+	
 	if ($_param['mode'] == 'del_rec') {
 		
 		$retour = Recipes::delOne( $pdo, $_SESSION['_recipy']['rec_id'] );
