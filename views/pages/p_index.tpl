@@ -91,7 +91,7 @@
               <div id="addrecipe" class="mini-widget mini-widget-bronze">
                 <div class="mini-widget-body clearfix ">
                   <div class="center-align-text">
-                    <img src="~{$smarty.const.__VIEWS_IMG__}~picto_temperatureFrigo.png" style="width:150px; height:150px;" />
+                    <img src="~{$smarty.const.__VIEWS_IMG__}~picto_rangement.png" style="width:150px; height:150px;" />
                   </div>
                   <div class="center-align-text number">~{#etiq_09#}~</div>
                 </div>

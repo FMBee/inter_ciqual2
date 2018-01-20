@@ -49,6 +49,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	myDefine('__ACTIVATION_DELAY__' 	, 2 ); // délai d'activation par mail d'un compte (h)
 	myDefine('__HISTO_LEN__' 			, 5 ); // longueur historique pages visitées SESSION['__history__']
 	myDefine('__PATH_USERIMG__' 		, __VIEWS_IMG__ . '/profiles/profile_logo.png' ); // avatar par défaut
+	myDefine('__PATH_DOCS__' 			, $_ROOT . '_data/documents' . $_SEP );
 	myDefine('__ADMIN_MINACCESS__' 		, '599' ); // seuil de passage au mode admin
 	myDefine('__LANG_DEFAULT__' 		, 'fr' ); // langue par defaut de l'appli
 	myDefine('__FORM_LANG_DEFAULT__' 	, 'fr_FR' ); // langue par defaut FormValidation

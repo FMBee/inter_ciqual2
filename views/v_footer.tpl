@@ -1,7 +1,7 @@
 
 	~{if $onSession === true}~
         <footer>
-	          <p>© Hellosoftware 2017-20</p>
+	          <p><span class="text-black" style="font-size:140%">NUTRIVAL</span>&nbsp;&nbsp;&nbsp;© Hellosoftware 2018-20</p>
 	    </footer>
 	~{/if}~
 

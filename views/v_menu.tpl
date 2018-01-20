@@ -3,10 +3,11 @@
     <!-- Header Start -->
     <header>
 
-    	  <span><img class="user-avatar2" src="~{$smarty.const.__VIEWS_IMG__|cat:'inter.jpeg'}~"></span>
-		  <a href="~{codeUrl('index')}~">~{#titre#}~&nbsp;-&nbsp;
-			~{$smarty.const.__APP_TITLE__}~
-		  </a>
+		  <div class="pull-left">
+	    	  <span style="background-color:white">
+	    	  	<img width="130" class="" src="~{$smarty.const.__VIEWS_IMG__|cat:'intermarche-logo.png'}~">
+	    	  </span>
+		  </div>
 	      <div class="pull-right">
 	        <ul id="mini-nav" class="clearfix">
 	          <li class="list-box">
@@ -61,7 +62,7 @@
         	<div id='cssmenu'>
 
 	          <ul>
-	            <li class="~{if $smarty.get.page=='index'}~active~{/if}~">
+	            <li class="~{if $smarty.get.page=='index' || $smarty.get.page=='users_recipes'}~active~{/if}~">
 	              <a href="~{codeUrl('-index')}~">
 	                <i class="fa fa-home"></i>
 	                ~{#etiq_05#}~
@@ -74,7 +75,7 @@
 	              </a>
 	            </li>
 	            <li class="~{if $smarty.get.page=='documents'}~active~{/if}~">
-	              <a href='#'>
+	              <a href="~{codeUrl('-documents')}~">
 	              <i class="fa fa-file-text"></i>
 	              ~{#etiq_07#}~
 	              </a>
