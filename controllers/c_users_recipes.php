@@ -32,7 +32,8 @@
 				if ( $nutriment['const_code'] == $code ) {
 					
 					$resultOrd[] = $nutriment;
-					$totaux[$code] += $ingredient['rel_qte'] / 100 * myFloatval($nutriment['teneur']);
+					$totaux[$code] += floatval($ingredient['rel_qte']) / 100 * myFloatval($nutriment['teneur']);
+					specialTest($code, $totaux);
 				}
 			}
 		}
@@ -87,6 +88,14 @@
 		}
  	
 		return $value;
+	}
+	
+	function specialTest($code, &$totaux) {
+		
+		if ( $code = '32000' && ( $totaux['32000'] > $totaux['31000'] ) ) {
+			
+			$totaux['32000'] = $totaux['31000'];	// sucres <= glucides
+		}
 	}
 	
 	
