@@ -11,11 +11,13 @@
 
 				<div class="panel-heading">
 
-					<span> <a class="btn btn-default btn-xs"
+					<span> 
+~{*					<a class="btn btn-default btn-xs"
 						href="~{codeUrl(precPage())}~"> <i
 							class="fa fa-chevron-left fa-2x"></i>
 					</a>&nbsp;
-					</span> <span style="font-size: 130%;"> ~{#seektitle#}~ </span>
+					</span> 
+*}~					<span style="font-size:130%">~{#seektitle#}~ </span>
 
 				</div>
 

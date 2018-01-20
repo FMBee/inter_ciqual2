@@ -109,7 +109,7 @@
 
 			$_SESSION['_recipy']['rec_id'] = trim($retour);
 			$_SESSION['_recipy']['rec_title'] = trim($_POST['addrecipe-nom']);
-			$_SESSION['_recipy']['rec_label'] = '_init_';
+			$_SESSION['_recipy']['rec_label'] = '';
 		}
 	}
 	

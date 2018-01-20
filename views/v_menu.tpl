@@ -19,11 +19,14 @@
 	              <img src='~{$smarty.session.__user_image__}~' alt='~{$smarty.session.__user_name__}~'>
 	            </a> 
 	            <ul class="dropdown-menu server-activity">
-					~{if $smarty.session.__admin_mode__ }~
+~{*					~{if $smarty.session.__admin_mode__ }~
+						<p>
 						<li><a href="~{codeUrl('-users_list')}~">
 						<i class="fa fa-group fa-fw"></i>
 						&nbsp;~{#etiq_031#}~
+						</p>
 					~{else}~
+						<p>
 						<li><a href="~{codeUrl('-users&paramkey='|cat:$smarty.session.__user_id__)}~">
 						~{if $smarty.server.__app_params__.__APP_USER_LOGO__}~
 						<img class="user-avatar2" src="~{$smarty.session.__user_image__}~">
@@ -31,10 +34,16 @@
 						<i class="fa fa-user fa-fw"></i>
 						~{/if}~
 						&nbsp;~{#etiq_03#}~
+						</p>
 					~{/if}~
 					</a></li>
-					<li><a href="~{codeUrl('deconnect-')}~"><i
-							class="fa fa-sign-out fa-fw"></i> ~{#etiq_04#}~</a>
+*}~					<li>
+						  <p>
+						<a href="~{codeUrl('deconnect-')}~">
+							<i class="fa fa-sign-out fa-fw text-warning"></i>
+							 <span class="text-info">~{#etiq_04#}~</span>
+						</a>
+						  </p>
 					</li>
            		</ul>
 	          </li>        
@@ -52,19 +61,19 @@
         	<div id='cssmenu'>
 
 	          <ul>
-	            <li class='active'>
+	            <li class="~{if $smarty.get.page=='index'}~active~{/if}~">
 	              <a href="~{codeUrl('-index')}~">
 	                <i class="fa fa-home"></i>
 	                ~{#etiq_05#}~
 	              </a>
 	            </li>
-	            <li class=''>
+	            <li class="~{if $smarty.get.page=='ingredients_seek'}~active~{/if}~">
 	              <a href="~{codeUrl('-ingredients_seek')}~">
 	              	<i class="fa fa-table"></i>
 	              	~{#etiq_06#}~
 	              </a>
 	            </li>
-	            <li class=''>
+	            <li class="~{if $smarty.get.page=='documents'}~active~{/if}~">
 	              <a href='#'>
 	              <i class="fa fa-file-text"></i>
 	              ~{#etiq_07#}~

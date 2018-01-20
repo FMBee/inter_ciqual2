@@ -11,7 +11,7 @@
            <div class="col-lg-8">
        
 	             <div class="form-inline">
-	                <span style="font-size:150%;">~{#title#}~</span>
+	                <span style="font-size:130%;">~{#title#}~ <i class="fa fa-caret-right"></i></span>
 <!-- 				    <input name="seek-recipy" id="seek-recipy" -->
 <!-- 					class="form-control" placeholder="Tapez votre recherche" -->
 <!-- 					value="" > -->
@@ -39,9 +39,11 @@
            <div class="col-lg-12">
 
                <div class="panel panel-default">
-                   <div class="panel-heading">
+
+~{*                   <div class="panel-heading">
 		               <h4>~{#tabtitle#}~</h4>
                    </div>
+*}~
                    <div class="panel-body">
                    
                    		<input name="nb-ingredients" id="nb-ingredients" value="~{count($Ingredients)}~" hidden="true">
@@ -62,13 +64,6 @@
 								</thead>
 								
 								<tbody>
-									~{assign var=totqte value=0}~
-									~{assign var=totcol value=[]}~
-									
-									~{foreach from=$smarty.session._elements key=code item=element}~
-									
-										~{$totcol[$code]=0}~
-									~{/foreach}~		
 									
 									~{foreach $Ingredients as $ingredient}~
 									
@@ -77,18 +72,13 @@
 											<td align="left">~{$ingredient.0.0.alim_nom_fr|strip}~</td>
 											<td align="right">~{$ingredient.rel_qte|strip|string_format:'%.2f'}~</td>
 
-											~{assign var=recqte value=floatval($ingredient.rel_qte)}~
-											~{$totqte = $totqte + $recqte}~
-												
 											~{foreach $ingredient.0 as $nutriment}~
 
-												~{assign var=totnut value=($recqte * (myFloatval($nutriment.teneur) / 100))}~
+												~{assign var=totnut value=(floatval($ingredient.rel_qte) * (myFloatval($nutriment.teneur) / 100))}~
 
 												<td align="right">
 												~{$totnut|strip|string_format:$smarty.session._arrondis[$smarty.session._elements[trim($nutriment.const_code)]['rnd']]}~
 												</td>
-
-												~{$totcol[trim($nutriment.const_code)] = $totcol[trim($nutriment.const_code)] + $totnut}~
 
 											~{/foreach}~		
 										</tr>
@@ -97,17 +87,17 @@
 									
 									<tr id="-1" class="info">
 										<td align="right">~{#total_compo#}~</td>
-										<td align="right">~{$totqte|strip|string_format:'%.2f'}~</td>
+										<td align="right">~{$Totalqte|strip|string_format:'%.2f'}~</td>
 										
 										~{foreach from=$smarty.session._elements key=code item=element}~
 										
 											<td align="right">
-											~{$totcol[$code]|strip|string_format:$smarty.session._arrondis[$element['rnd']]}~
+											~{$Totaux[$code]|strip|string_format:$smarty.session._arrondis[$element['rnd']]}~
 											</td>
 										~{/foreach}~
 									</tr>
 									<tr id="-2" class="success">
-										~{assign var=coeff value=(100 / $totqte)}~
+										~{assign var=coeff value=(100 / $Totalqte)}~
 										
 										<td align="right">~{#moyenne_compo#}~</td>
 										<td align="right">~{#moyenne_100#|strip|string_format:'%.2f'}~</td>
@@ -115,7 +105,7 @@
 										~{foreach from=$smarty.session._elements key=code item=element}~
 										
 											<td align="right">
-											~{($totcol[$code] * $coeff)|strip|string_format:$smarty.session._arrondis[$element['rnd']]}~
+											~{($Totaux[$code] * $coeff)|strip|string_format:$smarty.session._arrondis[$element['rnd']]}~
 											</td>
 										~{/foreach}~
 									</tr>
@@ -126,17 +116,27 @@
 					    </div>
 	                    
 	                    </br>
-						<button id="addingredient" type="button" class="btn">
+						<button id="addingredient" type="button" class="btn btn-warning">
 						~{#btnNew#}~
 						</button>
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="well">
+					<span style="font-size:120%">~{$Etiquette}~</span>
+				</div>
+			</div>
+			<div class="col-lg-6">
 				<button id="delrecipy" type="button" class="btn pull-right">
 				~{#btnDel#}~
 				</button>
-					            
 			</div>
 		</div>
+
   </div>
   <!-- page-wrapper End -->
 

@@ -25,8 +25,7 @@ BEGIN
    ELSE
 
       UPDATE recipes_lines
-         SET rel_rec_id = _rel_rec_id,
-             rel_code = _rel_code,
+         SET 
              rel_qte = _rel_qte
        WHERE rel_id = _rel_id;
        

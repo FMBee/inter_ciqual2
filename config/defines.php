@@ -73,56 +73,56 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	
 	$_SESSION['_elements'] = array(
 		'327' => array(
-			'label' => 'Energie', 
+			'label' => 'Energie ', 
 			'unit' => 'KJ', 
 			'rnd' => 'NE', 
 			'bot' => 'NL',
-			'sep' => ',',
+			'sep' => ', ',
 		),	
 		'328' => array(
-			'label' => 'Energie', 
+			'label' => 'Energie ', 
 			'unit' => 'Kcal', 
 			'rnd' => 'NE', 
 			'bot' => 'NL',
-			'sep' => ';',
+			'sep' => ' ; ',
 		),	
 		'40000' => array(
-			'label' => 'Matières grasses', 
+			'label' => 'Matières grasses ', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ',',	
+			'sep' => ', ',	
 		),	
 		'40302' => array(
-			'label' => 'dont acides gras saturés', 
+			'label' => 'dont acides gras saturés ', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S2',
-			'sep' => ';',
+			'sep' => ' ; ',
 		),	
 		'31000' => array(
-			'label' => 'Glucides', 
+			'label' => 'Glucides ', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ',',	
+			'sep' => ', ',	
 		),	
 		'32000' => array(
-			'label' => 'dont sucres', 
+			'label' => 'dont sucres ', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ';',	
+			'sep' => ' ; ',	
 		),	
 		'25003' => array(
-			'label' => 'Protéines', 
+			'label' => 'Protéines ', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ';',	
+			'sep' => ' ; ',	
 		),	
 		'10004' => array(
-			'label' => 'Sel', 
+			'label' => 'Sel ', 
 			'unit' => 'g', 
 			'rnd' => 'A2', 
 			'bot' => 'S3',	
@@ -140,18 +140,21 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 		'S1' => array(
 			'min' => '0', 
 			'max' => '0.49', 
-			'label' => '<0.5g'
+			'label' => '<0.5'
 		),
 		'S2' => array(
 			'min' => '0', 
 			'max' => '0.09', 
-			'label' => '<0.1g'
+			'label' => '<0.1'
 		),
 		'S3' => array(
 			'min' => '0', 
 			'max' => '0.009',
-			'label' => '<0.01g'
+			'label' => '<0.01'
 		),
+	);
+	$_SESSION['_formats'] = array(
+		'T' => 'Valeurs nutritionnelles moyennes pour 100g : ',	
 	);
 		
 	
