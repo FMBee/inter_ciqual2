@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 16 Janvier 2018 à 07:15
+-- Généré le :  Ven 26 Janvier 2018 à 19:22
 -- Version du serveur :  10.1.13-MariaDB
 -- Version de PHP :  5.6.23
 
@@ -61,8 +61,7 @@ BEGIN
    ELSE
 
       UPDATE recipes_lines
-         SET rel_rec_id = _rel_rec_id,
-             rel_code = _rel_code,
+         SET 
              rel_qte = _rel_qte
        WHERE rel_id = _rel_id;
        
@@ -70,16 +69,18 @@ BEGIN
    END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `recipes_mjad` (IN `_rec_id` INT(255), IN `_rec_title` VARCHAR(255), IN `_rec_label` TEXT, OUT `_insertedid` INT(11))  MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `recipes_mjad` (IN `_rec_id` INT(255), IN `_rec_title` VARCHAR(255), IN `_rec_label` TEXT, IN `_usr_id` INT(11), OUT `_insertedid` INT(11))  MODIFIES SQL DATA
 BEGIN
    SELECT 0 into _insertedid;	#code erreur
 
    IF _rec_id <= 0
    THEN
       INSERT INTO recipes( 
+      					rec_usr_id,
                         rec_title,
                         rec_label )
            VALUES ( 
+                   _usr_id,
                    _rec_title,
                    _rec_label );
 
@@ -445,7 +446,23 @@ INSERT INTO `app_logs` (`log_id`, `log_lty_id`, `log_date`, `log_description`, `
 (249, 3, '2018-01-15 16:07:53', '', 0, 1),
 (250, 3, '2018-01-15 17:15:57', '', 0, 22),
 (251, 3, '2018-01-15 17:28:06', '', 0, 22),
-(252, 3, '2018-01-15 17:37:36', '', 0, 22);
+(252, 3, '2018-01-15 17:37:36', '', 0, 22),
+(253, 4, '2018-01-19 16:37:03', 'nouvelle recette: 17 / Ragout de mouton', 0, 22),
+(254, 3, '2018-01-19 16:53:35', '', 0, 4),
+(255, 4, '2018-01-19 17:00:04', 'ajout ingrédient code: 1000 / recette: 3', 0, 4),
+(256, 4, '2018-01-19 17:54:41', 'Modif. nom recette 3', 0, 4),
+(257, 4, '2018-01-20 08:46:27', 'maj ingrédient id: 18 / recette: 3', 0, 4),
+(258, 4, '2018-01-20 08:46:49', 'maj ingrédient id: 18 / recette: 3', 0, 4),
+(259, 4, '2018-01-20 08:59:29', 'maj ingrédient id: 18 / recette: 3', 0, 4),
+(260, 4, '2018-01-20 10:05:46', 'maj ingrédient id: 18 / recette: 3', 0, 4),
+(261, 3, '2018-01-20 10:49:09', '', 0, 1),
+(262, 3, '2018-01-20 11:17:15', '', 0, 1),
+(263, 3, '2018-01-20 14:41:51', '', 0, 1),
+(264, 3, '2018-01-26 08:26:59', '', 0, 1),
+(265, 3, '2018-01-26 09:38:40', '', 0, 1),
+(266, 3, '2018-01-26 16:16:40', '', 0, 1),
+(267, 4, '2018-01-26 17:23:42', 'ajout ingrédient code: 26177 / recette: 2', 0, 1),
+(268, 4, '2018-01-26 18:19:02', 'ajout ingrédient code: 40056 / recette: 2', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -547,8 +564,8 @@ INSERT INTO `app_parameters` (`prt_id`, `prt_name`, `prt_value`, `prt_apt_id`, `
 (1, '__APP_MAINTAIN__', '0', 2, NULL),
 (2, '__APP_DEBUG__', '1', 2, NULL),
 (3, '__APP_FRONT_ADDRESS__', 'http://nautilusweb.fr/inter_ciqual/', 1, NULL),
-(4, '__APP_INTERNATIONAL__', '1', 2, NULL),
-(5, '__APP_USER_LOGO__', '1', 2, NULL),
+(4, '__APP_INTERNATIONAL__', '0', 2, NULL),
+(5, '__APP_USER_LOGO__', '0', 2, NULL),
 (6, '__APP_USER_CREATE__', '1', 2, NULL),
 (7, '__APP_ACTIVE_DELAY__', '1', 3, NULL);
 
@@ -721,8 +738,9 @@ CREATE TABLE `recipes` (
 --
 
 INSERT INTO `recipes` (`rec_id`, `rec_usr_id`, `rec_title`, `rec_label`, `rec_update`, `rec_flag`) VALUES
-(1, 1, 'Bloody Mary', '', '2018-01-15 16:29:55', NULL),
-(2, 1, 'Pâté de truffe', '', '2018-01-15 16:29:59', NULL);
+(1, 1, 'Bloody Mary', 'Valeurs nutritionnelles moyennes pour 100g : Energie 1051KJ/253Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 2.9g, dont sucres <0.5g ; Protéines <0.5g ; Sel <0.01g', '2018-01-26 18:15:41', NULL),
+(2, 1, 'Pâté de truffe', 'Valeurs nutritionnelles moyennes pour 100g : Energie 722KJ / 172Kcal ; Matières grasses 5.9g, dont acides gras saturés 1.7g ; Glucides <0.5g, dont sucres <0.5g ; Protéines 23.1g ; Sel 2.07g', '2018-01-26 18:19:03', NULL),
+(3, 4, 'Ragout de mouton', 'Valeurs nutritionnelles moyennes pour 100g : Energie 1104KJ, Energie 265Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 6.5g, dont sucres 4.0g ; Protéines <0.5g ; Sel <0.01g', '2018-01-20 10:27:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -766,7 +784,11 @@ CREATE TABLE `recipes_lines` (
 INSERT INTO `recipes_lines` (`rel_id`, `rel_rec_id`, `rel_code`, `rel_qte`, `rel_update`, `rel_flag`) VALUES
 (1, 1, '1001', 50, '2018-01-15 11:37:03', NULL),
 (15, 2, '1001', 26, '0000-00-00 00:00:00', NULL),
-(16, 1, '1000', 60, '2018-01-15 12:21:51', NULL);
+(16, 1, '1000', 60, '2018-01-15 12:21:51', NULL),
+(17, 3, '1015', 10, '2018-01-19 16:54:32', NULL),
+(18, 3, '1000', 60, '2018-01-20 10:05:46', NULL),
+(19, 2, '26177', 50, '0000-00-00 00:00:00', NULL),
+(20, 2, '40056', 150, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -1010,7 +1032,7 @@ ALTER TABLE `users_profiles`
 -- AUTO_INCREMENT pour la table `app_logs`
 --
 ALTER TABLE `app_logs`
-  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=253;
+  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=269;
 --
 -- AUTO_INCREMENT pour la table `app_parameters`
 --
@@ -1030,12 +1052,12 @@ ALTER TABLE `app_translate_lines`
 -- AUTO_INCREMENT pour la table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `recipes_lines`
 --
 ALTER TABLE `recipes_lines`
-  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
