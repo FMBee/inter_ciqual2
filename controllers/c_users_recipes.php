@@ -11,13 +11,13 @@
 	foreach ( $recipy as $ingredient ) {
 		
 		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&values=yes&key=' .'%20'.trim($ingredient['rel_code']);	//attention à ce p... d'espace dans alim_code !
-debug($url);		
+// debug($url);		
 		$nutriments = json_decode( file_get_contents($url), true );
-debug($nutriments);			
+// debug($nutriments);			
 		$result = array();
 		
 		foreach ( $nutriments as $nutriment ) {
-debug($nutriment);			
+// debug($nutriment);			
 			if ( in_array(trim($nutriment['const_code']), $include, false) ) {
 				
 				$result[] = $nutriment;
@@ -46,15 +46,22 @@ debug($nutriment);
 	}
 // debug($data);	
 
-	$label = $_SESSION['_formats']['T'];
-	
+
 	foreach ( $totaux as $code => $teneur ) {
 		
-		$label .= 	$_SESSION['_elements'][$code]['label'].
-					calculSeuil($code, ( $teneur * 100 / $totalqte )).
-					$_SESSION['_elements'][$code]['unit'].
-					$_SESSION['_elements'][$code]['sep'];
+		${'C'.$code} = calculSeuil($code, ( $teneur * 100 / $totalqte ));
 	}
+	$label = sprintf(	$_SESSION['_formats']['L1'],
+						$C327,
+						$C328,
+						$C40000,
+						$C40302,
+						$C31000,
+						$C32000,
+						$C25003,
+						$C10004
+	);
+	
 	Recipes::majOrAdd($pdo, array(
 								$_SESSION['_recipy']['rec_id'],
 								$_SESSION['_recipy']['rec_title'],

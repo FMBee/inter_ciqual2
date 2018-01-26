@@ -74,60 +74,52 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	
 	$_SESSION['_elements'] = array(
 		'327' => array(
-			'label' => 'Energie ', 
+			'label' => 'Energie', 
 			'unit' => 'KJ', 
 			'rnd' => 'NE', 
 			'bot' => 'NL',
-			'sep' => ', ',
 		),	
 		'328' => array(
-			'label' => 'Energie ', 
+			'label' => 'Energie', 
 			'unit' => 'Kcal', 
 			'rnd' => 'NE', 
 			'bot' => 'NL',
-			'sep' => ' ; ',
 		),	
 		'40000' => array(
-			'label' => 'Matières grasses ', 
+			'label' => 'Matières grasses', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ', ',	
 		),	
 		'40302' => array(
-			'label' => 'dont acides gras saturés ', 
+			'label' => 'dont acides gras saturés', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S2',
-			'sep' => ' ; ',
 		),	
 		'31000' => array(
-			'label' => 'Glucides ', 
+			'label' => 'Glucides', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ', ',	
 		),	
 		'32000' => array(
-			'label' => 'dont sucres ', 
+			'label' => 'dont sucres', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ' ; ',	
 		),	
 		'25003' => array(
-			'label' => 'Protéines ', 
+			'label' => 'Protéines', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
-			'sep' => ' ; ',	
 		),	
 		'10004' => array(
-			'label' => 'Sel ', 
+			'label' => 'Sel', 
 			'unit' => 'g', 
 			'rnd' => 'A2', 
 			'bot' => 'S3',	
-			'sep' => '',	
 		),
 	);
 	$_SESSION['_arrondis'] = array(
@@ -155,7 +147,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 		),
 	);
 	$_SESSION['_formats'] = array(
-		'T' => 'Valeurs nutritionnelles moyennes pour 100g : ',	
+		'L1' => "Valeurs nutritionnelles moyennes pour 100g : Energie %sKJ / %sKcal ; Matières grasses %sg, dont acides gras saturés %sg ; Glucides %sg, dont sucres %sg ; Protéines %sg ; Sel %sg"
 	);
 		
 	
