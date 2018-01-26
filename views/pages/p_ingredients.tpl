@@ -19,7 +19,7 @@
 						~{if $_param.key eq '0'}~
 							~{#libnouveau#}~
 						~{else}~
-							~{#subtitle#}~&nbsp;~{$Ingredients.0.alim_nom_fr}~
+							~{#subtitle#}~&nbsp;<i class="fa fa-caret-right"></i> ~{$Ingredients.0.alim_nom_fr}~
 						~{/if}~
 						</span>
 

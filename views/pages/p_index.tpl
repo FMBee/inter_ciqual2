@@ -13,7 +13,7 @@
 				<div class="modal-dialog"  role="document">
 					<div class="modal-content">
 					
-						<div class="modal-header">
+						<div class="modal-header text-info">
 								<h4 class="modal-title title" id="modal-addrecipe-label">
 									~{#mdladdtitre#}~
 								</h4>

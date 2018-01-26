@@ -28,7 +28,7 @@
 									~{foreach $Documents as $document}~
 									
 										<tr>
-											<td align="left" style="font-size:130%">
+											<td align="left" style="font-size:120%">
 												<a href="~{$document.path|strip}~" target="blank">~{$document.nom|strip}~</a>
 											</td>
 											<td align="center">~{$document.type|strip}~</td>

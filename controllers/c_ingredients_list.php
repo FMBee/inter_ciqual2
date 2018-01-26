@@ -4,5 +4,5 @@
 	
 	$data = json_decode( file_get_contents($url), true );
 
-debug($data);
+// debug($data);
 	$oSmarty->assign('Ingredients', $data);

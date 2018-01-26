@@ -1,7 +1,7 @@
 <?php
 
 	$recipy = Recipes::getOne($pdo, $_SESSION['_recipy']['rec_id']);
-	
+//debug($recipy);	
 	$include = array_keys($_SESSION['_elements']);
 	
 	$totalqte = 0;
@@ -10,13 +10,14 @@
 
 	foreach ( $recipy as $ingredient ) {
 		
-		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&order=const_code&values=yes&key=' .$ingredient['rel_code'];
-		
+		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&values=yes&key=' .'%20'.trim($ingredient['rel_code']);	//attention à ce p... d'espace dans alim_code !
+debug($url);		
 		$nutriments = json_decode( file_get_contents($url), true );
+debug($nutriments);			
 		$result = array();
 		
 		foreach ( $nutriments as $nutriment ) {
-			
+debug($nutriment);			
 			if ( in_array(trim($nutriment['const_code']), $include, false) ) {
 				
 				$result[] = $nutriment;

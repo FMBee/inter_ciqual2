@@ -8,7 +8,7 @@
 	<div class="modal-dialog"  role="document">
 		<div class="modal-content">
 		
-			<div class="modal-header">
+			<div class="modal-header header-info">
 					<h4 class="modal-title title" id="modal-addingredient-label">
 						~{#mdladdtitre#}~
 					</h4>
