@@ -29,7 +29,7 @@ class Recipes {
 	}
 
 	/*
-	 * la dernière recette d'un user
+	 * la dernière recette du user
 	 */
 	public static function getFirst($pdo) {
 		

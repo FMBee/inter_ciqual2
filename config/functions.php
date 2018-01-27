@@ -209,6 +209,7 @@
 		
 		return isset ( $_SESSION ['__user_id__'] );
 	}
+	
 	function maj_user_ss($data) {
 		
 		$_SESSION['__user_id__'] 		= $data['usr_id'];

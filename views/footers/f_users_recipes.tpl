@@ -136,7 +136,7 @@
            			bootbox.confirm('Confirmez-vous la suppression de la recette ?',
                			function(result) {
 	                        if (result) {
-	                        	window.location.href = "~{codeUrl('users_recipes-users_recipes&parammode=del_rec')}~";
+	                        	window.location.href = "~{codeUrl('users_recipes-index&parammode=del_rec')}~";
 	                        }
        				});
 		        });

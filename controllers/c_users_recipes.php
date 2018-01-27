@@ -51,7 +51,8 @@
 		
 		${'C'.$code} = calculSeuil($code, ( $teneur * 100 / $totalqte ));
 	}
-	$label = sprintf(	$_SESSION['_formats']['L1'],
+	$label = "<b>{$_SESSION['_recipy']['rec_title']} :</b><br/>";
+	$label .= sprintf(	$_SESSION['_formats']['L1'],
 						$C327,
 						$C328,
 						$C40000,
@@ -65,7 +66,7 @@
 	Recipes::majOrAdd($pdo, array(
 								$_SESSION['_recipy']['rec_id'],
 								$_SESSION['_recipy']['rec_title'],
-								$label,
+								($_SESSION['_recipy']['rec_label'] = $label),
 								'-',
 							)
 	);

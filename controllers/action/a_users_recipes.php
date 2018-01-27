@@ -1,14 +1,13 @@
 <?php
 
 	$message = '';
+	array_walk( $_POST, 'trim_value' );
 	
 	/*
 	 * ajout ingrédient
 	 */
 	if ($_param['mode'] == 'add_ing') {
 	
-		array_walk( $_POST, 'trim_value' );
-		
 		$data = array(
 				'0',
 				$_SESSION['_recipy']['rec_id'],
@@ -36,8 +35,6 @@
 	 */
 	if ($_param['mode'] == 'maj_ing') {
 	
-		array_walk( $_POST, 'trim_value' );
-		
 		$data = array(
 				$_POST['majingredient-id'],
 				'0',
@@ -122,16 +119,17 @@
 				$_SESSION['_recipy']['rec_id'],
 				$_POST['chgrecipyname-nom'],
 				$_SESSION['_recipy']['rec_label'],
-				'-',
+				'0',
 		);
 		
 		$retour = Recipes::majOrAdd( $pdo, $data );
-		
+
 		App_Logs::Add( 	$pdo, 
 					4, 
 					'Modif. nom recette ' .$_SESSION['_recipy']['rec_id'], 
 					$_SESSION ['__user_id__']
 		);
+		$_SESSION['_recipy']['rec_title'] = $_POST['chgrecipyname-nom'];
 	}
 	
 	/*
@@ -141,13 +139,22 @@
 		
 		$retour = Recipes::delOne( $pdo, $_SESSION['_recipy']['rec_id'] );
 
+		$recipy = Recipes::getFirst($pdo);
+		
+		if ( count($recipy) == 0 ) {
+		
+			$_SESSION['_recipy'] = null;
+		}
+		else{
+			$_SESSION['_recipy']['rec_id'] = trim($recipy[0]['rec_id']);
+			$_SESSION['_recipy']['rec_title'] = trim($recipy[0]['rec_title']);
+			$_SESSION['_recipy']['rec_label'] = trim($recipy[0]['rec_label']);
+		}		
 		App_Logs::Add( 	$pdo, 
 					4, 
 					'suppression recette ' .$_SESSION['_recipy']['rec_id'], 
 					$_SESSION ['__user_id__']
 		);
-		$_SESSION['_recipy']['rec_id'] = Recipes::getFirst($pdo);
-		
 		$message = 'Recette supprimée';
 	}
 	
