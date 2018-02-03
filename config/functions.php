@@ -213,22 +213,22 @@
 	function maj_user_ss($data) {
 		
 		$_SESSION['__user_id__'] 		= $data['usr_id'];
-		$_SESSION ['__user_name__'] 	= $data ['usr_first_name'] . ' ' . $data ['usr_last_name'];
-		$_SESSION ['__user_login__'] 	= $data ['usr_login'];
-		$_SESSION ['__user_password__'] = $data ['usr_password'];
-		$_SESSION ['__user_mail__'] 	= $data ['usr_mail'];
-		$_SESSION ['__user_pro_id__'] 	= $data ['usr_pro_id'];
-		$_SESSION ['__user_profil__'] 	= $data ['pro_name'];
-		$_SESSION ['__user_access__'] 	= $data ['pro_access'];
-		$_SESSION ['__user_lang__']	 	= $data ['usr_lang'];
-		$_SESSION ['__user_form_lang__'] = __FORM_LANG_DEFAULT__;
-		$_SESSION ['__user_image__'] 	= $data ['usr_image_path'];
+		$_SESSION['__user_name__'] 		= $data['usr_login'];		//['usr_first_name'] . ' ' . $data['usr_last_name'];
+		$_SESSION['__user_login__'] 	= $data['usr_login'];
+		$_SESSION['__user_password__'] 	= $data['usr_password'];
+		$_SESSION['__user_mail__'] 		= $data['usr_mail'];
+		$_SESSION['__user_pro_id__'] 	= $data['usr_pro_id'];
+		$_SESSION['__user_profil__'] 	= $data['pro_name'];
+		$_SESSION['__user_access__'] 	= $data['pro_access'];
+		$_SESSION['__user_lang__']	 	= $data['usr_lang'];
+		$_SESSION['__user_form_lang__'] = __FORM_LANG_DEFAULT__;
+		$_SESSION['__user_image__'] 	= $data['usr_image_path'];
 		
-		$_SESSION ['__admin_mode__'] 	= ($data ['pro_access'] > __ADMIN_MINACCESS__);
-		$_SESSION ['__root_mode__'] 	= ($data ['pro_access'] == '999');
+		$_SESSION['__admin_mode__'] 	= ($data['pro_access'] > __ADMIN_MINACCESS__);
+		$_SESSION['__root_mode__'] 	= ($data['pro_access'] == '999');
 		
-		if ($_SERVER ['__app_params__'] ['__APP_INTERNATIONAL__']) {
-			maj_lang_ss ( $data ['usr_lang'] );
+		if ($_SERVER['__app_params__']['__APP_INTERNATIONAL__']) {
+			maj_lang_ss ( $data['usr_lang'] );
 		}
 		
 		// positionnement recette de départ

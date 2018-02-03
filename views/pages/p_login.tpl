@@ -15,7 +15,7 @@
 
 					<div class="panel-body">
 
-						<form action="~{codeUrl('login-')}~" class="login-wrapper"
+						<form action="~{codeUrl('login-index')}~" class="login-wrapper"
 							method="post">
 
 							~{if $smarty.server.__app_params__['__APP_MAINTAIN__']}~

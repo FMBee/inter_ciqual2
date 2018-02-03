@@ -43,6 +43,8 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 
 	myDefine('__APP_TITLE__' 			, 'NutriVal' ); // titre appli
 	myDefine('__APP_VERSION__' 			, 'v.1.01' ); // version appli
+	myDefine('__APP_ADDRESS__' 			, 'http://localhost/workdev/inter_ciqual2/');
+	
 	myDefine('__PWD_INIT__' 			, 'Zz0Zz0Zz0' ); // initialisation du mot de passe user
 	myDefine('__LOG_TRY__' 				, 3 ); // nb d'essai de login avant récupération
 	myDefine('__LOG_IMG__' 				, 'bg_login.jpg' ); // background
@@ -58,8 +60,10 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 // 	myDefine('__CIQUAL_API__' 			, 'http://nautilusweb.fr/ciqual_api/ciqual_api.php' ); // serveur Ciqual	
 	myDefine('__CIQUAL_API__' 			, 'http://localhost/workdev/ciqual2_api/ciqual_api.php' ); // serveur Ciqual	
 	myDefine('__CIQUAL_ACC1__' 			, '?table=alim&where=xxx&mode=_AAC' ); 	// Ajax_AC search ingredients	
-// 	myDefine('__CIQUAL_ACC2__' 			, '?table=categories&where=xxx&mode=_AAC' ); 	// Ajax_AC search categories	
 
+
+	myDefine('__MAILER_PORT__' 			, 587);
+	myDefine('__MAILER_SECU__' 			, 'STARTTLS');
 	myDefine('__MAILER_HOST__' 			, 'smtp.sfr.fr');
 	myDefine('__MAILER_USER__' 			, 'f.mevollon@sfr.fr');
 	myDefine('__MAILER_PWD__' 			, 'Wagga2446');
@@ -177,4 +181,3 @@ function myDefine($var, $value) {
 
 	if (! defined($var)) 	define($var, $value);
 }
-?>	

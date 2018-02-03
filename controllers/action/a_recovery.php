@@ -14,29 +14,52 @@ if(isset($_POST['email'])) {
 
 				$code .= mt_rand(0,9);
 			}
-//passage par session			
 
-			$_SESSION['__app_recovery__']['useremail'] = $email;
-			$_SESSION['__app_recovery__']['usercode'] = $code;
-
-//passage par database
-//on enregistre/modifie une ligne de récupération
-
-			// $insert = App_Recovery::getOne ($pdo, $email);
-
-			// App_Recovery::majOrAdd ($pdo, array( 
-			// 	$insert,
-			// 	$email,
-			// 	$code
-			// ) );
-
-			recoveryMail($data, $code);
-
-			$oSmarty->assign ( 'ctrlMessage', 'Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie' );
+			$html = '
+				<html>
+				<body>
+					<br />
+					Bonjour,<br />
+					Vous avez demandé la réinitialisation de votre mot de passe ' . __APP_TITLE__ . '<br />
+					<br />
+					Votre code de confirmation est le suivant : <b>' .$code .'</b>
+				</body>
+				</html>
+				';
+						
+			$result = sendMail ( 	$data ['usr_login'],
+									utf8_decode('Réinitialisation de votre mot de passe ' .__APP_TITLE__ .' - ' .date('d/m/Y H:i')),
+									$html
+			);
 			
-			header ( 'Location: ' . codeUrl ( '-recovery&paramsection=code'.
-						'&paramalert=Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie'
-			));
+			if($result[0]) {
+			
+	//passage par session			
+	
+				$_SESSION['__app_recovery__']['useremail'] = $email;
+				$_SESSION['__app_recovery__']['usercode'] = $code;
+	
+	//passage par database
+	//on enregistre/modifie une ligne de récupération
+	
+				// $insert = App_Recovery::getOne ($pdo, $email);
+	
+				// App_Recovery::majOrAdd ($pdo, array( 
+				// 	$insert,
+				// 	$email,
+				// 	$code
+				// ) );
+
+				$oSmarty->assign ( 'ctrlMessage', 'Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie' );
+				
+				header( 'Location: ' .codeUrl( '-recovery&paramsection=code'
+												.'&paramalert=Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie'
+											  )
+				);
+			}
+			else{
+				$oSmarty->assign ( 'ctrlMessage', $result[1] );
+			}
 		}
 		else {
 			$oSmarty->assign ( 'ctrlMessage', 'Ce compte n\'est pas encore activé');
@@ -72,22 +95,3 @@ else{
 	$oSmarty->assign('ctrlMessage', 'Erreur dans la procédure');
 }
 
-function recoveryMail($data, $code) {
-
-	$html = '
-	<html>
-	<body>
-		<br />
-		Bonjour,<br />
-		Vous avez demandé la réinitialisation de votre mot de passe ' . __APP_TITLE__ . '<br />
-		<br />
-		Votre code de confirmation est le suivant : <b>' .$code .'</b>
-	</body>
-	</html>
-	';
-
-	return sendMail ( 	$data ['usr_login'], 
-						utf8_decode('Réinitialisation de votre mot de passe ' .__APP_TITLE__ .' - ' .date('d/m/Y H:i')), 
-						$html 
-	);
-}

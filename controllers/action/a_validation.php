@@ -76,7 +76,7 @@ function activationMail($data, $code) {
 		Vous venez de créer votre compte ' . __APP_TITLE__ . '<br />
 		<br />
 		Pour activer votre compte cliquez sur le lien suivant : 
-		<a href="' .$_SERVER['__app_params__']['__APP_FRONT_ADDRESS__'] 
+		<a href="'  .__APP_ADDRESS__ 
 					.codeUrl( 'activation-login&paramemail=' 
 					.$data ['usr_login'] 
 					.'&paramactivekey=' .$code ) 

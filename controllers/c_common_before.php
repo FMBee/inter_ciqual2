@@ -19,9 +19,9 @@ function sendMail($adresse, $objet, $message) {
 	
 	$mail->isSMTP();
 	$mail->SMTPAuth = true;
-	$mail->SMTPSecure = "ssl";
-	$mail->Port = 465;
-
+	$mail->SMTPSecure =__MAILER_SECU__;
+	$mail->Port 	= __MAILER_PORT__;
+	
 	$mail->Host 	= __MAILER_HOST__;
 	$mail->Username = __MAILER_USER__;
 	$mail->Password = __MAILER_PWD__;

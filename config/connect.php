@@ -2,7 +2,7 @@
 
 // Se connecter a la base
 try {
-	$pdo = new PDO ( 'mysql:host=localhost;dbname=inter_ciqual2', 'root', '' );
+	$pdo = new PDO ( 'mysql:host=localhost;dbname=nutrival', 'root', '' );
 	
 	$pdo->query ( "SET NAMES UTF8" );
 	
@@ -10,4 +10,3 @@ try {
 	echo "Problème de connexion à la base de donnée...";
 	die ();
 }
-?>	

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 26 Janvier 2018 à 19:22
+-- Généré le :  Sam 03 Février 2018 à 16:09
 -- Version du serveur :  10.1.13-MariaDB
 -- Version de PHP :  5.6.23
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `inter_ciqual2`
+-- Base de données :  `nutrival`
 --
 
 DELIMITER $$
@@ -43,8 +43,7 @@ UPDATE `app_parameters`
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `recipes_lines_mjad` (IN `_rel_id` INT(11), IN `_rel_rec_id` INT(11), IN `_rel_code` VARCHAR(20), IN `_rel_qte` FLOAT, OUT `_insertedid` INT(11))  MODIFIES SQL DATA
 BEGIN
-   SELECT 0 into _insertedid;	#code erreur
-
+   SELECT 0 into _insertedid;	
    IF _rel_id <= 0
    THEN
       INSERT INTO recipes_lines( 
@@ -71,8 +70,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `recipes_mjad` (IN `_rec_id` INT(255), IN `_rec_title` VARCHAR(255), IN `_rec_label` TEXT, IN `_usr_id` INT(11), OUT `_insertedid` INT(11))  MODIFIES SQL DATA
 BEGIN
-   SELECT 0 into _insertedid;	#code erreur
-
+   SELECT 0 into _insertedid;	
    IF _rec_id <= 0
    THEN
       INSERT INTO recipes( 
@@ -462,7 +460,22 @@ INSERT INTO `app_logs` (`log_id`, `log_lty_id`, `log_date`, `log_description`, `
 (265, 3, '2018-01-26 09:38:40', '', 0, 1),
 (266, 3, '2018-01-26 16:16:40', '', 0, 1),
 (267, 4, '2018-01-26 17:23:42', 'ajout ingrédient code: 26177 / recette: 2', 0, 1),
-(268, 4, '2018-01-26 18:19:02', 'ajout ingrédient code: 40056 / recette: 2', 0, 1);
+(268, 4, '2018-01-26 18:19:02', 'ajout ingrédient code: 40056 / recette: 2', 0, 1),
+(269, 4, '2018-01-27 17:50:07', 'Modif. nom recette 2', 0, 1),
+(270, 4, '2018-01-27 17:56:01', 'Modif. nom recette 2', 0, 1),
+(271, 4, '2018-01-27 18:00:02', 'nouvelle recette: 4 / Coq en pâte', 0, 1),
+(272, 4, '2018-01-27 18:01:04', 'Modif. nom recette 4', 0, 1),
+(273, 4, '2018-01-27 18:04:28', 'Modif. nom recette 4', 0, 1),
+(274, 4, '2018-01-27 18:04:45', 'Modif. nom recette 4', 0, 1),
+(275, 4, '2018-01-27 18:11:49', 'Modif. nom recette 2', 0, 1),
+(276, 4, '2018-01-27 18:14:24', 'Modif. nom recette 4', 0, 1),
+(277, 4, '2018-01-27 18:14:36', 'Modif. nom recette 4', 0, 1),
+(278, 4, '2018-01-27 18:21:36', 'suppression recette 4', 0, 1),
+(279, 4, '2018-01-27 18:29:03', 'suppression recette 4', 0, 1),
+(280, 4, '2018-01-27 18:37:50', 'suppression recette 4', 0, 1),
+(281, 4, '2018-01-27 18:38:53', 'suppression recette 2', 0, 1),
+(282, 4, '2018-01-27 18:46:57', 'suppression recette 2', 0, 1),
+(283, 3, '2018-02-03 15:04:24', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -483,6 +496,8 @@ CREATE TABLE `app_logs_details` (
 ,`usr_last_name` varchar(255)
 ,`usr_login` varchar(255)
 ,`usr_password` varchar(255)
+,`usr_confirmed` int(1)
+,`usr_activekey` varchar(255)
 ,`usr_mail` varchar(255)
 ,`usr_pro_id` int(255)
 ,`usr_lang` varchar(2)
@@ -490,35 +505,6 @@ CREATE TABLE `app_logs_details` (
 ,`usr_in_date` timestamp
 ,`usr_out_date` timestamp
 ,`usr_flag` char(1)
-);
-
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `app_logs_last_login`
---
-CREATE TABLE `app_logs_last_login` (
-`log_id` int(255)
-,`log_lty_id` int(255)
-,`log_date` timestamp
-,`log_description` varchar(255)
-,`log_cli_id` int(255)
-,`log_usr_id` int(255)
-,`lty_id` int(255)
-,`lty_name` varchar(50)
-,`usr_id` int(255)
-,`usr_first_name` varchar(255)
-,`usr_last_name` varchar(255)
-,`usr_login` varchar(255)
-,`usr_password` varchar(255)
-,`usr_mail` varchar(255)
-,`usr_pro_id` int(255)
-,`usr_lang` varchar(2)
-,`usr_image_path` varchar(255)
-,`usr_in_date` timestamp
-,`usr_out_date` timestamp
-,`usr_flag` char(1)
-,`log_max_date_login` timestamp
 );
 
 -- --------------------------------------------------------
@@ -562,8 +548,8 @@ CREATE TABLE `app_parameters` (
 
 INSERT INTO `app_parameters` (`prt_id`, `prt_name`, `prt_value`, `prt_apt_id`, `prt_flag`) VALUES
 (1, '__APP_MAINTAIN__', '0', 2, NULL),
-(2, '__APP_DEBUG__', '1', 2, NULL),
-(3, '__APP_FRONT_ADDRESS__', 'http://nautilusweb.fr/inter_ciqual/', 1, NULL),
+(2, '__APP_DEBUG__', '0', 2, NULL),
+(3, '__APP_FRONT_ADDRESS__', '', 1, NULL),
 (4, '__APP_INTERNATIONAL__', '0', 2, NULL),
 (5, '__APP_USER_LOGO__', '0', 2, NULL),
 (6, '__APP_USER_CREATE__', '1', 2, NULL),
@@ -705,22 +691,6 @@ INSERT INTO `app_translate_lines` (`atl_id`, `atl_atr_id`, `atl_data_id`, `atl_l
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `parametres_details`
---
-CREATE TABLE `parametres_details` (
-);
-
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `parametres_parameters_details`
---
-CREATE TABLE `parametres_parameters_details` (
-);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `recipes`
 --
 
@@ -738,9 +708,10 @@ CREATE TABLE `recipes` (
 --
 
 INSERT INTO `recipes` (`rec_id`, `rec_usr_id`, `rec_title`, `rec_label`, `rec_update`, `rec_flag`) VALUES
-(1, 1, 'Bloody Mary', 'Valeurs nutritionnelles moyennes pour 100g : Energie 1051KJ/253Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 2.9g, dont sucres <0.5g ; Protéines <0.5g ; Sel <0.01g', '2018-01-26 18:15:41', NULL),
-(2, 1, 'Pâté de truffe', 'Valeurs nutritionnelles moyennes pour 100g : Energie 722KJ / 172Kcal ; Matières grasses 5.9g, dont acides gras saturés 1.7g ; Glucides <0.5g, dont sucres <0.5g ; Protéines 23.1g ; Sel 2.07g', '2018-01-26 18:19:03', NULL),
-(3, 4, 'Ragout de mouton', 'Valeurs nutritionnelles moyennes pour 100g : Energie 1104KJ, Energie 265Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 6.5g, dont sucres 4.0g ; Protéines <0.5g ; Sel <0.01g', '2018-01-20 10:27:11', NULL);
+(1, 1, 'Bloody Mary', '<b>Bloody Mary :</b><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 1051KJ / 253Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 2.9g, dont sucres <0.5g ; Protéines <0.5g ; Sel <0.01g', '2018-01-27 18:16:23', NULL),
+(2, 1, 'Pâté de truffe', '<b>Pâté de truffe :</b><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 722KJ / 172Kcal ; Matières grasses 5.9g, dont acides gras saturés 1.7g ; Glucides <0.5g, dont sucres <0.5g ; Protéines 23.1g ; Sel 2.07g', '2018-01-27 18:11:49', NULL),
+(3, 4, 'Ragout de mouton', 'Valeurs nutritionnelles moyennes pour 100g : Energie 1104KJ, Energie 265Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 6.5g, dont sucres 4.0g ; Protéines <0.5g ; Sel <0.01g', '2018-01-20 10:27:11', NULL),
+(4, 1, 'Coq en pâte aux herbes', '<b>Coq en pâte aux herbes :</b><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 2580KJ / 623Kcal ; Matières grasses 49.1g, dont acides gras saturés 8.4g ; Glucides 14.8g, dont sucres 5.9g ; Protéines 26.1g ; Sel 0.02g', '2018-01-27 18:46:57', 'D');
 
 -- --------------------------------------------------------
 
@@ -788,7 +759,8 @@ INSERT INTO `recipes_lines` (`rel_id`, `rel_rec_id`, `rel_code`, `rel_qte`, `rel
 (17, 3, '1015', 10, '2018-01-19 16:54:32', NULL),
 (18, 3, '1000', 60, '2018-01-20 10:05:46', NULL),
 (19, 2, '26177', 50, '0000-00-00 00:00:00', NULL),
-(20, 2, '40056', 150, '0000-00-00 00:00:00', NULL);
+(20, 2, '40056', 150, '0000-00-00 00:00:00', NULL),
+(21, 4, ' 15001 ', 50, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -819,15 +791,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`usr_id`, `usr_first_name`, `usr_last_name`, `usr_login`, `usr_password`, `usr_confirmed`, `usr_activekey`, `usr_mail`, `usr_pro_id`, `usr_lang`, `usr_image_path`, `usr_in_date`, `usr_out_date`, `usr_flag`) VALUES
 (1, 'Emilie', 'FOSTER', 'utilisateur1', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, '', 'test2016@mdp', 3, 'fr', 'views/img/profiles/usertile11.bmp', '2016-02-26 09:45:28', '0000-00-00 00:00:00', NULL),
-(2, 'Omari', 'SHARIF', '', '', 1, '', 'infodom123@gmail.com', 2, 'fr', 'views/img/profiles/usertile37.bmp', '2016-02-26 09:45:28', '0000-00-00 00:00:00', NULL),
-(4, 'RootNautilus', '', 'rootnautilus', '$2y$10$r3jHkrimjtD8S5n.2C2AQujZR9.Pab/BA617f9vUgr6/fi7YRKk92', 1, '', '', 1, 'fr', 'views/img/profiles/usertile37.bmp', '2016-03-02 19:07:29', '0000-00-00 00:00:00', NULL),
-(5, 'Jean', 'BILLONCE', 'utilisateur2', '$2y$10$.FZxxFwzo4Nq03gqORbFHeeSkb4gN2TW3OCzhSEroG7NEhN/cQQrG', 1, '0', '', 2, 'fr', 'views/img/profiles/usertile11.bmp', '2016-04-03 06:10:36', '0000-00-00 00:00:00', NULL),
-(22, 'test', 'f.mevollon@gmail.com', 'f.mevollon@gmail.com', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, '4f9e9a408e628c49f4c9143963be5aec', 'f.mevollon@gmail.com', 4, 'fr', 'views/img/profiles/usertile37.bmp', '2017-08-31 12:43:53', '0000-00-00 00:00:00', NULL),
-(31, 'Clint22', 'EASTWOOD', 'commercial1', '$2y$10$cwMjWqcrcacI2UfxZABqau7cikB3YPtNvuHoEvCYQhXzPdH9p3KYC', 1, '0', '', 4, 'fr', 'views/img/profiles/profile_logo.png', '2017-09-03 17:09:33', '0000-00-00 00:00:00', NULL),
-(34, '', 'AnotherTest', 'utilisateur3', '$2y$10$1Be/dc8MFfEzNYbtQUsnpeXi/IY/p8ETeMd.qAw499jSOZqt6tutW', 1, '', '', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-07 15:15:28', '0000-00-00 00:00:00', NULL),
-(39, 'Fred', 'f.mevollon@nautilusweb.fr', 'f.mevollon@nautilusweb.fr', '$2y$10$ZDYSS17/rZ81NiRE8WlRqek.m601fFTrw48r1sfNLXWgx8HPVmbai', 1, 'bc0d83da033a9957f4d1d71eebf92500', 'f.mevollon@nautilusweb.fr', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-08 13:51:44', '0000-00-00 00:00:00', NULL),
-(42, '', 'cnygren46@gmail.com', 'cnygren46@gmail.com', '$2y$10$gibOKpABwlgA2dR4EwnkmeodBjxcfRjdcpvNEb7rWdkM8P/hddLJu', 1, 'b7c3e6526a22b1ecf33cadc47a3d2996', 'cnygren46@gmail.com', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-12-09 16:24:14', '0000-00-00 00:00:00', NULL),
-(43, '', 'alexandre.Mak@zest-haccp.fr', 'alexandre.Mak@zest-haccp.fr', '$2y$10$07pGETsnSgjFeMP9fDxdEuyYdWX6EkKZa.tpuSUlm0ChKPuxgRR2.', 0, '0ddb25652ec67f4e920125ed744f3a03', 'alexandre.Mak@zest-haccp.fr', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-12-21 08:37:18', '0000-00-00 00:00:00', NULL);
+(4, 'RootNautilus', '', 'rootnautilus', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, '', '', 1, 'fr', 'views/img/profiles/usertile37.bmp', '2016-03-02 19:07:29', '0000-00-00 00:00:00', NULL),
+(39, 'Fred', 'f.mevollon@nautilusweb.fr', 'f.mevollon@nautilusweb.fr', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, 'bc0d83da033a9957f4d1d71eebf92500', 'f.mevollon@nautilusweb.fr', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-08 13:51:44', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -885,16 +850,7 @@ INSERT INTO `users_profiles` (`pro_id`, `pro_name`, `pro_access`, `pro_flag`) VA
 --
 DROP TABLE IF EXISTS `app_logs_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_details`  AS  select `app_logs`.`log_id` AS `log_id`,`app_logs`.`log_lty_id` AS `log_lty_id`,`app_logs`.`log_date` AS `log_date`,`app_logs`.`log_description` AS `log_description`,`app_logs`.`log_cli_id` AS `log_cli_id`,`app_logs`.`log_usr_id` AS `log_usr_id`,`app_logs_types`.`lty_id` AS `lty_id`,`app_logs_types`.`lty_name` AS `lty_name`,`users`.`usr_id` AS `usr_id`,`users`.`usr_first_name` AS `usr_first_name`,`users`.`usr_last_name` AS `usr_last_name`,`users`.`usr_login` AS `usr_login`,`users`.`usr_password` AS `usr_password`,`users`.`usr_mail` AS `usr_mail`,`users`.`usr_pro_id` AS `usr_pro_id`,`users`.`usr_lang` AS `usr_lang`,`users`.`usr_image_path` AS `usr_image_path`,`users`.`usr_in_date` AS `usr_in_date`,`users`.`usr_out_date` AS `usr_out_date`,`users`.`usr_flag` AS `usr_flag` from ((`app_logs` join `app_logs_types` on((`app_logs`.`log_lty_id` = `app_logs_types`.`lty_id`))) left join `users` on((`app_logs`.`log_usr_id` = `users`.`usr_id`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `app_logs_last_login`
---
-DROP TABLE IF EXISTS `app_logs_last_login`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_last_login`  AS  select `app_logs_details`.`log_id` AS `log_id`,`app_logs_details`.`log_lty_id` AS `log_lty_id`,`app_logs_details`.`log_date` AS `log_date`,`app_logs_details`.`log_description` AS `log_description`,`app_logs_details`.`log_cli_id` AS `log_cli_id`,`app_logs_details`.`log_usr_id` AS `log_usr_id`,`app_logs_details`.`lty_id` AS `lty_id`,`app_logs_details`.`lty_name` AS `lty_name`,`app_logs_details`.`usr_id` AS `usr_id`,`app_logs_details`.`usr_first_name` AS `usr_first_name`,`app_logs_details`.`usr_last_name` AS `usr_last_name`,`app_logs_details`.`usr_login` AS `usr_login`,`app_logs_details`.`usr_password` AS `usr_password`,`app_logs_details`.`usr_mail` AS `usr_mail`,`app_logs_details`.`usr_pro_id` AS `usr_pro_id`,`app_logs_details`.`usr_lang` AS `usr_lang`,`app_logs_details`.`usr_image_path` AS `usr_image_path`,`app_logs_details`.`usr_in_date` AS `usr_in_date`,`app_logs_details`.`usr_out_date` AS `usr_out_date`,`app_logs_details`.`usr_flag` AS `usr_flag`,max(`app_logs_details`.`log_date`) AS `log_max_date_login` from `app_logs_details` where (`app_logs_details`.`log_lty_id` = 3) group by `app_logs_details`.`log_cli_id`,`app_logs_details`.`log_usr_id`,`app_logs_details`.`usr_first_name`,`app_logs_details`.`usr_last_name` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_logs_details`  AS  select `app_logs`.`log_id` AS `log_id`,`app_logs`.`log_lty_id` AS `log_lty_id`,`app_logs`.`log_date` AS `log_date`,`app_logs`.`log_description` AS `log_description`,`app_logs`.`log_cli_id` AS `log_cli_id`,`app_logs`.`log_usr_id` AS `log_usr_id`,`app_logs_types`.`lty_id` AS `lty_id`,`app_logs_types`.`lty_name` AS `lty_name`,`users`.`usr_id` AS `usr_id`,`users`.`usr_first_name` AS `usr_first_name`,`users`.`usr_last_name` AS `usr_last_name`,`users`.`usr_login` AS `usr_login`,`users`.`usr_password` AS `usr_password`,`users`.`usr_confirmed` AS `usr_confirmed`,`users`.`usr_activekey` AS `usr_activekey`,`users`.`usr_mail` AS `usr_mail`,`users`.`usr_pro_id` AS `usr_pro_id`,`users`.`usr_lang` AS `usr_lang`,`users`.`usr_image_path` AS `usr_image_path`,`users`.`usr_in_date` AS `usr_in_date`,`users`.`usr_out_date` AS `usr_out_date`,`users`.`usr_flag` AS `usr_flag` from ((`app_logs` join `app_logs_types` on((`app_logs`.`log_lty_id` = `app_logs_types`.`lty_id`))) left join `users` on((`app_logs`.`log_usr_id` = `users`.`usr_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -913,24 +869,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `app_translate_details`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `app_translate_details`  AS  select `app_translate`.`atr_table` AS `atr_table`,`app_translate`.`atr_data_field` AS `atr_data_field`,`app_translate_lines`.`atl_data_id` AS `atl_data_id`,`app_translate_lines`.`atl_lang` AS `atl_lang`,`app_translate_lines`.`atl_data_lib` AS `atl_data_lib` from (`app_translate` join `app_translate_lines` on((`app_translate`.`atr_id` = `app_translate_lines`.`atl_atr_id`))) order by `app_translate`.`atr_table`,`app_translate`.`atr_data_field`,`app_translate_lines`.`atl_data_id`,`app_translate_lines`.`atl_lang` ;
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `parametres_details`
---
-DROP TABLE IF EXISTS `parametres_details`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `parametres_details`  AS  select `parametres`.`par_id` AS `par_id`,`parametres`.`par_societe` AS `par_societe`,`parametres`.`par_rue` AS `par_rue`,`parametres`.`par_complement` AS `par_complement`,`parametres`.`par_codepostal` AS `par_codepostal`,`parametres`.`par_ville` AS `par_ville`,`parametres`.`par_pays` AS `par_pays`,`parametres`.`par_email` AS `par_email`,`parametres`.`par_responsable` AS `par_responsable`,`parametres`.`par_telephone` AS `par_telephone`,`parametres`.`par_mobile` AS `par_mobile`,`parametres`.`par_siret` AS `par_siret`,`parametres`.`par_codenaf` AS `par_codenaf`,`parametres`.`par_iban` AS `par_iban`,`parametres`.`par_param1` AS `par_param1`,`parametres`.`par_param2` AS `par_param2`,`parametres`.`par_param3` AS `par_param3`,`parametres`.`par_param4` AS `par_param4`,`parametres`.`par_param5` AS `par_param5`,`parametres`.`par_param6` AS `par_param6`,`parametres`.`par_param7` AS `par_param7`,`parametres`.`par_param8` AS `par_param8`,`parametres`.`par_param9` AS `par_param9`,`parametres`.`par_tmp1` AS `par_tmp1`,`parametres`.`par_tmp2` AS `par_tmp2`,`parametres`.`par_tmp3` AS `par_tmp3`,`parametres`.`par_flag` AS `par_flag`,`parametres`.`par_update` AS `par_update` from `parametres` ;
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `parametres_parameters_details`
---
-DROP TABLE IF EXISTS `parametres_parameters_details`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `parametres_parameters_details`  AS  select `parametres`.`par_id` AS `par_id`,`parametres`.`par_societe` AS `par_societe`,`parametres`.`par_rue` AS `par_rue`,`parametres`.`par_complement` AS `par_complement`,`parametres`.`par_codepostal` AS `par_codepostal`,`parametres`.`par_ville` AS `par_ville`,`parametres`.`par_pays` AS `par_pays`,`parametres`.`par_email` AS `par_email`,`parametres`.`par_responsable` AS `par_responsable`,`parametres`.`par_telephone` AS `par_telephone`,`parametres`.`par_mobile` AS `par_mobile`,`parametres`.`par_siret` AS `par_siret`,`parametres`.`par_codenaf` AS `par_codenaf`,`parametres`.`par_iban` AS `par_iban`,`parametres`.`par_param1` AS `par_param1`,`parametres`.`par_param2` AS `par_param2`,`parametres`.`par_param3` AS `par_param3`,`parametres`.`par_param4` AS `par_param4`,`parametres`.`par_param5` AS `par_param5`,`parametres`.`par_param6` AS `par_param6`,`parametres`.`par_param7` AS `par_param7`,`parametres`.`par_param8` AS `par_param8`,`parametres`.`par_param9` AS `par_param9`,`parametres`.`par_tmp1` AS `par_tmp1`,`parametres`.`par_tmp2` AS `par_tmp2`,`parametres`.`par_tmp3` AS `par_tmp3`,`parametres`.`par_flag` AS `par_flag`,`parametres`.`par_update` AS `par_update`,`parametres_parameters`.`ppa_id` AS `ppa_id`,`parametres_parameters`.`ppa_par_id` AS `ppa_par_id`,`parametres_parameters`.`ppa_name` AS `ppa_name`,`parametres_parameters`.`ppa_type` AS `ppa_type`,`parametres_parameters`.`ppa_length` AS `ppa_length`,`parametres_parameters`.`ppa_validation` AS `ppa_validation`,`parametres_parameters`.`ppa_default` AS `ppa_default`,`parametres_parameters`.`ppa_default_when` AS `ppa_default_when`,`parametres_parameters`.`ppa_readonly` AS `ppa_readonly`,`parametres_parameters`.`ppa_placeholder` AS `ppa_placeholder`,`parametres_parameters`.`ppa_input_mode` AS `ppa_input_mode`,`parametres_parameters`.`ppa_values_list` AS `ppa_values_list`,`parametres_parameters`.`ppa_required` AS `ppa_required`,`parametres_parameters`.`ppa_order` AS `ppa_order`,`parametres_parameters`.`ppa_flag` AS `ppa_flag`,`parametres_parameters_values`.`ppv_id` AS `ppv_id`,`parametres_parameters_values`.`ppv_par_id` AS `ppv_par_id`,`parametres_parameters_values`.`ppv_ppa_id` AS `ppv_ppa_id`,`parametres_parameters_values`.`ppv_value` AS `ppv_value` from ((`parametres` join `parametres_parameters` on((`parametres`.`par_id` = `parametres_parameters`.`ppa_par_id`))) left join `parametres_parameters_values` on(((`parametres`.`par_id` = `parametres_parameters_values`.`ppv_par_id`) and (`parametres_parameters`.`ppa_id` = `parametres_parameters_values`.`ppv_ppa_id`)))) where isnull(`parametres_parameters`.`ppa_flag`) ;
 
 -- --------------------------------------------------------
 
@@ -1032,7 +970,7 @@ ALTER TABLE `users_profiles`
 -- AUTO_INCREMENT pour la table `app_logs`
 --
 ALTER TABLE `app_logs`
-  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=269;
+  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=284;
 --
 -- AUTO_INCREMENT pour la table `app_parameters`
 --
@@ -1052,12 +990,12 @@ ALTER TABLE `app_translate_lines`
 -- AUTO_INCREMENT pour la table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `recipes_lines`
 --
 ALTER TABLE `recipes_lines`
-  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
