@@ -66,9 +66,9 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	myDefine('__MAILER_SECU__' 			, 'STARTTLS');
 	myDefine('__MAILER_HOST__' 			, 'smtp.sfr.fr');
 	myDefine('__MAILER_USER__' 			, 'f.mevollon@sfr.fr');
-	myDefine('__MAILER_PWD__' 			, 'Wagga2446');
+	myDefine('__MAILER_PWD__' 			, '----');
 	myDefine('__MAILER_FROM__' 			, 'f.mevollon@sfr.fr');
-	myDefine('__MAILER_REPLY__' 		, 'f.mevollon@gmail.com');
+	myDefine('__MAILER_REPLY__' 			, 'f.mevollon@gmail.com');
 	
 	
 /*
