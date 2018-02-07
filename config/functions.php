@@ -52,86 +52,8 @@
 	
 	function codeUrl($url) {
 		
-		/*
-		 * lorsque l'Url est configuree en footer par JS avec des parametres dynamiques
-		 * on appelle le module AJAX[x_urlcode.php] avec l'url à coder
-		 * qui lui renvoie la fonction codeUrl()
-		 */
-		// debug ($url);
-		$url = htaccess ( $url );
-		
-		$code = '';
-		$decal = rand ( 1, 9 );
-		
-		for($i = 0, $j = strlen ( $url ); $i < $j; $i ++) {
-			
-			$hex = dechex ( ord ( substr ( $url, $i, 1 ) ) );
-			$code .= chr ( ord ( substr ( $hex, 0, 1 ) ) + $decal ) . chr ( ord ( substr ( $hex, 1, 1 ) ) + $decal );
-		}
-		
-		return 'index.php?cmd=' . (empty ( $code ) ? '0' : $code .strval($decal));
-	}
-	
-	function decodeUrl($url) {
-	
-		$decal = (int)substr($url, -1, 1);
-		$url = substr($url, 0, -1);
-		$decode = '';
-		
-		for($i = 0; $i < strlen ( $url ); $i += 2) {
-			
-			$hex = substr ( $url, $i, 2 );
-			$decode .= chr ( hexdec ( chr ( ord ( substr ( $hex, 0, 1 ) ) - $decal ) . chr ( ord ( substr ( $hex, 1, 1 ) ) - $decal ) ) );
-		}
-		
-		return $decode;
-	}
-	
-	function htaccess($url) {
-	
-		$isParams = strpos ( $url, '&' );
-		
-		if ($isParams) {
-			
-			$params = substr ( $url, $isParams );
-			$actionpage = substr ( $url, 0, $isParams );
-		} else {
-			$params = '';
-			$actionpage = $url;
-		}
-		
-		if ($url == 'index') {
-			
-			$url = '';
-		} else {
-			$pos = strpos ( $actionpage, '-' );
-			
-			$action = substr ( $actionpage, 0, $pos );
-			$action = (empty ( $action ) ? '' : 'action=' . $action);
-			
-			$page = substr ( $actionpage, $pos + 1 );
-			$page = (empty ( $page ) ? '' : 'page=' . $page);
-			
-			if (! empty ( $action ) && ! empty ( $page ))
-				$action .= '&';
-			
-			$url = $action . $page . $params;
-		}
-		
 		return $url;
 	}
-	
-	function getParams($chaine) {
-		
-		foreach ( explode ( '&', $chaine ) as $value ) {
-			
-			$egal = strpos ( $value, '=' );
-			
-			$_GET [substr ( $value, 0, $egal )] = substr ( $value, $egal + 1 );
-		}
-	}
-	
-	// function precPageOn() { return !empty($_SERVER['HTTP_REFERER']); }
 	
 	function precPage($code = 0) {
 		
@@ -155,8 +77,7 @@
 									'', // pas d'action précédente
 									'-' // - au lieu de page=
 								), 
-								// decodeUrl($last['QUERY'])
-								decodeUrl ( $last ['GET'] ['cmd'] ) 
+								$last['QUERY']
 					);
 					if (preg_match (	
 							'/&paramkey=(0&.+|0$)/', // si precedente insertion

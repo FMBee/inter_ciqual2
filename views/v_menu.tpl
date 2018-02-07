@@ -63,7 +63,7 @@
 
 	          <ul>
 	            <li class="~{if $smarty.get.page=='index' || $smarty.get.page=='users_recipes'}~active~{/if}~">
-	              <a href="~{codeUrl('-index')}~">
+	              <a href="~{codeUrl('index')}~">
 	                <i class="fa fa-home"></i>
 	                ~{#etiq_05#}~
 	              </a>

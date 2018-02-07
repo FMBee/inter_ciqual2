@@ -13,14 +13,6 @@
 	
 	include(__CONFIG_ROOT__ . 'functions.php');
 	
-	// Decodage Url et parametres
-	
-	if (isset( $_GET['cmd'] )) {
-		
-		debug(decodeUrl($_GET['cmd']));
-		getParams( decodeUrl( $_GET['cmd'] ) );
-	}
-	
 	// Debugging
 	
 	if (isset( $_SERVER['__app_params__']['__APP_DEBUG__'] ) && $_SERVER['__app_params__']['__APP_DEBUG__']) {
@@ -159,11 +151,15 @@
 		$oSmarty->display( __VIEWS_ROOT__ . 'v_footer.tpl' );
 	}
 	
-	// debug( 'SESSION#2:' );debug( $_SESSION );
+// 	debug( 'SESSION#2:' );debug( $_SESSION );
 	
 	// ob_end_flush();
 	
-	// ///
+	
+	
+	
+	//*******************************
+	
 	function action() {
 		return __CONTROLLERS_ACTION__ . 'a_' . $_GET['action'] . '.php';
 	}
