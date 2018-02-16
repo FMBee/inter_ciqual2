@@ -5,9 +5,9 @@
 
 	   <br/>
        <div class="row">
-           <div class="col-lg-12">
+           <div class="col-lg-8">
            
-               <div class="panel panel-primary">
+               <div class="panel panel-warning">
                
                    <div class="panel-heading">
 
@@ -18,25 +18,26 @@
 					  <span id="table-title" style="font-size:130%;">
 					    ~{#tabtitle#}~
 					  </span>
-		               
+~{*
 	                   <div class="btn-group pull-right">
 	                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 	                          <i class="fa fa-bars fa-2x"></i>
 	                      </button>
 	                      <ul class="dropdown-menu slidedown">
-~{*	                          <li>
+	                          <li>
 	                              <a 	id="dropdown-item1" 
 	                              		href="~{codeUrl('-ingredients&paramkey=0')}~">
 	                                  <i class="fa fa-plus fa-fw"></i> ~{#btnAdd#}~
 	                              </a>
 	                          </li>
-*}~	                          <li>
+	                          <li>
 	                              <a id="dropdown-item2" href="#">
 	                                  <i class="fa fa-print fa-fw"></i> ~{#btnPrint#}~
 	                              </a>
 	                          </li>
 	                      </ul>
 	                  </div>
+*}~	                  
                    </div>
                    
                    <div class="panel-body">
@@ -48,7 +49,7 @@
 								<tr>
 <th>~{#ing_code#}~</th>
 <th>~{#ing_name#}~</th>
-<th>~{#cat_code#}~</th>
+<!-- <th>~{#cat_code#}~</th> -->
 <th>~{#cat_name#}~</th>
 								</tr>
 							<tbody>
@@ -56,7 +57,7 @@
 									<tr id="~{$ligne.alim_code}~">
 <td>~{$ligne.alim_code|strip}~</td>
 <td>~{$ligne.alim_nom_fr|strip}~</td>
-<td>~{$ligne.alim_grp_code|strip}~</td>
+<!-- <td>~{$ligne.alim_grp_code|strip}~</td> -->
 <td>~{substr($ligne.alim_name|strip, strpos($ligne.alim_name|strip, '|')+2)}~</td>
 									</tr>
 								~{/foreach}~

@@ -56,11 +56,13 @@
 <!-- Custom CSS -->
 <link href="~{$smarty.const.__WEB_LIB_THEME__}~css/new.css"
 	rel="stylesheet">
+<!-- <link href="~{$smarty.const.__VIEWS_IMG__}~application.css" rel="stylesheet"> -->
 
 <!-- Custom Fonts -->
 <link
 	href="~{$smarty.const.__WEB_LIB_THEME__}~fonts/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+
 
 <!-- Autocomplete -->
 <style type="text/css">
@@ -93,7 +95,16 @@
 	display: block;
 	border-bottom: 1px solid #000;
 }
+.panel-warning .panel-heading {
+  color: white;
+  background: #e9841d;
+}
+
+.btn .my_button {
+  color: #e9841d;
+}
 </style>
+
 
 <style type="text/css">
 
@@ -107,6 +118,13 @@
   width: 25px;
   height: 25px;
 }
+.my_button {
+	background: #e9841d;
+	background-color: #e9841d;
+	color: white;
+	text-align: center;
+}
+
 </style>
 
 </head>
@@ -114,5 +132,5 @@
 ~{if $onSession === true}~
 <body>
 ~{else}~
-<body style="background: white url('~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOG_IMG__}~') no-repeat center center fixed;">
+<body style="background: white url('~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__HOME_IMG__}~') no-repeat center center fixed;">
 ~{/if}~

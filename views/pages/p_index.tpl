@@ -13,8 +13,8 @@
 				<div class="modal-dialog"  role="document">
 					<div class="modal-content">
 					
-						<div class="modal-header text-info">
-								<h4 class="modal-title title" id="modal-addrecipe-label">
+						<div class="modal-header">
+								<h4 style="color:#e9841d" class="modal-title title" id="modal-addrecipe-label">
 									~{#mdladdtitre#}~
 								</h4>
 						</div>
@@ -52,7 +52,7 @@
 										</div>
 										
 										<div class="modal-footer">
-											<button id="addrecipe-addrecord" type="button" class="btn pull-left">
+											<button id="addrecipe-addrecord" type="button" class="btn my_button pull-left">
 											~{#btnAdd#}~
 											</button>
 											<button id="addrecipe-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
@@ -72,12 +72,12 @@
           
             ~{if !is_null($smarty.session._recipy) }~
             
-	            <div class="col-md-6 col-sm-6">
+	            <div class="col-md-3 col-sm-6">
 	              <a href="~{codeUrl('-users_recipes')}~">
 	              <div class="mini-widget mini-widget-bronze">
 	                <div class="mini-widget-body clearfix">
 	                  <div class="center-align-text">
-	                     <img src="~{$smarty.const.__VIEWS_IMG__}~picto_suiviJournalier.png" style="width:150px; height:150px;" />
+	                     <img src="~{$smarty.const.__VIEWS_IMG__}~picto_mesRecettes.png" style="width:150px; height:150px;" />
 	                  </div>
 					  <div class="center-align-text number">~{#etiq_08#}~</div>
 	                </div>
@@ -86,12 +86,12 @@
 	            </div>
 	       ~{/if}~
             
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-3 col-sm-6">
               <a href="#">
               <div id="addrecipe" class="mini-widget mini-widget-bronze">
                 <div class="mini-widget-body clearfix ">
                   <div class="center-align-text">
-                    <img src="~{$smarty.const.__VIEWS_IMG__}~picto_rangement.png" style="width:150px; height:150px;" />
+                    <img src="~{$smarty.const.__VIEWS_IMG__}~picto_nouvRecette.png" style="width:150px; height:150px;" />
                   </div>
                   <div class="center-align-text number">~{#etiq_09#}~</div>
                 </div>

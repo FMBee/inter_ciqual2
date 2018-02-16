@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-8">
 
-			<div class="panel panel-primary">
+			<div class="panel panel-warning">
 
 				<div class="panel-heading">
 
@@ -44,7 +44,7 @@
 									value="" autofocus>
 							</div>
 							<div class="col-md-4 ">
-								<button class="btn pull-right" id="seek-list" type="button" hidden>
+								<button class="btn my_button pull-right" id="seek-list" type="button" hidden>
 									~{#btnList#}~</button>
 								<button id="seek-submit" type="button" class="btn pull-right" hidden>
 									~{#btnSheet#}~</button>

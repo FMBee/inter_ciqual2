@@ -10,6 +10,7 @@
             	$('#addrecipe').on('click', function () {
 	            	
 		            $('#addrecipe-nom').val('');
+		            $('#addrecipe-ing').val('');
       	        	$('#modal-addrecipe').modal({backdrop: "static", keyboard: false});
 		        });
 

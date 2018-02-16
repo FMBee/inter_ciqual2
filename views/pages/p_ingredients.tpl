@@ -6,9 +6,9 @@
                   
 		<br/>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-8">
 					
-				<div class="panel panel-primary">
+				<div class="panel panel-warning">
 				
 				    <div class="panel-heading">
 				    
@@ -22,13 +22,13 @@
 							~{#subtitle#}~&nbsp;<i class="fa fa-caret-right"></i> ~{$Ingredients.0.alim_nom_fr}~
 						~{/if}~
 						</span>
-
+~{*
                         <div class="btn-group pull-right">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bars fa-2x"></i>
                             </button>
                             <ul class="dropdown-menu slidedown">
-~{*                                <li>
+                                <li>
 									<a 	id="dropdown-item1" 
 											href="~{codeUrl('-ingredients&paramkey=0')}~">
 									    <i class="fa fa-plus fa-fw"></i> ~{#btnAdd#}~
@@ -39,14 +39,14 @@
                                         <i class="fa fa-times fa-fw"></i> ~{#btnDelete#}~
                                     </a>
                                 </li>
-*}~                                <li>
+                                <li>
                                     <a id="dropdown-item3" href="#">
                                         <i class="fa fa-print fa-fw"></i> ~{#btnPrint#}~
                                     </a>
                                 </li>
                             </ul>
                         </div>
-
+*}~
 
 				    </div>
 				    
@@ -64,7 +64,10 @@
 				        <ul class="nav nav-tabs">
 				        
 				            <li ~{if empty($_param.tab) || $_param.tab eq '01'}~class="active"~{/if}~>
-				            	<a href="#tab01" data-toggle="tab"><h4>~{#tab01#}~</h4></a>
+				            	<a href="#tab01" data-toggle="tab"><h5>~{#tab01#}~</h5></a>
+				            </li>
+				            <li ~{if !empty($_param.tab) && $_param.tab eq '02'}~class="active"~{/if}~>
+				            	<a href="#tab02" data-toggle="tab"><h5>~{#tab02#}~</h5></a>
 				            </li>
 				            
 					        <!-- un seul onglet en création -->
@@ -79,6 +82,11 @@
 				            <div class="tab-pane fade ~{if empty($_param.tab) || $_param.tab eq '01'}~in active~{/if}~" id="tab01">
 				            
 				            	~{include file = 'p_ingredients_tab01.inc.tpl'}~
+				            
+				            </div>
+				            <div class="tab-pane fade ~{if !empty($_param.tab) && $_param.tab eq '02'}~in active~{/if}~" id="tab02">
+				            
+				            	~{include file = 'p_ingredients_tab02.inc.tpl'}~
 				            
 				            </div>
 				            

@@ -47,7 +47,8 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	
 	myDefine('__PWD_INIT__' 			, 'Zz0Zz0Zz0' ); // initialisation du mot de passe user
 	myDefine('__LOG_TRY__' 				, 3 ); // nb d'essai de login avant récupération
-	myDefine('__LOG_IMG__' 				, 'bg_login.jpg' ); // background
+	myDefine('__HOME_IMG__' 			, 'bg_login.jpg' ); // background
+	myDefine('__LOGO_IMG__' 			, 'intermarche-logo.png' ); // background
 	myDefine('__ACTIVATION_DELAY__' 	, 2 ); // délai d'activation par mail d'un compte (h)
 	myDefine('__HISTO_LEN__' 			, 5 ); // longueur historique pages visitées SESSION['__history__']
 	myDefine('__PATH_USERIMG__' 		, __VIEWS_IMG__ . '/profiles/profile_logo.png' ); // avatar par défaut

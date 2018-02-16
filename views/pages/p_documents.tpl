@@ -4,12 +4,12 @@
   <div class="dashboard-wrapper">
 
        <div class="row">
-           <div class="col-lg-8 col-md-8">
+           <div class="col-lg-6">
 
-               <div class="panel panel-default">
+               <div class="panel panel-warning">
 
                    <div class="panel-heading">
-		               <h4 class="text-info">Liste des documents</h4>
+		               <span style="font-size:130%">Liste des documents</span>
                    </div>
 
                    <div class="panel-body">
@@ -19,7 +19,7 @@
 								<thead>
 									<tr>
 										<th align="center">Titre</th>		
-										<th style="text-align:center">Type</th>		
+<!-- 										<th style="text-align:center">Type</th>		 -->
 									</tr>
 								</thead>
 								
@@ -31,7 +31,7 @@
 											<td align="left" style="font-size:120%">
 												<a href="~{$document.path|strip}~" target="blank">~{$document.nom|strip}~</a>
 											</td>
-											<td align="center">~{$document.type|strip}~</td>
+<!-- 											<td align="center">~{$document.type|strip}~</td> -->
 										</tr>
 										
 									~{/foreach}~

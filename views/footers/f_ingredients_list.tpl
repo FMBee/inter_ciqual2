@@ -46,7 +46,7 @@
 // 		            scrollCollapse: true,
 
 		        	select:		false,
-	                pagingType: 'full_numbers',
+	                pagingType: 'full',
 	                pageLength: 10,
 	                
 	                ~{include file='p_datatable_language.inc.tpl'}~

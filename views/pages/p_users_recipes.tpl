@@ -16,7 +16,7 @@
 <!-- 					class="form-control" placeholder="Tapez votre recherche" -->
 <!-- 					value="" > -->
   				    <select name="select-recipy" id="select-recipy" class="selectpicker form-control" 
-  				    		data-width="50%" data-style="btn-info" data-live-search="true" required>
+  				    		data-width="50%" data-style="btn-warning" data-live-search="true" required>
   				    
 				    	~{foreach $Recettes as $item}~
 					  		<option value="~{$item.rec_id}~"

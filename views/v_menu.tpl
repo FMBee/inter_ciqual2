@@ -5,7 +5,7 @@
 
 		  <div class="pull-left">
 	    	  <span style="background-color:white">
-	    	  	<img width="130" class="" src="~{$smarty.const.__VIEWS_IMG__|cat:'intermarche-logo.png'}~">
+	    	  	<img width="130" class="" src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~">
 	    	  </span>
 		  </div>
 	      <div class="pull-right">
@@ -64,20 +64,17 @@
 	          <ul>
 	            <li class="~{if $smarty.get.page=='index' || $smarty.get.page=='users_recipes'}~active~{/if}~">
 	              <a href="~{codeUrl('index')}~">
-	                <i class="fa fa-home"></i>
-	                ~{#etiq_05#}~
+	              	<i><img src="~{$smarty.const.__VIEWS_IMG__}~picto_accueil.png" style="width:30px; height:30px;" />&nbsp;~{#etiq_05#}~</i>
 	              </a>
 	            </li>
 	            <li class="~{if $smarty.get.page=='ingredients_seek'}~active~{/if}~">
 	              <a href="~{codeUrl('-ingredients_seek')}~">
-	              	<i class="fa fa-table"></i>
-	              	~{#etiq_06#}~
+	              	<i><img src="~{$smarty.const.__VIEWS_IMG__}~picto_epicerie.png" style="width:30px; height:30px;" />&nbsp;~{#etiq_06#}~</i>
 	              </a>
 	            </li>
 	            <li class="~{if $smarty.get.page=='documents'}~active~{/if}~">
 	              <a href="~{codeUrl('-documents')}~">
-	              <i class="fa fa-file-text"></i>
-	              ~{#etiq_07#}~
+	              	<i><img src="~{$smarty.const.__VIEWS_IMG__}~picto_reception.png" style="width:30px; height:30px;" />&nbsp;~{#etiq_07#}~</i>
 	              </a>
 	            </li>
 	          </ul>
