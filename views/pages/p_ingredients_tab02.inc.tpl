@@ -3,7 +3,8 @@
                          <div class="row">
                             <div class="col-lg-12">
 <form id="fingredients-01" method="post" role="form" action="~{codeUrl('ingredients'|cat:precPage()|cat:'&paramkey='|cat:$_param.key|strip)}~">
-<div class="col-lg-6">
+
+<div class="col-md-12">
 
 <div class="form-group">
 <label>~{#ing_code#}~</label>

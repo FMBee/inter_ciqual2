@@ -9,7 +9,7 @@
 		<div class="modal-content">
 		
 			<div class="modal-header header-info">
-					<h4 class="modal-title title" id="modal-addingredient-label">
+					<h4 style="color:#e9841d" class="modal-title title" id="modal-addingredient-label">
 						~{#mdladdtitre#}~
 					</h4>
 			</div>
@@ -41,7 +41,7 @@
 							</div>
 							
 							<div class="modal-footer">
-								<button id="addingredient-addrecord" type="button" class="btn pull-left">
+								<button id="addingredient-addrecord" type="button" class="btn my_button pull-left">
 								~{#btnAdd#}~
 								</button>
 								<button id="addingredient-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
@@ -65,7 +65,7 @@
 		<div class="modal-content">
 		
 			<div class="modal-header">
-					<h4 class="modal-title title" id="modal-majingredient-label">
+					<h4 style="color:#e9841d" class="modal-title title" id="modal-majingredient-label">
 						~{#mdlmajtitre#}~
 					</h4>
 			</div>
@@ -97,7 +97,7 @@
 							
 							<div class="modal-footer">
 								
-								<button id="majingredient-majrecord" type="button" class="btn pull-left">
+								<button id="majingredient-majrecord" type="button" class="btn my_button pull-left">
 								~{#btnSubmit#}~
 								</button>
 								
@@ -137,7 +137,7 @@
 		<div class="modal-content">
 		
 			<div class="modal-header">
-					<h4 class="modal-title title" id="modal-chgrecipyname-label">
+					<h4 style="color:#e9841d" class="modal-title title" id="modal-chgrecipyname-label">
 						~{#mdlchgtitre#}~
 					</h4>
 			</div>
@@ -159,7 +159,7 @@
 							</div>
 							
 							<div class="modal-footer">
-								<button id="chgrecipyname-chgrecord" type="button" class="btn pull-left">
+								<button id="chgrecipyname-chgrecord" type="button" class="btn my_button pull-left">
 								~{#btnSubmit#}~
 								</button>
 								<button id="chgrecipyname-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">

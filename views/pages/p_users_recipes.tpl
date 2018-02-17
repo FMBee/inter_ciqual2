@@ -11,12 +11,12 @@
            <div class="col-lg-8">
        
 	             <div class="form-inline">
-	                <span style="font-size:130%;">~{#title#}~ <i class="fa fa-caret-right"></i></span>
+<!-- 	                <span style="font-size:130%;">~{#title#}~ <i class="fa fa-caret-right"></i></span> -->
 <!-- 				    <input name="seek-recipy" id="seek-recipy" -->
 <!-- 					class="form-control" placeholder="Tapez votre recherche" -->
 <!-- 					value="" > -->
   				    <select name="select-recipy" id="select-recipy" class="selectpicker form-control" 
-  				    		data-width="50%" data-style="btn-warning" data-live-search="true" required>
+  				    		data-width="50%" data-style="my_button" data-live-search="true" required>
   				    
 				    	~{foreach $Recettes as $item}~
 					  		<option value="~{$item.rec_id}~"
@@ -116,7 +116,7 @@
 					    </div>
 	                    
 	                    </br>
-						<button id="addingredient" type="button" class="btn btn-warning">
+						<button id="addingredient" type="button" class="btn my_button">
 						~{#btnNew#}~
 						</button>
 					</div>

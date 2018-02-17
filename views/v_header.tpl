@@ -120,9 +120,16 @@
 }
 .my_button {
 	background: #e9841d;
-	background-color: #e9841d;
 	color: white;
 	text-align: center;
+}
+span.filter-option {
+	font-size: 120%;
+	background: #e9841d;
+	font-weight: bold;
+}
+.dropdown-menu > .active > a {
+	background: #e9841d;
 }
 
 </style>

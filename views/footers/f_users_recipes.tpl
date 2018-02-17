@@ -10,7 +10,7 @@
 		    	//******** définitions
 		    	
 		    	$('.selectpicker').selectpicker({
-		    		style: 'btn-info'
+		    		style: 'btn-warning'
 		    	});
 		    	
 		    	$('#select_recipes').on('change', function() {

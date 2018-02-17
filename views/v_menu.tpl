@@ -39,12 +39,9 @@
 					~{/if}~
 					</a></li>
 *}~					<li>
-						  <p>
 						<a href="~{codeUrl('deconnect-')}~">
-							<i class="fa fa-sign-out fa-fw text-warning"></i>
-							 <span class="text-info">~{#etiq_04#}~</span>
+							<button type="button" class="btn my_button">~{#etiq_04#}~</button>
 						</a>
-						  </p>
 					</li>
            		</ul>
 	          </li>        
