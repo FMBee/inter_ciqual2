@@ -1,10 +1,17 @@
 <?php
 
-// load/reload des [param] de $_GET
+// load/reload des [param] de $_GET et $_POST
 $_param = [ ];
 $oSmarty->clearAssign ( '_param' );
 
 foreach ( $_GET as $key => $value ) {
+	
+	if (substr ( $key, 0, 5 ) == 'param') {
+		
+		$_param [substr ( $key, 5 )] = $value;
+	}
+}
+foreach ( $_POST as $key => $value ) {
 	
 	if (substr ( $key, 0, 5 ) == 'param') {
 		
@@ -32,7 +39,6 @@ $_param ['query'] = preg_replace ( $pattern, $replace, $_param ['query'] );
 
 $oSmarty->assign ( '_param', $_param );
 
-if (! empty ( $_param ['alert'] ))
-	$oSmarty->assign ( 'ctrlMessage', $_param ['alert'] );
+if (! empty ( $_param ['alert'] ))		$oSmarty->assign ( 'ctrlMessage', $_param ['alert'] );
 
 ?>

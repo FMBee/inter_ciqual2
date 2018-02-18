@@ -16,10 +16,12 @@
 			
 			<div class="modal-body ">
 
+<!-- 							action="~{codeUrl('users_recipes-users_recipes&parammode=add_ing')}~"  -->
 						<form role="form" 	
-							action="~{codeUrl('users_recipes-users_recipes&parammode=add_ing')}~" 
+							action="~{codeUrl('users_recipes-users_recipes')}~" 
 							method="post" id="addingredient-fadd">
 						  
+							<input name="parammode" value="add_ing" hidden />
 							<input name="addingredient-code" id="addingredient-code" hidden="true" value="">
 
 							<div class="row">
@@ -72,10 +74,12 @@
 			
 			<div class="modal-body ">
 
+<!-- 							action="~{codeUrl('users_recipes-users_recipes&parammode=maj_ing')}~"  -->
 						<form role="form" 	
-							action="~{codeUrl('users_recipes-users_recipes&parammode=maj_ing')}~" 
+							action="~{codeUrl('users_recipes-users_recipes')}~" 
 							method="post" id="majingredient-fmaj">
 						  
+						    <input name="parammode" value="maj_ing" hidden />
 							<input name="majingredient-id" id="majingredient-id" hidden="true" value="">
 
 							<div class="row">
@@ -117,10 +121,12 @@
 					  			
 <!-- supp d'une prestation -->
 			
+<!-- 							action="~{codeUrl('users_recipes-users_recipes&parammode=del_ing')}~"  -->
 						<form role="form" 	
 							action="~{codeUrl('users_recipes-users_recipes&parammode=del_ing')}~" 
 							method="post" id="majingredient-fdel">
 						  
+						  	<input name="parammode" value="del_ing" hidden />
 							<input name="delingredient-id" id="delingredient-id" hidden="true" value="">
 						</form>	
 			</div>
@@ -145,9 +151,11 @@
 			<div class="modal-body ">
 
 						<form role="form" 	
-							action="~{codeUrl('users_recipes-users_recipes&parammode=chg_nam')}~" 
+							action="~{codeUrl('users_recipes-users_recipes')}~" 
 							method="post" id="chgrecipyname-fchg">
-						  
+							
+							<input name="parammode" value="chg_nam" hidden />
+							
 							<div class="row">
 							 <div class="col-md-12">
 								<div class="form-group">

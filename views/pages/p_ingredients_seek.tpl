@@ -23,7 +23,13 @@
 
 				<div class="panel-body">
 
-					<form role="form" method="post" id="fciqual-seek">
+					<form role="form" 
+							action="-ingredients"
+							method="post" id="fciqual-seek">
+
+					   <input name="parammode" id="parammode value="" hidden />
+					   <input name="paramkey" id="paramkey" value="" hidden />
+					   <input name="paramseek" id="paramseek" value="" hidden />
 
 ~{*							<div>
 

@@ -41,7 +41,14 @@
                    </div>
                    
                    <div class="panel-body">
-                   
+ 
+			 		<form role="form" 	
+						action="-ingredients" 
+						method="post" id="ingredients-form">
+						
+					   <input name="parammode" value="ing" hidden />
+					   <input name="paramkey" id="paramkey" value="" hidden />
+                  
                        <div class="dataTable_wrapper">
                            <table id="data-ingredients" width="100%" class="table table-striped table-bordered table-hover" >
 
@@ -64,6 +71,7 @@
 							</tbody>
 						</table>
 					</div>
+				</form>
 
 				</div>
 			</div>

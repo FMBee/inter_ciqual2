@@ -7,7 +7,14 @@
 	  ~{include file = 'p_users_recipes_modals.inc.tpl'}~
   
        <div class="row">
-       
+
+		<form role="form" 	
+			action="~{codeUrl('users_recipes-users_recipes')}~" 
+			method="post" id="selectrecipy-form">
+			
+		   <input name="parammode" value="chg_rec" hidden />
+		   <input name="paramkey" id="chg_recparamkey" value="" hidden />
+		   
            <div class="col-lg-8">
        
 	             <div class="form-inline">
@@ -27,6 +34,8 @@
 				    </select>        
 	             </div>
            </div>
+        </form>
+        
            <div class="col-lg-4">
 	             <button id="changename" type="button" class="btn pull-right">
 				~{#btnName#}~
@@ -124,6 +133,12 @@
 			</div>
 		</div>
 
+	<form role="form" 	
+		action="~{codeUrl('users_recipes-users_recipes')}~" 
+		method="post" id="delrecipy-form">
+		
+	   <input name="parammode" value="del_rec" hidden />
+
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="well">
@@ -136,6 +151,7 @@
 				</button>
 			</div>
 		</div>
+	</form>
 
   </div>
   <!-- page-wrapper End -->

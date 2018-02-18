@@ -9,6 +9,7 @@ $smarty.session.__user_lang__}~
 // 			    var _url1 = "http://localhost/ciqual_api/ciqual_api.php?table=ingredients&where=xxx&mode=_AAC"; 
 			    var _url2 = "~{$smarty.const.__CIQUAL_API__}~~{$smarty.const.__CIQUAL_ACC2__}~"; 
 // 			    var _url2 = "http://localhost/ciqual_api/ciqual_api.php?table=categories&where=xxx&mode=_AAC"; 
+
 			    var _mode_ing = true;
 			    
             	$('#seek-submit').hide();
@@ -28,10 +29,15 @@ $smarty.session.__user_lang__}~
 	    			    },
 		    	    onSelect: function (suggestion) {
 
-	  	      	        	_url = '-ingredients' +'&paramkey='+$.trim(suggestion.data)
+			            	$('#parammode').val(_mode_ing ? 'ing' : 'cat');
+			            	$('#paramkey').val($.trim(suggestion.data));
+			            	$('#fciqual-seek').submit();
+			            	
+~{*	  	      	        	_url = '-ingredients' +'&paramkey='+$.trim(suggestion.data)
 	  	      	        						 +'&parammode='+(_mode_ing ? 'ing' : 'cat');
 	  	      	        	
 			                ~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
+*}~			                
 			                
 // 			            	$('#seek-submit').show();
 		    	    	},
@@ -58,19 +64,26 @@ $smarty.session.__user_lang__}~
 			    	$('#seek-introvalue').autocomplete().setOptions({ serviceUrl: _url1 });
 // 	            	$('#seek-list').show();
 				});
-				$('#categorie').on('change', function() {
+// 				$('#categorie').on('change', function() {
 				
-					_mode_ing = !_mode_ing;
-			    	$('#seek-introvalue').autocomplete().setOptions({ serviceUrl: _url2 });
-	            	$('#seek-list').hide();
-				});
+// 					_mode_ing = !_mode_ing;
+// 			    	$('#seek-introvalue').autocomplete().setOptions({ serviceUrl: _url2 });
+// 	            	$('#seek-list').hide();
+// 				});
 				
 	            $('#seek-list').on('click', function () {
+
+	            	$('#parammode').val(_mode_ing ? 'ing' : 'cat');
+	            	$('#paramseek').val($('#seek-introvalue').val());
 	            	
-  	      	        	_url = '-ingredients_list'  +'&paramseek='+$('#seek-introvalue').val()
+	            	$('#fciqual-seek').attr('action', '-ingredients_list');
+	            	$('#fciqual-seek').submit();
+
+~{*  	      	        	_url = '-ingredients_list'  +'&paramseek='+$('#seek-introvalue').val()
         											+'&parammode=ing';
   	      	        	
   	      	        	~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
+*}~  	      	      
 		        });
 
 

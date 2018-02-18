@@ -66,11 +66,13 @@
 	            		_clicFirstCol = false;
 	            	}
 	            	else{
+		            	$('#paramkey').val($(this).attr('id').trim());
+		            	$('#ingredients-form').submit();
 								
-  	      	        	_url = '-ingredients&parammode=ing&paramkey='+$(this).attr('id').trim();
+~{*  	      	        	_url = '-ingredients&parammode=ing&paramkey='+$(this).attr('id').trim();
   	      	        	
 		                ~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
-
+*}~
    	                }
 	            	
 	            });

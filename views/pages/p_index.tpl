@@ -22,9 +22,10 @@
 						<div class="modal-body ">
 			
 									<form role="form" 	
-										action="~{codeUrl('users_recipes-users_recipes&parammode=add_rec')}~" 
+										action="~{codeUrl('users_recipes-users_recipes')}~" 
 										method="post" id="modal-faddrecipe">
 									  
+									    <input name="parammode" value="add_rec" hidden />
 										<input name="addrecipe-ingcode" id="addrecipe-ingcode" hidden="true" value="">
 			
 										<div class="row">
@@ -53,7 +54,7 @@
 										
 										<div class="modal-footer">
 											<button id="addrecipe-addrecord" type="button" class="btn my_button pull-left">
-											~{#btnAdd#}~
+											Créer la recette
 											</button>
 											<button id="addrecipe-cancel" type="button" class="btn btn-default pull-right" data-dismiss="modal">
 											~{#btnCancel#}~

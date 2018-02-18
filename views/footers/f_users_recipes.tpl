@@ -13,14 +13,6 @@
 		    		style: 'btn-warning'
 		    	});
 		    	
-		    	$('#select_recipes').on('change', function() {
-		    		
-      	        	_url = '-users_recipes&parammode=show&paramkey='+$(this).val();
-      	        	
-	                ~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
-
-		    	});
-		    	
 		        $('#data-ingredients').DataTable(	{
 		        	"responsive": true,
 		        	"columnDefs": [
@@ -133,10 +125,12 @@
 	            
 	            $('#delrecipy').on('click', function() {
 	            	
-           			bootbox.confirm('Confirmez-vous la suppression de la recette ?',
+           			bootbox.confirm('<b><span style="font-size:140%">Confirmez-vous la suppression de la recette ?</span></b>',
                			function(result) {
 	                        if (result) {
-	                        	window.location.href = "~{codeUrl('users_recipes-index&parammode=del_rec')}~";
+	                        	
+				            	$('#delrecipy-form').submit();
+// 	                        	window.location.href = "~{codeUrl('users_recipes-index&parammode=del_rec')}~";
 	                        }
        				});
 		        });
@@ -163,11 +157,15 @@
 
 	            $('#select-recipy').on('change', function() {
 	            	
-            		_url = "users_recipes-users_recipes&parammode=chg_rec&paramkey=" 
+	            	$('#chg_recparamkey').val($('#select-recipy').selectpicker('val').trim());
+	            	$('#selectrecipy-form').submit();
+	            	
+~{*            		_url = "users_recipes-users_recipes&parammode=chg_rec&paramkey=" 
 	            				+$('#select-recipy').selectpicker('val').trim();
             		
 					~{include file = $smarty.const.__VIEWS_FOOTERS__|cat:'f_ajax_urlcode.inc.tpl'}~
-		        });
+*}~		        
+				});
 
 
 		    });   //end of document.ready() 

@@ -52,7 +52,7 @@
 							&& $('#addrecipe-ing').val() != '' 
 	            				&& ( isNaN(_saisie) === false & _saisie > 0 ) ) {				
 						
-	           			bootbox.confirm('Confirmez-vous la création ?',
+	           			bootbox.confirm('<b><span style="font-size:130%">Confirmez-vous la création ?</span></b>',
 	                   			function(result) {
 	    	                        if (result) {
 						            	$('#modal-faddrecipe').submit();
