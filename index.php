@@ -21,9 +21,10 @@
 		error_reporting( E_ALL );
 	}
 	// debug( 'GET:' );debug( $_GET );
-// 	debug( 'POST:' );debug( $_POST );
+	// debug( 'POST:' );debug( $_POST );
 	// debug('SERVER:');debug($_SERVER);
 	// debug('SESSION#1:');debug($_SESSION);
+	
 	
 	// / ROUTING
 	
@@ -149,7 +150,7 @@
 		$oSmarty->display( __VIEWS_ROOT__ . 'v_footer.tpl' );
 	}
 	
-	debug( 'SESSION#2:' );debug( $_SESSION );
+// 	debug( 'SESSION#2:' );debug( $_SESSION );
 	
 	// ob_end_flush();
 	
