@@ -20,10 +20,8 @@
 		ini_set( 'display_errors', 'On' );
 		error_reporting( E_ALL );
 	}
-	// debug( 'GET:' );
-	// debug( $_GET );
-	// debug( 'POST:' );
-	// debug( $_POST );
+	// debug( 'GET:' );debug( $_GET );
+// 	debug( 'POST:' );debug( $_POST );
 	// debug('SERVER:');debug($_SERVER);
 	// debug('SESSION#1:');debug($_SESSION);
 	
@@ -151,7 +149,7 @@
 		$oSmarty->display( __VIEWS_ROOT__ . 'v_footer.tpl' );
 	}
 	
-// 	debug( 'SESSION#2:' );debug( $_SESSION );
+	debug( 'SESSION#2:' );debug( $_SESSION );
 	
 	// ob_end_flush();
 	

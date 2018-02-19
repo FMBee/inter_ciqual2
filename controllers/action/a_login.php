@@ -18,7 +18,9 @@
 	// debug($data);
 		if ($data['usr_confirmed'] == '0') {
 			
-			header( 'Location: ' . codeUrl( 'validation-&paramemail=' . $_POST['login'] ) );
+			$_SESSION['__params__']['paramemail'] = $_POST['login'];
+			
+			header ( 'Location: ' . codeUrl ( 'validation-index' ) );
 		} else {
 	
 			if (password_verify( $_POST["password"], $data['usr_password'] )) {

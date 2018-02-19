@@ -12,7 +12,9 @@ if ($_param ['activekey'] == $data ['usr_activekey']) {
 	
 	if (($stamp2 - $stamp1) > $delay) {
 		
-		header ( 'Location: ' . codeUrl ( 'validation-&paramemail=' . $data ['usr_login'] ) );
+		$_SESSION['__params__']['paramemail'] = $data ['usr_login'];
+		
+		header ( 'Location: ' . codeUrl ( 'validation-index' ) );
 	} else {
 		$result = sqlDo ( $pdo, "UPDATE users SET usr_confirmed = 1 WHERE usr_id = " . $data ['usr_id'] . ";" );
 		

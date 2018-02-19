@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['email'])) {
+if ( isset($_POST['email']) ) {
 
 	$email = trim($_POST['email']);
 
@@ -8,11 +8,10 @@ if(isset($_POST['email'])) {
 		
 		if ($data ['usr_confirmed'] == '1') {
 			
-			
 			$code = '';
 			for ($i=0; $i < 6; $i++) { 
 
-				$code .= mt_rand(0,9);
+				$code .= mt_rand(1,9);
 			}
 
 			$html = '
@@ -51,11 +50,10 @@ if(isset($_POST['email'])) {
 				// ) );
 
 				$oSmarty->assign ( 'ctrlMessage', 'Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie' );
+				$_SESSION['__params__']['paramsection'] = 'code';
+				$_SESSION['__params__']['paramalert'] = 'Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie';
 				
-				header( 'Location: ' .codeUrl( '-recovery&paramsection=code'
-												.'&paramalert=Un code de confirmation vous a été envoyé<br />Veuillez consulter votre messagerie'
-											  )
-				);
+				header( 'Location: ' .codeUrl( '-recovery' ) );
 			}
 			else{
 				$oSmarty->assign ( 'ctrlMessage', $result[1] );
@@ -73,9 +71,10 @@ elseif (isset($_POST['code']) && isset($_SESSION['__app_recovery__'])) {
 
 	if (trim($_POST['code']) ==	$_SESSION['__app_recovery__']['usercode'] ) {
 
-		header ( 'Location: ' . codeUrl ( '-recovery&paramsection=password'.
-						'&paramalert=Code accepté<br />Veuillez entrer votre nouveau mot de passe'
-		));
+		$_SESSION['__params__']['paramsection'] = 'password';
+		$_SESSION['__params__']['paramalert'] = 'Code accepté<br />Veuillez entrer votre nouveau mot de passe';
+		
+		header ( 'Location: ' . codeUrl ( '-recovery' ) );
 	}
 	else{
 		$oSmarty->assign('ctrlMessage', 'Le code saisi est incorrect');

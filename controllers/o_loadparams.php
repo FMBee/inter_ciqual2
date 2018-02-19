@@ -4,6 +4,17 @@
 $_param = [ ];
 $oSmarty->clearAssign ( '_param' );
 
+if ( isset($_SESSION['__params__']) ) {
+	
+	foreach ( $_SESSION['__params__'] as $key => $value ) {
+		
+		if (substr ( $key, 0, 5 ) == 'param') {
+			
+			$_param [substr ( $key, 5 )] = $value;
+		}
+	}
+	unset($_SESSION['__params__']);
+}
 foreach ( $_GET as $key => $value ) {
 	
 	if (substr ( $key, 0, 5 ) == 'param') {
