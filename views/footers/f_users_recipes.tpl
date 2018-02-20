@@ -16,7 +16,9 @@
 		        $('#data-ingredients').DataTable(	{
 		        	"responsive": true,
 		        	"columnDefs": [
-		        	               { "width": "20%", "targets": [0 ] }
+		        	               { "width": "21%", "targets": [0 ] },
+		        	               { "width": "7%", "targets": [1 ] },
+		        	               { "width": "9%", "targets": [2,3,4,5,6,7,8 ] },
 		        	            ],
 // 		        	select		: {
 // 		        		style : 'single'

@@ -94,7 +94,7 @@
 										
 									~{/foreach}~
 									
-									<tr id="-1" class="info">
+									<tr id="-1" class="warning">
 										<td align="right">~{#total_compo#}~</td>
 										<td align="right">~{$Totalqte|strip|string_format:'%.2f'}~</td>
 										
@@ -105,7 +105,7 @@
 											</td>
 										~{/foreach}~
 									</tr>
-									<tr id="-2" class="success">
+									<tr id="-2" class="danger">
 										~{assign var=coeff value=(100 / $Totalqte)}~
 										
 										<td align="right">~{#moyenne_compo#}~</td>
