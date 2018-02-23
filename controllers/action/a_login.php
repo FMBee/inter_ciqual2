@@ -15,7 +15,7 @@
 	
 	if ($data = Users::getOneByLogin( $pdo, trim( $_POST["login"] ) )) {
 		
-	// debug($data);
+// 	debug($data);
 		if ($data['usr_confirmed'] == '0') {
 			
 			$_SESSION['__params__']['paramemail'] = $_POST['login'];

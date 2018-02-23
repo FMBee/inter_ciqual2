@@ -90,7 +90,7 @@
 		//message de retour des controller ou $_GET[paramalert]
 		~{if !empty($ctrlMessage) }~
 		
-			bootbox.alert("~{$ctrlMessage}~");
+			bootbox.alert("<span style='font-size:130%'>~{$ctrlMessage}~</span>");
 		~{/if}~
 		
 	</script>
