@@ -1,7 +1,7 @@
 
 	~{if $onSession === true}~
         <footer>
-	          <p><span class="text-black" style="font-size:140%">NUTRIVAL</span>&nbsp;&nbsp;&nbsp;© Hellosoftware 2018-20</p>
+	          <p><span class="text-black" style="font-size:140%">NUTRIVAL</span>&nbsp;&nbsp;&nbsp;© zest HACCP 2018-20</p>
 	    </footer>
 	~{/if}~
 
@@ -73,7 +73,7 @@
 
 		bootbox.addLocale(	'my_fr', 
 							{
-							    OK : 'OK',
+							    OK : 'Ok',
 							    CANCEL : 'Non',
 							    CONFIRM : 'Oui'
 							}

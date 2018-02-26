@@ -42,7 +42,7 @@
 
 							<thead>
 								<tr>
-<th>~{#const_id#}~</th>
+<!-- <th>~{#const_id#}~</th> -->
 <th>~{#const_name#}~</th>
 <th>~{#const_value#}~</th>
 								</tr>
@@ -50,7 +50,7 @@
 							
 ~{foreach $Synthese as $value}~
 									<tr id="~{$value.const_code}~">
-<td>~{$value.const_code|strip}~</td>
+<!-- <td>~{$value.const_code|strip}~</td> -->
 <td>~{$value.const_nom_fr|strip}~</td>
 <td>~{$value.teneur|strip}~</td>
 									</tr>

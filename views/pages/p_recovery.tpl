@@ -52,7 +52,7 @@
 								</div>
 							~{/if}~
 
-								<button type="submit" class="btn btn-success btn-block">OK</button>
+								<button type="submit" class="btn my_button btn-block">OK</button>
 								<br />
 							</fieldset>
 

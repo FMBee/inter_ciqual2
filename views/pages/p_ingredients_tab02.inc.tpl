@@ -5,14 +5,14 @@
 <form id="fingredients-01" method="post" role="form" action="~{codeUrl('ingredients'|cat:precPage()|cat:'&paramkey='|cat:$_param.key|strip)}~">
 
 <div class="col-md-12">
-
+~{*
 <div class="form-group">
 <label>~{#ing_code#}~</label>
 <input name="ing_code" id="ing_code" class="form-control" 
 ~{if $_param.key eq "0"}~ placeholder="~{#ing_code#}~"
 ~{else}~ value="~{$Ingredients.0.alim_code}~" ~{/if}~ disabled>
 </div>
-
+*}
 <div class="form-group">
 <label>~{#ing_name#}~</label>
 <input name="ing_name" id="ing_name" class="form-control"
@@ -40,7 +40,7 @@
 
 							<thead>
 								<tr>
-<th>~{#const_id#}~</th>
+<!-- <th>~{#const_id#}~</th> -->
 <th>~{#const_name#}~</th>
 <th>~{#const_value#}~</th>
 								</tr>
@@ -48,7 +48,7 @@
 							
 ~{foreach $Ingredients as $value}~
 									<tr id="~{$value.const_code}~">
-<td>~{$value.const_code|strip}~</td>
+<!-- <td>~{$value.const_code|strip}~</td> -->
 <td>~{$value.const_nom_fr|strip}~</td>
 <td>~{$value.teneur|strip}~</td>
 									</tr>

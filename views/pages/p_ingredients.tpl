@@ -12,9 +12,9 @@
 				
 				    <div class="panel-heading">
 				    
-						<a class="btn btn-default btn-xs" href="~{codeUrl(precPage())}~">
-						<i class="fa fa-chevron-left fa-2x"></i>
-						</a>&nbsp;
+<!-- 						<a class="btn btn-default btn-xs" href="~{codeUrl(precPage())}~"> -->
+<!-- 						<i class="fa fa-chevron-left fa-2x"></i> -->
+<!-- 						</a>&nbsp; -->
 						<span style="font-size:130%;">
 						~{if $_param.key eq '0'}~
 							~{#libnouveau#}~

@@ -9,8 +9,8 @@
 				<div class="login-panel panel panel-default">
 
 					<div class="panel-heading">
-						<h3 class="panel-title">Bienvenue dans
-							~{$smarty.const.__APP_TITLE__}~</h3>
+						<h2 class="panel-title">Bienvenue dans
+							~{$smarty.const.__APP_TITLE__}~</h2>
 					</div>
 
 					<div class="panel-body">
@@ -28,7 +28,7 @@
 								</p>
 							</div>
 							<div class="actions">
-								<a class="btn btn-success" href="~{codeUrl('index')}~">Réessayer</a>
+								<a class="btn my_button" href="~{codeUrl('index')}~">Réessayer</a>
 								<div class="clearfix"></div>
 							</div>
 
@@ -53,16 +53,17 @@
 								<!--                                     </label> -->
 								<!--                                 </div> -->
 
-								<button type="submit" class="btn btn-success btn-block">OK</button>
+								<button type="submit" class="btn my_button btn-block">OK</button>
 								<br /> ~{if $smarty.server.__app_params__.__APP_USER_CREATE__}~
 
-								<a
-									href="~{codeUrl('-recovery&paramsection=email')}~"><u>Mot
-										de passe oublié ?</u></a> <br /> <br /> <br /> <span><i>ou</i></span>
+								<a href="~{codeUrl('-recovery&paramsection=email')}~">
+								  <u>Mot de passe oublié ?</u>
+								</a> 
+								<br /> <br /> <br /> 
+								<span><i>ou</i></span>
 								<br />
 								<div>
-									<a class="btn btn-info" href="~{codeUrl('-inscription')}~">Créez
-										un compte</a>
+									<a class="btn my_button" ref="~{codeUrl('-inscription')}~">Créez un compte</a>
 								</div>
 								~{/if}~
 

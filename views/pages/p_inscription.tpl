@@ -35,7 +35,7 @@
 										placeholder="Confirmez votre mot de passe" id="password2"
 										name="password2" type="password" value="" required>
 								</div>
-								<button type="submit" class="btn btn-success btn-block">OK</button>
+								<button type="submit" class="btn my_button btn-block">OK</button>
 								<br />
 							</fieldset>
 

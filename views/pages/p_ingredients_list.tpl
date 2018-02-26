@@ -54,7 +54,7 @@
 
 							<thead>
 								<tr>
-<th>~{#ing_code#}~</th>
+<!-- <th>~{#ing_code#}~</th> -->
 <th>~{#ing_name#}~</th>
 <!-- <th>~{#cat_code#}~</th> -->
 <th>~{#cat_name#}~</th>
@@ -62,7 +62,7 @@
 							<tbody>
 								~{foreach from=$Ingredients item=ligne}~
 									<tr id="~{$ligne.alim_code}~">
-<td>~{$ligne.alim_code|strip}~</td>
+<!-- <td>~{$ligne.alim_code|strip}~</td> -->
 <td>~{$ligne.alim_nom_fr|strip}~</td>
 <!-- <td>~{$ligne.alim_grp_code|strip}~</td> -->
 <td>~{substr($ligne.alim_name|strip, strpos($ligne.alim_name|strip, '|')+2)}~</td>

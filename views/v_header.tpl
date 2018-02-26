@@ -128,9 +128,17 @@ span.filter-option {
 	background: #e9841d;
 	font-weight: bold;
 }
-/* .dropdown-menu > .active > a { */
-/* 	background: #e9841d; */
-/* } */
+.dropdown-menu > .active > a {
+ 	background: #e9841d;
+}
+.pagination > .active > a {
+ 	background: #e9841d;
+	border-color: #e9841d;
+}
+.btn-primary {
+ 	background: #e9841d !important;
+	border-color: #e9841d !important;
+}
 
 </style>
 
