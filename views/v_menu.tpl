@@ -56,7 +56,7 @@
 		
 		<div class="container">
         	<!-- Top Nav Start -->
-        	<div id='cssmenu'>
+        	<div id="cssmenu">
 
 	          <ul>
 	            <li class="~{if $smarty.get.page=='index' || $smarty.get.page=='users_recipes'}~active~{/if}~">

@@ -18,6 +18,9 @@
 	href="~{$smarty.const.__WEB_LIB_DATABOOT__}~datatables.min.css"
 	rel="stylesheet">
 
+<!-- Custom CSS -->
+<link href="~{$smarty.const.__WEB_LIB_THEME__}~css/new.css"	rel="stylesheet">
+
 <link
 	href="~{$smarty.const.__WEB_LIB_FORMVALID__}~dist/css/formValidation.min.css">
 
@@ -53,9 +56,6 @@
 	href="~{$smarty.const.__WEB_LIB_CAROUSEL__}~owl-carousel/owl.theme.css"
 	rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="~{$smarty.const.__WEB_LIB_THEME__}~css/new.css"
-	rel="stylesheet">
 <!-- <link href="~{$smarty.const.__VIEWS_IMG__}~application.css" rel="stylesheet"> -->
 
 <!-- Custom Fonts -->
@@ -128,9 +128,9 @@ span.filter-option {
 	background: #e9841d;
 	font-weight: bold;
 }
-.dropdown-menu > .active > a {
-	background: #e9841d;
-}
+/* .dropdown-menu > .active > a { */
+/* 	background: #e9841d; */
+/* } */
 
 </style>
 

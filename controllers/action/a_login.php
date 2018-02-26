@@ -27,6 +27,7 @@
 				
 				maj_user_ss( $data );
 				maj_options_ss($data);
+				$_GET['page'] = 'index';
 				
 				App_Logs::Add( $pdo, 3, '', $data['usr_id'], '' );
 				

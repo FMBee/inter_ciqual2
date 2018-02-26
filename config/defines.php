@@ -43,7 +43,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 
 	myDefine('__APP_TITLE__' 			, 'NutriVal' ); // titre appli
 	myDefine('__APP_VERSION__' 			, 'v.1.01' ); // version appli
-	myDefine('__APP_ADDRESS__' 			, 'http://localhost/workdev/inter_ciqual2/');
+	myDefine('__APP_ADDRESS__' 			, 'http://localhost/workdev/inter_ciqual2/'); // lien vers application pour validation par mail
 	
 	myDefine('__PWD_INIT__' 			, 'Zz0Zz0Zz0' ); // initialisation du mot de passe user
 	myDefine('__LOG_TRY__' 				, 3 ); // nb d'essai de login avant récupération

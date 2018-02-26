@@ -53,11 +53,11 @@ if ($data = Users::getOneByLogin ( $pdo, $email, true )) {
 	$data ['usr_image_path'] = __PATH_USERIMG__;
 	$data ['out_user'] = '';
 			
-	Users::majOrAdd ( $pdo, array_values( $data ));
-	
 	$result = activationMail ( $data, $code );
 
 	if($result[0]) {
+
+		Users::majOrAdd ( $pdo, array_values( $data ));
 		
 		$oSmarty->assign ( 'ctrlMessage', 'Un mail de confirmation vous a été envoyé<br />Veuillez activer le compte' );
 	}

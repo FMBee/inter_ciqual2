@@ -5,4 +5,5 @@ RewriteRule ^-([_a-z]*)$ index.php?page=$1
 RewriteRule ^-([_a-z]*)\&(.*)$ index.php?page=$1&$2
 RewriteRule ^([_a-z]*)-([_a-z]*)$ index.php?action=$1&page=$2
 RewriteRule ^([_a-z]*)-([_a-z]*)\&(.*)$ index.php?action=$1&page=$2&$3
+RewriteRule ^([_a-z]*)-$ index.php?action=$1		 	
 RewriteRule ^([_a-z]*)$ index.php?page=$1 [L]		 	
