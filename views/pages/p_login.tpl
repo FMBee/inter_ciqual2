@@ -63,7 +63,7 @@
 								<span><i>ou</i></span>
 								<br />
 								<div>
-									<a class="btn my_button" ref="~{codeUrl('-inscription')}~">Créez un compte</a>
+									<a class="btn my_button" href="~{codeUrl('-inscription')}~">Créez un compte</a>
 								</div>
 								~{/if}~
 

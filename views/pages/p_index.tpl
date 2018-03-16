@@ -73,7 +73,7 @@
           
             ~{if !is_null($smarty.session._recipy) }~
             
-	            <div class="col-md-3 col-sm-6">
+	            <div class="col-md-4 col-sm-6">
 	              <a href="~{codeUrl('-users_recipes')}~">
 	              <div class="mini-widget mini-widget-bronze">
 	                <div class="mini-widget-body clearfix">
@@ -87,7 +87,7 @@
 	            </div>
 	       ~{/if}~
             
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
               <a href="#">
               <div id="addrecipe" class="mini-widget mini-widget-bronze">
                 <div class="mini-widget-body clearfix ">

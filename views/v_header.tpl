@@ -64,8 +64,9 @@
 	rel="stylesheet" type="text/css">
 
 
-<!-- Autocomplete -->
 <style type="text/css">
+
+<!-- Autocomplete -->
 .autocomplete-suggestions {
 	border: 1px solid #999;
 	background: #FFF;
@@ -100,14 +101,22 @@
   background: #e9841d;
 }
 
-.btn .my_button {
-  color: #e9841d;
+#cssmenu > ul > li {
+    width: 300px;
+    height: 100px;
 }
-</style>
-
-
-<style type="text/css">
-
+#cssmenu > ul > li > a {
+    height: 100px;
+}
+#cssmenu > ul > li > a > i {
+    font-size: 140%;
+    font-weight: bold;
+}
+#cssmenu > ul > li > a > i > img {
+	width: 80px; 
+	height: 80px;
+}	
+	 
 .user-avatar2 {
   border: 1px solid #333333;
   -webkit-border-radius: 100%;
@@ -147,5 +156,5 @@ span.filter-option {
 ~{if $onSession === true}~
 <body>
 ~{else}~
-<body style="background: white url('~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__HOME_IMG__}~') no-repeat center center fixed;">
+<body style="background: gray">
 ~{/if}~
