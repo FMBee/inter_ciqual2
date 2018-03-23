@@ -103,18 +103,19 @@
 
 #cssmenu > ul > li {
     width: 300px;
-    height: 100px;
+    height: 150px;
+    padding-top: 20px;
 }
 #cssmenu > ul > li > a {
     height: 100px;
 }
 #cssmenu > ul > li > a > i {
-    font-size: 140%;
+    font-size: 18px;
     font-weight: bold;
 }
 #cssmenu > ul > li > a > i > img {
-	width: 80px; 
-	height: 80px;
+	width: 90px; 
+	height: 90px;
 }	
 	 
 .user-avatar2 {

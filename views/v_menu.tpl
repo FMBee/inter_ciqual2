@@ -4,8 +4,9 @@
     <header>
 
 		  <div class="pull-left">
-	    	  <span style="background-color:white;height:25px">
-	    	  	<img width="130" class="" src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~">
+	    	  <span >
+	    	  	<img style="background-color:lightgrey;height:30px;width:130px;padding:3px"
+	    	  			src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~">
 	    	  </span>
 		  </div>
 	      <div class="pull-right">
