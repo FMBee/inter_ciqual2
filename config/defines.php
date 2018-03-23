@@ -152,6 +152,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 		),
 	);
 	$_SESSION['_formats'] = array(
+		'L0' => "Eléments d’étiquetage à rajouter sur les emballages de vos produits fabriqués :",
 		'L1' => "Valeurs nutritionnelles moyennes pour 100g : Energie %sKJ / %sKcal ; Matières grasses %sg, dont acides gras saturés %sg ; Glucides %sg, dont sucres %sg ; Protéines %sg ; Sel %sg"
 	);
 		

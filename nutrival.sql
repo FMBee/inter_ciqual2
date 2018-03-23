@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 03 Février 2018 à 16:09
+-- Généré le :  Ven 23 Mars 2018 à 18:11
 -- Version du serveur :  10.1.13-MariaDB
 -- Version de PHP :  5.6.23
 
@@ -475,7 +475,103 @@ INSERT INTO `app_logs` (`log_id`, `log_lty_id`, `log_date`, `log_description`, `
 (280, 4, '2018-01-27 18:37:50', 'suppression recette 4', 0, 1),
 (281, 4, '2018-01-27 18:38:53', 'suppression recette 2', 0, 1),
 (282, 4, '2018-01-27 18:46:57', 'suppression recette 2', 0, 1),
-(283, 3, '2018-02-03 15:04:24', '', 0, 1);
+(283, 3, '2018-02-03 15:04:24', '', 0, 1),
+(284, 3, '2018-02-03 15:39:01', '', 0, 1),
+(285, 3, '2018-02-03 16:57:00', '', 0, 39),
+(286, 3, '2018-02-03 17:02:52', '', 0, 39),
+(287, 4, '2018-02-03 17:04:06', 'nouvelle recette: 11 / Joue de boeuf', 0, 39),
+(288, 3, '2018-02-03 17:55:54', '', 0, 39),
+(289, 3, '2018-02-03 18:17:42', '', 0, 46),
+(290, 3, '2018-02-03 18:17:59', '', 0, 46),
+(291, 3, '2018-02-03 18:22:48', '', 0, 46),
+(292, 3, '2018-02-06 18:26:40', '', 0, 1),
+(293, 3, '2018-02-06 18:33:19', '', 0, 1),
+(294, 4, '2018-02-06 18:36:48', 'ajout ingrédient code: 1005 / recette: 1', 0, 1),
+(295, 4, '2018-02-06 18:37:17', 'Modif. nom recette 1', 0, 1),
+(296, 4, '2018-02-06 19:11:24', 'Modif. nom recette 2', 0, 1),
+(297, 4, '2018-02-06 19:11:35', 'ajout ingrédient code: 6212 / recette: 2', 0, 1),
+(298, 4, '2018-02-07 18:26:14', 'nouvelle recette: 12 / Poulet aux hormones', 0, 1),
+(299, 4, '2018-02-07 18:26:31', 'suppression recette 2', 0, 1),
+(300, 3, '2018-02-07 18:26:54', '', 0, 1),
+(301, 3, '2018-02-07 18:27:46', '', 0, 1),
+(302, 3, '2018-02-07 18:30:42', '', 0, 1),
+(303, 4, '2018-02-07 18:31:32', 'Modif. nom recette 1', 0, 1),
+(304, 3, '2018-02-16 16:07:17', '', 0, 1),
+(305, 3, '2018-02-17 10:24:19', '', 0, 1),
+(306, 3, '2018-02-17 10:29:30', '', 0, 1),
+(307, 4, '2018-02-18 08:32:09', 'Modif. nom recette 2', 0, 1),
+(308, 4, '2018-02-18 08:58:01', 'maj ingrédient id: 25 / recette: 2', 0, 1),
+(309, 4, '2018-02-18 08:58:13', 'Modif. nom recette 2', 0, 1),
+(310, 4, '2018-02-18 08:58:45', 'ajout ingrédient code: 25949 / recette: 1', 0, 1),
+(311, 4, '2018-02-18 08:59:14', 'Modif. nom recette 1', 0, 1),
+(312, 4, '2018-02-18 08:59:39', 'suppression recette 2', 0, 1),
+(313, 4, '2018-02-18 09:36:06', 'nouvelle recette: 13 / Mique à la viande', 0, 1),
+(314, 4, '2018-02-18 09:38:40', 'ajout ingrédient code: 9550 / recette: 13', 0, 1),
+(315, 4, '2018-02-18 09:40:58', 'ajout ingrédient code: 16404 / recette: 13', 0, 1),
+(316, 4, '2018-02-18 09:41:35', 'nouvelle recette: 14 / Tarte Tatin', 0, 1),
+(317, 4, '2018-02-18 09:44:08', 'nouvelle recette: 15 / gdrgdrg', 0, 1),
+(318, 4, '2018-02-18 09:44:15', 'suppression recette 14', 0, 1),
+(319, 3, '2018-02-18 09:44:41', '', 0, 46),
+(320, 4, '2018-02-19 19:19:51', 'nouvelle recette: 16 / Gratin de courges', 0, 46),
+(321, 3, '2018-02-19 20:27:28', '', 0, 46),
+(322, 3, '2018-02-19 20:32:36', '', 0, 47),
+(323, 3, '2018-02-20 19:23:12', '', 0, 1),
+(324, 3, '2018-02-20 19:24:32', '', 0, 1),
+(325, 3, '2018-02-23 15:29:03', '', 0, 1),
+(326, 3, '2018-02-23 15:46:53', '', 0, 1),
+(327, 3, '2018-02-23 18:06:00', '', 0, 1),
+(328, 3, '2018-02-26 12:04:02', '', 0, 1),
+(329, 4, '2018-02-26 12:16:50', 'ajout ingrédient code: 9903 / recette: 14', 0, 1),
+(330, 3, '2018-03-16 09:40:48', '', 0, 1),
+(331, 3, '2018-03-23 09:05:44', '', 0, 1),
+(332, 4, '2018-03-23 10:14:36', 'ajout ingrédient code: 19590 / recette: 14', 0, 1),
+(333, 4, '2018-03-23 10:25:29', 'maj ingrédient id: 35 / recette: 14', 0, 1),
+(334, 4, '2018-03-23 10:25:38', 'maj ingrédient id: 34 / recette: 14', 0, 1),
+(335, 4, '2018-03-23 11:05:17', 'ajout ingrédient code: 26999 / recette: 13', 0, 1),
+(336, 3, '2018-03-23 11:29:50', '', 0, 1),
+(337, 3, '2018-03-23 11:33:17', '', 0, 1),
+(338, 4, '2018-03-23 11:33:37', 'maj ingrédient id: 35 / recette: 14', 0, 1),
+(339, 3, '2018-03-23 11:45:21', '', 0, 1),
+(340, 3, '2018-03-23 13:33:43', '', 0, 1),
+(341, 3, '2018-03-23 14:18:51', '', 0, 1),
+(342, 4, '2018-03-23 14:44:26', 'ajout ingrédient code: 19120 / recette: 14', 0, 1),
+(343, 4, '2018-03-23 14:44:59', 'ajout ingrédient code: 16413 / recette: 14', 0, 1),
+(344, 4, '2018-03-23 14:55:29', 'ajout ingrédient code: 26177 / recette: 13', 0, 1),
+(345, 4, '2018-03-23 14:55:48', 'suppr. ingrédient id: 39 / recette: 13', 0, 1),
+(346, 4, '2018-03-23 14:56:15', 'ajout ingrédient code: 21520 / recette: 13', 0, 1),
+(347, 4, '2018-03-23 15:36:27', 'suppression recette 14', 0, 1),
+(348, 4, '2018-03-23 15:36:36', 'suppression recette 2', 0, 1),
+(349, 4, '2018-03-23 15:36:43', 'suppression recette ', 0, 1),
+(350, 4, '2018-03-23 15:41:59', 'nouvelle recette: 41 / test', 0, 1),
+(351, 4, '2018-03-23 15:42:08', 'suppression recette ', 0, 1),
+(352, 4, '2018-03-23 15:43:19', 'nouvelle recette: 43 / test', 0, 1),
+(353, 4, '2018-03-23 15:43:29', 'suppression recette ', 0, 1),
+(354, 4, '2018-03-23 15:44:29', 'nouvelle recette: 44 / test', 0, 1),
+(355, 4, '2018-03-23 15:44:36', 'suppression recette ', 0, 1),
+(356, 4, '2018-03-23 15:46:31', 'nouvelle recette: 45 / test', 0, 1),
+(357, 4, '2018-03-23 15:46:34', 'suppression recette ', 0, 1),
+(358, 4, '2018-03-23 15:50:38', 'nouvelle recette: 46 / test', 0, 1),
+(359, 4, '2018-03-23 15:50:42', 'suppression recette ', 0, 1),
+(360, 4, '2018-03-23 16:00:37', 'nouvelle recette: 47 / test', 0, 1),
+(361, 4, '2018-03-23 16:00:41', 'suppression recette ', 0, 1),
+(362, 4, '2018-03-23 16:03:43', 'nouvelle recette: 48 / test', 0, 1),
+(363, 4, '2018-03-23 16:03:50', 'suppression recette ', 0, 1),
+(364, 3, '2018-03-23 16:04:57', '', 0, 1),
+(365, 4, '2018-03-23 16:11:25', 'nouvelle recette: 49 / test', 0, 1),
+(366, 4, '2018-03-23 16:11:30', 'suppression recette n', 0, 1),
+(367, 4, '2018-03-23 16:19:56', 'nouvelle recette: 52 / test', 0, 1),
+(368, 3, '2018-03-23 16:27:31', '', 0, 1),
+(369, 4, '2018-03-23 16:27:41', 'nouvelle recette: 1 / test', 0, 1),
+(370, 4, '2018-03-23 16:28:05', 'suppression recette ', 0, 1),
+(371, 4, '2018-03-23 16:40:32', 'nouvelle recette: 2 / test', 0, 1),
+(372, 4, '2018-03-23 16:40:58', 'suppression recette ', 0, 1),
+(373, 3, '2018-03-23 16:51:29', '', 0, 1),
+(374, 4, '2018-03-23 16:51:41', 'nouvelle recette: 1 / test', 0, 1),
+(375, 4, '2018-03-23 17:03:33', 'nouvelle recette: 1 / test', 0, 1),
+(376, 4, '2018-03-23 17:04:38', 'ajout ingrédient code: 18904 / recette: 1', 0, 1),
+(377, 4, '2018-03-23 17:05:30', 'suppression recette ', 0, 1),
+(378, 4, '2018-03-23 17:09:02', 'nouvelle recette: 2 / Tarte tatin', 0, 1),
+(379, 4, '2018-03-23 17:09:13', 'suppression recette ', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -548,7 +644,7 @@ CREATE TABLE `app_parameters` (
 
 INSERT INTO `app_parameters` (`prt_id`, `prt_name`, `prt_value`, `prt_apt_id`, `prt_flag`) VALUES
 (1, '__APP_MAINTAIN__', '0', 2, NULL),
-(2, '__APP_DEBUG__', '0', 2, NULL),
+(2, '__APP_DEBUG__', '1', 2, NULL),
 (3, '__APP_FRONT_ADDRESS__', '', 1, NULL),
 (4, '__APP_INTERNATIONAL__', '0', 2, NULL),
 (5, '__APP_USER_LOGO__', '0', 2, NULL),
@@ -708,10 +804,8 @@ CREATE TABLE `recipes` (
 --
 
 INSERT INTO `recipes` (`rec_id`, `rec_usr_id`, `rec_title`, `rec_label`, `rec_update`, `rec_flag`) VALUES
-(1, 1, 'Bloody Mary', '<b>Bloody Mary :</b><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 1051KJ / 253Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 2.9g, dont sucres <0.5g ; Protéines <0.5g ; Sel <0.01g', '2018-01-27 18:16:23', NULL),
-(2, 1, 'Pâté de truffe', '<b>Pâté de truffe :</b><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 722KJ / 172Kcal ; Matières grasses 5.9g, dont acides gras saturés 1.7g ; Glucides <0.5g, dont sucres <0.5g ; Protéines 23.1g ; Sel 2.07g', '2018-01-27 18:11:49', NULL),
-(3, 4, 'Ragout de mouton', 'Valeurs nutritionnelles moyennes pour 100g : Energie 1104KJ, Energie 265Kcal ; Matières grasses <0.5g, dont acides gras saturés <0.1g ; Glucides 6.5g, dont sucres 4.0g ; Protéines <0.5g ; Sel <0.01g', '2018-01-20 10:27:11', NULL),
-(4, 1, 'Coq en pâte aux herbes', '<b>Coq en pâte aux herbes :</b><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 2580KJ / 623Kcal ; Matières grasses 49.1g, dont acides gras saturés 8.4g ; Glucides 14.8g, dont sucres 5.9g ; Protéines 26.1g ; Sel 0.02g', '2018-01-27 18:46:57', 'D');
+(1, 1, 'test', '<b>test</b><br/><i>Eléments d’étiquetage à rajouter sur les emballages de vos produits fabriqués :</i><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 554KJ / 133Kcal ; Matières grasses 8.3g, dont acides gras saturés <0.1g ; Glucides 6.2g, dont sucres 3.2g ; Protéines 8.1g ; Sel 0.04g', '2018-03-23 17:05:30', 'D'),
+(2, 1, 'Tarte tatin', '<b>Tarte tatin</b><br/><i>Eléments d’étiquetage à rajouter sur les emballages de vos produits fabriqués :</i><br/>Valeurs nutritionnelles moyennes pour 100g : Energie 888KJ / 213Kcal ; Matières grasses 13.8g, dont acides gras saturés 3.1g ; Glucides <0.5g, dont sucres <0.5g ; Protéines 22.1g ; Sel <0.01g', '2018-03-23 17:09:13', 'D');
 
 -- --------------------------------------------------------
 
@@ -753,14 +847,9 @@ CREATE TABLE `recipes_lines` (
 --
 
 INSERT INTO `recipes_lines` (`rel_id`, `rel_rec_id`, `rel_code`, `rel_qte`, `rel_update`, `rel_flag`) VALUES
-(1, 1, '1001', 50, '2018-01-15 11:37:03', NULL),
-(15, 2, '1001', 26, '0000-00-00 00:00:00', NULL),
-(16, 1, '1000', 60, '2018-01-15 12:21:51', NULL),
-(17, 3, '1015', 10, '2018-01-19 16:54:32', NULL),
-(18, 3, '1000', 60, '2018-01-20 10:05:46', NULL),
-(19, 2, '26177', 50, '0000-00-00 00:00:00', NULL),
-(20, 2, '40056', 150, '0000-00-00 00:00:00', NULL),
-(21, 4, ' 15001 ', 50, '0000-00-00 00:00:00', NULL);
+(1, 1, '8512', 15, '0000-00-00 00:00:00', NULL),
+(2, 1, '18904', 20, '0000-00-00 00:00:00', NULL),
+(3, 2, '26999', 10, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -790,9 +879,40 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`usr_id`, `usr_first_name`, `usr_last_name`, `usr_login`, `usr_password`, `usr_confirmed`, `usr_activekey`, `usr_mail`, `usr_pro_id`, `usr_lang`, `usr_image_path`, `usr_in_date`, `usr_out_date`, `usr_flag`) VALUES
+(1, '', 'cnygren46@gmail.com', 'cnygren46@gmail.com', '$2y$10$d8U4w6VOsFvu5bynYpNfFewZfx1sySYzd26HjpriRewHMwyFWdbna', 1, '90b8736f8492501c7c437b97c014282a', 'cnygren46@gmail.com', 3, 'fr', 'views/img//profiles/profile_logo.png', '2018-02-23 18:05:14', '0000-00-00 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users2`
+--
+
+CREATE TABLE `users2` (
+  `usr_id` int(255) NOT NULL COMMENT 'ID',
+  `usr_first_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Prénom',
+  `usr_last_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Nom',
+  `usr_login` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Login',
+  `usr_password` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Mot de passe',
+  `usr_confirmed` int(1) NOT NULL DEFAULT '0',
+  `usr_activekey` varchar(255) NOT NULL,
+  `usr_mail` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Mail',
+  `usr_pro_id` int(255) NOT NULL COMMENT 'ID du profil',
+  `usr_lang` varchar(2) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'fr' COMMENT 'Langue',
+  `usr_image_path` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'Chemin du fichier image',
+  `usr_in_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date d''entrée',
+  `usr_out_date` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'date de sortie',
+  `usr_flag` char(1) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'Flag pour suppression'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `users2`
+--
+
+INSERT INTO `users2` (`usr_id`, `usr_first_name`, `usr_last_name`, `usr_login`, `usr_password`, `usr_confirmed`, `usr_activekey`, `usr_mail`, `usr_pro_id`, `usr_lang`, `usr_image_path`, `usr_in_date`, `usr_out_date`, `usr_flag`) VALUES
 (1, 'Emilie', 'FOSTER', 'utilisateur1', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, '', 'test2016@mdp', 3, 'fr', 'views/img/profiles/usertile11.bmp', '2016-02-26 09:45:28', '0000-00-00 00:00:00', NULL),
 (4, 'RootNautilus', '', 'rootnautilus', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, '', '', 1, 'fr', 'views/img/profiles/usertile37.bmp', '2016-03-02 19:07:29', '0000-00-00 00:00:00', NULL),
-(39, 'Fred', 'f.mevollon@nautilusweb.fr', 'f.mevollon@nautilusweb.fr', '$2y$10$PJk.fKrarYSjo2cRcyKl4OzWQQsp/iOQfJ7hmGeGhiHZbUwi541CW', 1, 'bc0d83da033a9957f4d1d71eebf92500', 'f.mevollon@nautilusweb.fr', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-08 13:51:44', '0000-00-00 00:00:00', NULL);
+(39, 'Fred', 'f.mevollon@nautilusweb.fr', 'f.mevollon@nautilusweb.fr', '$2y$10$02Q76ngpCyJKif3rX2cTBeEs5hUt5j54UfdXhRWHsSihcnL/tmYCu', 1, 'bc0d83da033a9957f4d1d71eebf92500', 'f.mevollon@nautilusweb.fr', 3, 'fr', 'views/img//profiles/profile_logo.png', '2017-09-08 13:51:44', '0000-00-00 00:00:00', NULL),
+(47, '', 'cnygren46@gmail.com', 'cnygren46@gmail.com', '$2y$10$5nAEFuQjDQAPWew40WrcyOqSbz/nIk5Kj2v9khzE5o9hWKF6VeCAO', 1, '77bf1c477e7c21c39ecd1157c7c009dc', 'cnygren46@gmail.com', 3, 'fr', 'views/img//profiles/profile_logo.png', '2018-02-19 20:31:06', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -948,12 +1068,18 @@ ALTER TABLE `recipes`
 --
 ALTER TABLE `recipes_lines`
   ADD PRIMARY KEY (`rel_id`),
-  ADD UNIQUE KEY `rec_id_code` (`rel_rec_id`,`rel_code`) USING BTREE;
+  ADD UNIQUE KEY `rec_id_code` (`rel_rec_id`,`rel_code`);
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`usr_id`);
+
+--
+-- Index pour la table `users2`
+--
+ALTER TABLE `users2`
   ADD PRIMARY KEY (`usr_id`);
 
 --
@@ -970,7 +1096,7 @@ ALTER TABLE `users_profiles`
 -- AUTO_INCREMENT pour la table `app_logs`
 --
 ALTER TABLE `app_logs`
-  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=284;
+  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID de l''enregistrement', AUTO_INCREMENT=380;
 --
 -- AUTO_INCREMENT pour la table `app_parameters`
 --
@@ -990,27 +1116,22 @@ ALTER TABLE `app_translate_lines`
 -- AUTO_INCREMENT pour la table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `recipes_lines`
 --
 ALTER TABLE `recipes_lines`
-  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `rel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=44;
+  MODIFY `usr_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=2;
 --
--- Contraintes pour les tables exportées
+-- AUTO_INCREMENT pour la table `users2`
 --
-
---
--- Contraintes pour la table `recipes_lines`
---
-ALTER TABLE `recipes_lines`
-  ADD CONSTRAINT `recipes_lines_ibfk_1` FOREIGN KEY (`rel_rec_id`) REFERENCES `recipes` (`rec_id`);
-
+ALTER TABLE `users2`
+  MODIFY `usr_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=48;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

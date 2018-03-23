@@ -1,82 +1,107 @@
 <?php
 
-	$recipy = Recipes::getOne($pdo, $_SESSION['_recipy']['rec_id']);
-//debug($recipy);	
-	$include = array_keys($_SESSION['_elements']);
+	if ( $_SESSION['_recipy'] == null ) {
+		
+		header('Location: ' .codeUrl('index') );
+	}
+	else{
+	// debug($_SESSION['_recipy']);
 	
-	$totalqte = 0;
-	foreach ( $include as $code )		{ $totaux[$code] = 0; }
-	$data = array();
-
-	foreach ( $recipy as $ingredient ) {
+		$recipy = Recipes::getOne($pdo, $_SESSION['_recipy']['rec_id']);
+	//debug($recipy);	
+		$include = array_keys($_SESSION['_elements']);
 		
-		$url = __CIQUAL_API__ .'?table=alim&where=_KEY&values=yes&key=' .'%20'.trim($ingredient['rel_code']);	//attention à ce p... d'espace dans alim_code !
-// debug($url);		
-		$nutriments = json_decode( file_get_contents($url), true );
-// debug($nutriments);			
-		$result = array();
-		
-		foreach ( $nutriments as $nutriment ) {
-// debug($nutriment);			
-			if ( in_array(trim($nutriment['const_code']), $include, false) ) {
-				
-				$result[] = $nutriment;
-			}
-		}
-
-		$resultOrd = array();
-		
-		foreach ( $include as $code ) {
+		foreach ( $include as $code )	{ $totaux[$code] = 0; }
+	
+		$totalqte = 0;
+		$data = array();
+	
+		foreach ( $recipy as $ingredient ) {
 			
-			foreach ( $result as $nutriment ) {
-				
-				if ( $nutriment['const_code'] == $code ) {
+			$url = __CIQUAL_API__ .'?table=alim&where=_KEY&values=yes&key=' .'%20'.trim($ingredient['rel_code']);	//attention à ce p... d'espace dans alim_code !
+	// debug($url);		
+			$nutriments = json_decode( file_get_contents($url), true );
+	// debug($nutriments);			
+			$result = array();
+			
+			foreach ( $nutriments as $nutriment ) {
+	// debug($nutriment);			
+				if ( in_array(trim($nutriment['const_code']), $include, false) ) {
 					
-					$resultOrd[] = $nutriment;
-					$totaux[$code] += floatval($ingredient['rel_qte']) / 100 * myFloatval($nutriment['teneur']);
-					specialTest($code, $totaux);
+					$result[] = $nutriment;
 				}
 			}
+	
+			$resultOrd = array();
+			
+			foreach ( $include as $code ) {
+				
+				$found = false;
+				
+				foreach ( $result as $nutriment ) {
+					
+					if ( $nutriment['const_code'] == $code ) {
+						
+						$resultOrd[] = $nutriment;
+						$totaux[$code] += floatval($ingredient['rel_qte']) / 100 * myFloatval($nutriment['teneur']);
+						
+						specialTest($code, $totaux);
+						
+						$found = true;
+					}
+				}
+				if ( !$found ){
+					
+					$resultOrd[] = array(
+									'const_code' =>  $code, 
+		                            'teneur' =>  0
+								   );
+				}
+			}
+			$totalqte += $ingredient['rel_qte'];
+			$table = array(	'rel_id' => $ingredient['rel_id'],
+							'rel_qte' => $ingredient['rel_qte']);
+			$table[] = $resultOrd;
+			$data[] = $table;
 		}
-		$totalqte += $ingredient['rel_qte'];
-		$table = array(	'rel_id' => $ingredient['rel_id'],
-						'rel_qte' => $ingredient['rel_qte']);
-		$table[] = $resultOrd;
-		$data[] = $table;
-	}
-// debug($data);	
-
-
-	foreach ( $totaux as $code => $teneur ) {
+	// debug($data);	
+	
+	
+		foreach ( $totaux as $code => $teneur ) {
+			
+			${'C'.$code} = calculSeuil($code, ( $teneur * 100 / ( $totalqte == 0 ? 1 : $totalqte ) ));
+		}
+		$label = "<b>{$_SESSION['_recipy']['rec_title']}</b><br/>";
+		$label .= "<i>{$_SESSION['_formats']['L0']}</i><br/>";
+		$label .= sprintf(	$_SESSION['_formats']['L1'],
+							$C327,
+							$C328,
+							$C40000,
+							$C40302,
+							$C31000,
+							$C32000,
+							$C25003,
+							$C10004
+		);
+		$_SESSION['_recipy']['rec_label'] = $label;
 		
-		${'C'.$code} = calculSeuil($code, ( $teneur * 100 / $totalqte ));
+		Recipes::majOrAdd($pdo, array(
+									$_SESSION['_recipy']['rec_id'],
+									$_SESSION['_recipy']['rec_title'],
+									$_SESSION['_recipy']['rec_label'],
+									'-',
+								)
+		);
+		
+		$oSmarty->assign('Ingredients', $data);
+		$oSmarty->assign('Totaux', $totaux);
+		$oSmarty->assign('Totalqte', $totalqte);
+		$oSmarty->assign('Etiquette', $label);
+		$oSmarty->assign('Recettes', Recipes::getAll($pdo));
 	}
-	$label = "<b>{$_SESSION['_recipy']['rec_title']} :</b><br/>";
-	$label .= sprintf(	$_SESSION['_formats']['L1'],
-						$C327,
-						$C328,
-						$C40000,
-						$C40302,
-						$C31000,
-						$C32000,
-						$C25003,
-						$C10004
-	);
-	
-	Recipes::majOrAdd($pdo, array(
-								$_SESSION['_recipy']['rec_id'],
-								$_SESSION['_recipy']['rec_title'],
-								($_SESSION['_recipy']['rec_label'] = $label),
-								'-',
-							)
-	);
-	
-	$oSmarty->assign('Ingredients', $data);
-	$oSmarty->assign('Totaux', $totaux);
-	$oSmarty->assign('Totalqte', $totalqte);
-	$oSmarty->assign('Etiquette', $label);
-	$oSmarty->assign('Recettes', Recipes::getAll($pdo));
 
+
+	
 	
 	function calculSeuil($code, $teneur) {
 		

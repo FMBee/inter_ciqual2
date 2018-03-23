@@ -15,7 +15,7 @@
 		   <input name="parammode" value="chg_rec" hidden />
 		   <input name="paramkey" id="chg_recparamkey" value="" hidden />
 		   
-           <div class="col-lg-8">
+           <div class="col-lg-8 col-md-6 col-sm-6">
        
 	             <div class="form-inline">
 <!-- 	                <span style="font-size:130%;">~{#title#}~ <i class="fa fa-caret-right"></i></span> -->
@@ -23,7 +23,7 @@
 <!-- 					class="form-control" placeholder="Tapez votre recherche" -->
 <!-- 					value="" > -->
   				    <select name="select-recipy" id="select-recipy" class="selectpicker form-control" 
-  				    		data-width="50%" data-style="my_button" data-live-search="true" required>
+  				    		data-width="80%" data-style="my_button" data-live-search="true" required>
   				    
 				    	~{foreach $Recettes as $item}~
 					  		<option value="~{$item.rec_id}~"
@@ -31,12 +31,14 @@
 						  		~{$item.rec_title}~
 					  		</option>
 					 	~{/foreach}~
-				    </select>        
+				    </select> 
+				    
+				    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><i id="btn-details" class="fa fa-table fa-2x fa-border"></i>     
 	             </div>
            </div>
         </form>
         
-           <div class="col-lg-4">
+           <div class="col-lg-4 col-md-6 col-sm-6">
 	             <button id="changename" type="button" class="btn pull-right">
 				~{#btnName#}~
 				</button>
@@ -62,8 +64,8 @@
                            <table id="data-ingredients" width="100%" class="table table-striped table-bordered table-hover" >
 								<thead>
 									<tr>
-										<th align="center">~{#ing_name#}~</th>		
-										<th align="center">~{#ing_qte#}~</th>		
+										<th style="text-align:center">~{#ing_name#}~</th>		
+										<th style="text-align:center">~{#ing_qte#}~</th>		
 									
 										~{foreach $smarty.session._elements as $element}~
 										
@@ -95,8 +97,17 @@
 									~{/foreach}~
 									
 									<tr id="-1" class="warning">
-										<td align="right">~{#total_compo#}~</td>
+										<td align="right">~{#total_qte#}~</td>
 										<td align="right">~{$Totalqte|strip|string_format:'%.2f'}~</td>
+										
+										~{foreach from=$smarty.session._elements key=code item=element}~
+										
+											<td></td>
+										~{/foreach}~
+									</tr>
+									<tr id="-2" class="warning hidden">
+										<td align="right">~{#total_compo#}~</td>
+										<td align="right"></td>
 										
 										~{foreach from=$smarty.session._elements key=code item=element}~
 										
@@ -105,7 +116,7 @@
 											</td>
 										~{/foreach}~
 									</tr>
-									<tr id="-2" class="danger">
+									<tr id="-3" class="warning hidden">
 										~{assign var=coeff value=(100 / $Totalqte)}~
 										
 										<td align="right">~{#moyenne_compo#}~</td>
@@ -124,10 +135,11 @@
 							
 					    </div>
 	                    
-	                    </br>
+	                    <br />
 						<button id="addingredient" type="button" class="btn my_button">
 						~{#btnNew#}~
 						</button>
+						
 					</div>
 				</div>
 			</div>

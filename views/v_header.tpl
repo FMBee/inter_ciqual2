@@ -66,65 +66,57 @@
 
 <style type="text/css">
 
-<!-- Autocomplete -->
 .autocomplete-suggestions {
 	border: 1px solid #999;
 	background: #FFF;
 	overflow: auto;
 }
-
 .autocomplete-suggestion {
 	padding: 2px 5px;
 	white-space: nowrap;
 	overflow: hidden;
 }
-
 .autocomplete-selected {
 	background: #F0F0F0;
 }
-
 .autocomplete-suggestions strong {
 	font-weight: normal;
 	color: #3399FF;
 }
-
 .autocomplete-group {
 	padding: 2px 5px;
 }
-
 .autocomplete-group strong {
 	display: block;
 	border-bottom: 1px solid #000;
 }
-.panel-warning .panel-heading {
-  color: white;
-  background: #e9841d;
-}
 
 #cssmenu > ul > li {
-    width: 300px;
-    height: 150px;
-    padding-top: 20px;
+    width: 270px;
+    height: 130px;
+    padding-top: 16px;
 }
-#cssmenu > ul > li > a {
-    height: 100px;
-}
+/* #cssmenu > ul > li > a { */
+/*     height: 100px; */
+/* } */
 #cssmenu > ul > li > a > i {
     font-size: 18px;
     font-weight: bold;
 }
 #cssmenu > ul > li > a > i > img {
-	width: 90px; 
-	height: 90px;
+	width: 80px; 
+	height: 80px;
 }	
 	 
+.panel-warning .panel-heading {
+  color: white;
+  background: #e9841d;
+}
 .user-avatar2 {
   border: 1px solid #333333;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%; 
-}
-.user-avatar2 {
   width: 25px;
   height: 25px;
 }

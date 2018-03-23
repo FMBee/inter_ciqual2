@@ -52,12 +52,13 @@
 							&& $('#addrecipe-ing').val() != '' 
 	            				&& ( isNaN(_saisie) === false & _saisie > 0 ) ) {				
 						
-	           			bootbox.confirm('<b><span style="font-size:130%">Confirmez-vous la création ?</span></b>',
-	                   			function(result) {
-	    	                        if (result) {
-						            	$('#modal-faddrecipe').submit();
-	    	                        }
-	           				});
+// 	           			bootbox.confirm('<b><span style="font-size:130%">Confirmez-vous la création ?</span></b>',
+// 	                   			function(result) {
+// 	    	                        if (result) {
+// 						            	$('#modal-faddrecipe').submit();
+// 	    	                        }
+// 	           				});
+			            	$('#modal-faddrecipe').submit();
 					}
 					else{
 						bootbox.alert('Un des champs est vide !');

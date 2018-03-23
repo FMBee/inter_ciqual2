@@ -14,33 +14,43 @@
 		    	});
 		    	
 		        $('#data-ingredients').DataTable(	{
-		        	"responsive": true,
-		        	"columnDefs": [
-		        	               { "width": "21%", "targets": [0 ] },
-		        	               { "width": "7%", "targets": [1 ] },
-		        	               { "width": "9%", "targets": [2,3,4,5,6,7,8 ] },
+		        	
+		        	responsive: true,
+		        	columnDefs: [
+		        	               { width: '20%', targets: [0 ] },
+		        	               { width: '8%', targets: [1 ] },
+		        	               { width: '9%', targets: [2,3,4,5,6,7,8,9 ] },
+		        	               { visible: false, targets: [2,3,4,5,6,7,8,9 ] },
 		        	            ],
-// 		        	select		: {
+// 		        	select: {
 // 		        		style : 'single'
 // 		        	},
-					"dom"		: 'rtp',
-// 	                "pagingType": "simple",
-	                "paging": false,
-	                "pageLength": 10,
-	                "ordering"	: false,
-	                ~{include file="p_datatable_language.inc.tpl"}~
+					dom: 'rtp',
+// 	                pagingType: 'simple',
+	                paging: false,
+	                pageLength: 10,
+	                ordering: false,
+	                ~{include file = 'p_datatable_language.inc.tpl'}~
 				});
 	
 		        var table1 = $('#data-ingredients').DataTable();
             	var _ing_id;
             	var _ing_name;
             	var _ing_qte;
-		        
+            	var _details = false;
+            	
+            	$('#btn-details').click(function() {
+            	
+            		_details = !_details;
+            		table1.columns( [2,3,4,5,6,7,8,9 ] ).visible( _details, true );
+            		$('#-3').toggleClass('hidden');
+            	});
+            	
 	            $('#data-ingredients').children('tbody').on( 'click', 'tr', function () {
 	            	
 	            	_ing_id			= $(this).attr('id');
 	            	
-	            	if (_ing_id != '-1' && _ing_id !='-2') {	//lignes totaux
+	            	if (_ing_id != '-1' && _ing_id !='-2' && _ing_id !='-3') {	//lignes totaux
 	            		
 						_ing_name 		= $(this).find('td:eq(0)').text();
 						_ing_qte 		= $(this).find('td:eq(1)').text();
