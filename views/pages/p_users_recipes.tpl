@@ -70,7 +70,8 @@
 										~{foreach $smarty.session._elements as $element}~
 										
 											<th align="center">~{$element.label|cat:' ('|cat:$element.unit|cat:')'}~</th>
-										~{/foreach}~		
+										~{/foreach}~	
+										<th></th>	
 									</tr>
 								</thead>
 								
@@ -92,6 +93,7 @@
 												</td>
 
 											~{/foreach}~		
+											<td></td>
 										</tr>
 										
 									~{/foreach}~
@@ -104,6 +106,7 @@
 										
 											<td></td>
 										~{/foreach}~
+										<td></td>
 									</tr>
 									<tr id="-2" class="warning hidden">
 										<td align="right">~{#total_compo#}~</td>
@@ -115,6 +118,7 @@
 											~{$Totaux[$code]|strip|string_format:$smarty.session._arrondis[$element['rnd']]}~
 											</td>
 										~{/foreach}~
+										<td></td>
 									</tr>
 									<tr id="-3" class="warning hidden">
 										~{assign var=coeff value=(100 / $Totalqte)}~
@@ -128,6 +132,7 @@
 											~{($Totaux[$code] * $coeff)|strip|string_format:$smarty.session._arrondis[$element['rnd']]}~
 											</td>
 										~{/foreach}~
+										<td></td>
 									</tr>
 								
 								</tbody>

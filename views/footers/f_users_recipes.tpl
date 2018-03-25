@@ -20,6 +20,7 @@
 		        	               { width: '20%', targets: [0 ] },
 		        	               { width: '8%', targets: [1 ] },
 		        	               { width: '9%', targets: [2,3,4,5,6,7,8,9 ] },
+		        	               { width: '0%', targets: [10 ] },
 		        	               { visible: false, targets: [2,3,4,5,6,7,8,9 ] },
 		        	            ],
 // 		        	select: {
