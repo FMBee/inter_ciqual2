@@ -5,7 +5,7 @@
         
 		    $(document).ready(function() {
 		    	
-            	$('#addrecipe-addrecord')		.hide();
+//             	$('#addrecipe-addrecord')		.hide();
 
             	$('#addrecipe').on('click', function () {
 	            	
@@ -30,7 +30,7 @@
 	    			onInvalidateSelection: function (){
 	    				
 	    			        $('#addrecipe-ing').val('');
-			            	$('#addrecipe-addrecord').hide();
+// 			            	$('#addrecipe-addrecord').hide();
 	    			    },
 		    	    onSelect: function (suggestion) {
 		
@@ -41,7 +41,7 @@
 
 				$('#addrecipe-cancel').on('click', function () {
 	            	
-	            	$('#addrecipe-addrecord')		.hide();
+// 	            	$('#addrecipe-addrecord')		.hide();
 		        });
 				
 				$('#addrecipe-addrecord').on('click', function () {
@@ -61,7 +61,7 @@
 			            	$('#modal-faddrecipe').submit();
 					}
 					else{
-						bootbox.alert('Un des champs est vide !');
+						bootbox.alert('<b><span style="font-size:130%">Vous devez remplir les 3 champs pour créer une recette</span></b>');
 					}
 	            	
 		        });

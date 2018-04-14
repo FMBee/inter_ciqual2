@@ -17,6 +17,7 @@
 								<h4 style="color:#e9841d" class="modal-title title" id="modal-addrecipe-label">
 									~{#mdladdtitre#}~
 								</h4>
+								<h5>Veuillez remplir les champs suivants pour créer la recette</h5>
 						</div>
 						
 						<div class="modal-body ">

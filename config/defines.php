@@ -114,7 +114,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 			'rnd' => 'A1', 
 			'bot' => 'S1',	
 		),	
-		'25003' => array(
+		'25000' => array(
 			'label' => 'Protéines', 
 			'unit' => 'g', 
 			'rnd' => 'A1', 
