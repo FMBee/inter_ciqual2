@@ -1,4 +1,17 @@
 
+NUTRIVAL
+
+si l'appel API-Ciqual est cassé : vérifier que le domaine de l'appli __APP_ADDRESS__
+soit identique au domaine défini dans le paramètre __CIQUAL_API__
+
+
+
+
+
+
+
+*---------------------
+
 - rajout d'un champ saisi dans la base
 	- modifier la table
 	- modifier la procstock d'enregistrement
