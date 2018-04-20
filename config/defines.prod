@@ -1,0 +1,12 @@
+
+	myDefine('__APP_ADDRESS__' 			, 'http://dev.zest-haccp.fr/nutrival/'); // lien vers application pour validation par mail
+
+	myDefine('__CIQUAL_API__' 			, 'http://dev.zest-haccp.fr/ciqual/ciqual_api.php' ); // serveur Ciqual	
+
+	myDefine('__MAILER_PORT__' 			, 587);
+	myDefine('__MAILER_SECU__' 			, 'STARTTLS');
+	myDefine('__MAILER_HOST__' 			, 'smtp.nutrival.fr');
+	myDefine('__MAILER_USER__' 			, 'contact@nutrival.fr');
+	myDefine('__MAILER_PWD__' 			, '123AZEqsd');
+	myDefine('__MAILER_FROM__' 			, 'contact@nutrival.fr');
+	myDefine('__MAILER_REPLY__' 		, 'contact@nutrival.fr');

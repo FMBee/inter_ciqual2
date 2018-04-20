@@ -1,7 +1,19 @@
 
 	~{if $onSession === true}~
         <footer>
-	          <p><span class="text-black" style="font-size:140%">NUTRIVAL</span>&nbsp;&nbsp;&nbsp;© zest HACCP 2018-20</p>
+          <div class="row">
+        	<div class="col-lg-6 col-md-6 col-sm-6">
+        	          <p><span style="font-size:140%">NUTRIVAL</span>&nbsp;&nbsp;&nbsp;© Hellosoftware 2018-20</p>
+<!-- 	          <p><span style="font-size:150%">NUTRIVAL</span>&nbsp;&nbsp;&nbsp;© zest HACCP 2018-20</p> -->
+<!-- 	          <p></p> -->
+        	</div>
+        	<div class="col-lg-6 col-md-6 col-sm-6">
+	    	  <span class="pull-right">
+	    	  	<img style="background-color:#e9841dy;height:20px;width:110px;"
+	    	  			src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~">
+	    	  </span>
+        	</div>
+          </div>
 	    </footer>
 	~{/if}~
 

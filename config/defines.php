@@ -80,13 +80,13 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	$_SESSION['_elements'] = array(
 		'327' => array(
 			'label' => 'Energie', 
-			'unit' => 'KJ', 
+			'unit' => 'kJ', 
 			'rnd' => 'NE', 
 			'bot' => 'NL',
 		),	
 		'328' => array(
 			'label' => 'Energie', 
-			'unit' => 'Kcal', 
+			'unit' => 'kcal', 
 			'rnd' => 'NE', 
 			'bot' => 'NL',
 		),	
@@ -153,7 +153,7 @@ $_ROOT = ''; // racine pour include Smarty, Ajax, et URLS
 	);
 	$_SESSION['_formats'] = array(
 		'L0' => "Eléments d’étiquetage à rajouter sur les emballages de vos produits fabriqués :",
-		'L1' => "Valeurs nutritionnelles moyennes pour 100g : Energie %sKJ / %sKcal ; Matières grasses %sg, dont acides gras saturés %sg ; Glucides %sg, dont sucres %sg ; Protéines %sg ; Sel %sg"
+		'L1' => "Valeurs nutritionnelles moyennes pour 100g : Energie %skJ / %skcal ; Matières grasses %sg, dont acides gras saturés %sg ; Glucides %sg, dont sucres %sg ; Protéines %sg ; Sel %sg"
 	);
 		
 	

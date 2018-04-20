@@ -3,12 +3,12 @@
     <!-- Header Start -->
     <header>
 
-		  <div class="pull-left">
-	    	  <span >
-	    	  	<img style="background-color:lightgrey;height:30px;width:130px;padding:3px"
-	    	  			src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~">
-	    	  </span>
-		  </div>
+<!-- 		  <div class="pull-left"> -->
+<!-- 	    	  <span > -->
+<!-- 	    	  	<img style="background-color:lightgrey;height:30px;width:130px;padding:3px" -->
+<!-- 	    	  			src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~"> -->
+<!-- 	    	  </span> -->
+<!-- 		  </div> -->
 	      <div class="pull-right">
 	        <ul id="mini-nav" class="clearfix">
 	          <li class="list-box">
