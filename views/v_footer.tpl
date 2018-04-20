@@ -9,7 +9,7 @@
         	</div>
         	<div class="col-lg-6 col-md-6 col-sm-6">
 	    	  <span class="pull-right">
-	    	  	<img style="background-color:#e9841dy;height:20px;width:110px;"
+	    	  	<img style="background-color:#e9841dy;height:25px;width:120px;"
 	    	  			src="~{$smarty.const.__VIEWS_IMG__|cat:$smarty.const.__LOGO_IMG__}~">
 	    	  </span>
         	</div>
