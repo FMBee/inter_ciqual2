@@ -5,7 +5,7 @@
         
 		    $(document).ready(function() {
 		    	
-//             	$('#addrecipe-addrecord')		.hide();
+            	$('#addrecipe-addrecord')		.show();
 
             	$('#addrecipe').on('click', function () {
 	            	
@@ -35,7 +35,7 @@
 		    	    onSelect: function (suggestion) {
 		
 			            	$('#addrecipe-ingcode').val( suggestion.data );	
-			            	$('#addrecipe-addrecord').show();
+// 			            	$('#addrecipe-addrecord').show();
 		    	    	}
 		    	});
 
@@ -52,13 +52,20 @@
 							&& $('#addrecipe-ing').val() != '' 
 	            				&& ( isNaN(_saisie) === false & _saisie > 0 ) ) {				
 						
+						if ( $('#addrecipe-ingcode').val() == '' ) {
+							
+							bootbox.alert('<b><span style="font-size:130%">L\'ingrédient principal est invalide - veuillez re-sélectionner</span></b>');
+						}
+						else{
 // 	           			bootbox.confirm('<b><span style="font-size:130%">Confirmez-vous la création ?</span></b>',
 // 	                   			function(result) {
 // 	    	                        if (result) {
 // 						            	$('#modal-faddrecipe').submit();
 // 	    	                        }
 // 	           				});
+
 			            	$('#modal-faddrecipe').submit();
+						}
 					}
 					else{
 						bootbox.alert('<b><span style="font-size:130%">Vous devez remplir les 3 champs pour créer une recette</span></b>');
