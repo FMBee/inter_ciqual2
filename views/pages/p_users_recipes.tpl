@@ -151,7 +151,7 @@
 		</div>
 
 	<form role="form" 	
-		action="~{codeUrl('users_recipes-users_recipes')}~" 
+		action="~{codeUrl('users_recipes-index')}~" 
 		method="post" id="delrecipy-form">
 		
 	   <input name="parammode" value="del_rec" hidden />
