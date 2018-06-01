@@ -1,7 +1,7 @@
 
-	myDefine('__APP_ADDRESS__' 			, 'http://dev.zest-haccp.fr/nutrival/'); // lien vers application pour validation par mail
+	myDefine('__APP_ADDRESS__' 			, 'https://nutrival.fr/'); // lien vers application pour validation par mail
 
-	myDefine('__CIQUAL_API__' 			, 'http://dev.zest-haccp.fr/ciqual/ciqual_api.php' ); // serveur Ciqual	
+	myDefine('__CIQUAL_API__' 			, 'https://nutrival.fr/ciqual/ciqual_api.php' ); // serveur Ciqual	
 
 	myDefine('__MAILER_PORT__' 			, 587);
 	myDefine('__MAILER_SECU__' 			, 'STARTTLS');

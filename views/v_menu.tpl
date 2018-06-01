@@ -61,7 +61,7 @@
 
 	          <ul>
 	            <li class="~{if $smarty.get.page=='index' || $smarty.get.page=='users_recipes'}~active~{/if}~">
-	              <a href="~{codeUrl('index')}~">
+	              <a href="~{codeUrl('-index')}~">
 	              	<i><img src="~{$smarty.const.__VIEWS_IMG__}~picto_accueil.png"/>&nbsp;~{#etiq_05#}~</i>
 	              </a>
 	            </li>
