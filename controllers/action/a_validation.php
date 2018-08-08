@@ -88,7 +88,7 @@ function activationMail($data, $code) {
 
 	return sendMail( 	$data ['usr_login'], 
 						'Activation de votre compte ' .__APP_TITLE__ .' - ' .date('d/m/Y H:i'), 
-						$html 
+						utf8_decode($html)
 	);
 }
 

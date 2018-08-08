@@ -28,7 +28,7 @@ if ( isset($_POST['email']) ) {
 						
 			$result = sendMail ( 	$data ['usr_login'],
 									utf8_decode('Réinitialisation de votre mot de passe ' .__APP_TITLE__ .' - ' .date('d/m/Y H:i')),
-									$html
+									utf8_decode($html)
 			);
 			
 			if($result[0]) {
